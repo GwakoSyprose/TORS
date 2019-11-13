@@ -226,7 +226,13 @@ WHERE d.driverID = '$id' ";
                                                 <strong class="text-muted d-block mb-2">Infringement rate</strong>
                                                 <div class="progress progress-sm">
                                                     <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: 74%;">
-                                                        <span class="progress-value">74%</span>
+                                                       <!-- calculating infrigement rate -->
+                                                        <?php 
+                                                        $percentage = (($driver['offenceCount'] / 12) * 100);
+                                                        
+                                                        ?>
+                                                        
+                                                        <span class="progress-value"><?= $percentage;?>%</span>
                                                     </div>
                                                 </div>
                                             </div>
