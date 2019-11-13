@@ -13,11 +13,12 @@ require 'sessionCheck.php';
 
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link href="../googlefonts/icon.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../pages/styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
 
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
     <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
@@ -26,11 +27,11 @@ require 'sessionCheck.php';
 
     <!--  scripts -->
     <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery.js"></script>
     <script src='../fontawesome/js/all.js'></script>
     <script src="../js/sweetalert.min.js"></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script async defer src="../js/buttons.js"></script>
     <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
     <script src="../datatables/DataTables-1.10.18/js/jquery.dataTables.js" type="text/javascript"></script>
 
