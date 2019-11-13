@@ -6,11 +6,12 @@ include  ('../includes/head.php');
  
 
 require 'officer_name.php';
-$region = $_SESSION['region'];
+$region = $_SESSION['regionID'];
+$station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
 
-$query=mysqli_query($link, "SELECT * FROM notifications WHERE region='$region'");
+$query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station'");
  if (isset($_GET['respond'])) {
      $notID = $_GET['respond'];
      $sql= "UPDATE notifications SET `status` = '$id' WHERE notificationID= '$notID'";
@@ -83,7 +84,7 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE region='$region'")
                                                             <td><?php echo $numPlate; ?></td>
                                                             <td><?php echo  $description;?></td>
                                                             <td><?php echo $phone; ?></td>
-                                                            <td><a  href="?respond=<?= $notfID;?>"> 
+                                                            <td><a href="?respond=<?= $notfID;?>"> 
                                                             
                                                              <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
                                                             </a></td>
