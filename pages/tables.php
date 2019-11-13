@@ -169,7 +169,7 @@ include  ('../includes/connection.php');
                             $date=$result['regDate'];
                         ?>
                                             <tr class="spacer"></tr>
-                                            <tr class="tr-shadow" data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)" >
+                                            <tr class="tr-shadow" data-toggle="modal"  data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)" >
 
                                                 <td id="id"><?php echo $id; ?></td>
                                                 <td id="name"><?php echo $dfname; ?></td>

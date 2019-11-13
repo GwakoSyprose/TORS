@@ -95,7 +95,7 @@ WHERE d.driverID = '$id' ";
                     <!-- Default Light Table -->
                     <div class="row">
 
-                        <div class="col-lg-10 offset-md-1">
+                        <div class="col-lg-12">
                             <div class="card card-small mb-4">
                                 <div class="card-header border-bottom">
                                     <h6 class="m-0">Account Details</h6>
@@ -141,7 +141,8 @@ WHERE d.driverID = '$id' ";
                                                 <label for="comment"><b>Offence Description:</b></label>
                                                 <textarea class="form-control" rows="5" name="description"></textarea>
                                             </div>
-                                            <input type="submit" class="btn btn-block" name="submit" value="Submit">
+                                            
+                                            <button type="button" class="btn btn-primary" name="submit" >Submit</button>
 
                                         </form>
                                             </div>
