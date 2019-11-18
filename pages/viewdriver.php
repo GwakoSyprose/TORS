@@ -7,69 +7,14 @@
         $query = "SELECT * FROM drivers WHERE driverID = $id";
         $result = mysqli_query($link, $query);
         $driver= mysqli_fetch_assoc($result);
-        $summ= 0;
-
-      }
         
- // Escape user inputs for security
-    if(isset($_POST["submit"])) {
-      $id = $_GET['pid'];
-      $offense =  $_POST['offense'];
-      $numplate = mysqli_real_escape_string($link, $_POST['numplate']);
-      $description = mysqli_real_escape_string($link, $_POST['description']);
-
-      $cou = count($_POST['offense']);
-      $sql = "INSERT INTO offences(offenceType,description,driverID) VALUES ";
-      $comma = "";
-      for ($i=0; $i < $cou; $i++) { 
-        if ($i > 0) {
-          $comma = ",";
-        }
-        $sql .= $comma."(".$_POST['offense'][$i].",'$description','$id')";
-      }
-      if ($link->multi_query($sql) === TRUE) {
-
-        // record incident
-        $date  = date('Y-m-d');
-        $days = 90;
-        $oid = $_SESSION['userID'];
-        //inserting offences to offences table and incidences table
-        $sql = "INSERT INTO `incidences` (`offenceID`, `userID`,`numPlate`, `location`,`recDate`)
-               SELECT offences.`offenceID`,$oid,'$numplate','MOI','$date' FROM offences  WHERE  NOT EXISTS( SELECT 
-            incidences.`offenceID` FROM  incidences  WHERE incidences.`offenceID` = `offences`.`offenceID` );";
-            //checks if the insertion has performed successfully
-            if (mysqli_query($link, $sql)) {
-              //sum the total ofences for that driver
-                $sql2 = "SELECT SUM(ot.value) offenceCount FROM offences off 
-INNER JOIN drivers d ON d.driverID = off.driverID
-INNER JOIN offence_types ot ON off.offenceType=ot.otID
-WHERE d.driverID = '$id' ";
-            //assign the total sum to $summ variable
-          $summ = mysqli_query($link, $sql2);
-          $result = mysqli_fetch_assoc($summ);
-          $base = $result['offenceCount'];
-          //updates the offenceCount of that driver
-          $sql3 = "UPDATE drivers SET offenceCount = '$base'  WHERE driverID = '$id'";
-          if(mysqli_query($link, $sql3)){
-            //updates the status to suspended if condition is met
-            $sql4 = "UPDATE drivers SET status = '1' WHERE offenceCount > '12'";
-           if(mysqli_query($link, $sql4)){
-            $sql5 = "INSERT INTO suspended_licences(driverID, suspendedDate, activatedDate)
-                 VALUES ('$id', '$date', DATE_ADD(suspendedDate, INTERVAL 90 DAY))";
-            mysqli_query($link, $sql5);
-           }
-                header('location:viewdriver.php?pid='.$id.'&success=1');
-
-            }
-          }
-
-       
+  
     } else {
         echo "Error: " . $sql . "<br>" . $link->error;
     }
      
   
-    }
+    
  function fetch_data()  {
         
         include('../includes/connection.php');
@@ -228,7 +173,7 @@ WHERE d.driverID = '$id' ";
                                                     <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: 74%;">
                                                        <!-- calculating infrigement rate -->
                                                         <?php 
-                                                        $percentage = (($driver['offenceCount'] / 12) * 100);
+                                                        $percentage = round((($driver['offenceCount'] / 12) * 100));
                                                         
                                                         ?>
                                                         
@@ -323,7 +268,7 @@ WHERE d.driverID = '$id' ";
                                                 <h6 class="font-weight-bold text-center">Personal Details</h6>
                                                 <ul>
                                                     <table class="table table-striped table-borderless">
-                                                        <div class="col-md-12" align="right">
+                                                        <div class="col-md-3" style="float:right;" >
                                                             <form method="post">
                                                                 <input type="submit" name="generate_pdf" class="btn btn-success" value="Generate PDF" />
                                                             </form>
@@ -332,19 +277,13 @@ WHERE d.driverID = '$id' ";
                                                         <tbody>
                                                             <tr>
 
-                                                                <td class="font-weight-bold">First Name</td>
+                                                                <td class="font-weight-bold">Full Name</td>
                                                                 <td><?= $driver['dfname']; ?> <?= $driver['dlname']; ?></td>
 
 
 
                                                             </tr>
 
-                                                            <tr>
-
-                                                                <td class="font-weight-bold">National ID</td>
-                                                                <td><?= $driver['driverID']; ?></td>
-
-                                                            </tr>
                                                             <tr>
 
                                                                 <td class="font-weight-bold">License No</td>
@@ -354,32 +293,79 @@ WHERE d.driverID = '$id' ";
                                                             </tr>
                                                             <tr>
 
+            <td class="font-weight-bold">Offence Count</td>
+            <td><?= $driver['offenceCount']; ?></td>
+
+
+            </tr>
+                                                            <tr>
+
                                                                 <td class="font-weight-bold">Status</td>
                                                                 <td><?= ($driver['status'] == 0)? 'Active' : 'Suspended'; ?></td>
 
 
                                                             </tr>
+                                                      
                                                             <tr>
 
-                                                                <td class="font-weight-bold">Type</td>
-                                                                <td><?= $driver['typeID']; ?></td>
+                                                                <td class="font-weight-bold">Fine</td>
+                                                                <td><?= 'Required to pay: '.$driver['fine']; ?></td>
 
 
                                                             </tr>
                                                             <tr>
 
-                                                                <td class="font-weight-bold">Offence Count</td>
-                                                                <td><?= $driver['offenceCount']; ?></td>
+<td class="font-weight-bold">Court</td>
+<?php
+$date_to = "";
+$count = 0;
+$ssql = "SELECT drivers.`driverID`, drivers.`dfname`,offences.`offenceID`,offence_types.`otID`,offence_types.`status` FROM
+drivers INNER JOIN `offences` ON drivers.`driverID` = offences.`driverID`
+INNER JOIN `offence_types` ON offences.`offenceType` = offence_types.`otID` WHERE drivers.`driverID`='$id' AND  offence_types.`status` = 1;";
+
+$result = $link->query($ssql);
+if ($result->num_rows > 0) {
+     $count = 1;   
+} else {
+     
+}
+?>
+<td><?php if($count > 0){
+ echo $driver['date_to_court'];
+ echo "\t" ;
+ if(isset($_POST['date_to_see'])){
+     $dat = $_POST['date_to_see'];
+    $did = $_POST['driver'];
+     $sqlu = "UPDATE drivers SET date_to_court = '$dat' WHERE driverID = '$did' ;";
+     if ($link->query($sqlu) === TRUE) {
+        // echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . $link->error;
+    }
+ }
+?>
+
+<form method="post" class="form-inline">
+<div class="form-group col-md-6">
+    <input type="date" name="date_to_see" value="<?=(date('Y-m-d'))?>" class="form-control" required>
+</div>
+    <input type="hidden" name="driver" value="<?php echo $id; ?>" required>
+<div class="form-group col-md-6">
+    <input type="submit" class="btn btn-danger" value="Set Court Date">
+    </div>
+</form>
+<?php
+
+}
+ echo 'N/A';
 
 
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td class="font-weight-bold">Registration Date</td>
-                                                                <td><?= $driver['regDate']; ?></td>
+?></td>
 
 
-                                                            </tr>
+</tr>
+                                                    
+                                                            
 
                                                         </tbody>
                                                     </table>
