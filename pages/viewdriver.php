@@ -1,6 +1,6 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/head.php';
+<?php include '../includes/head.php';
 
-      include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php';
+      include '../includes/connection.php';
 
       if (isset($_GET['pid'])) {
         $id = $_GET['pid'];
@@ -381,6 +381,6 @@ if ($result->num_rows > 0) {
                     <!-- End Default Light Table -->
                 </div>
                 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/footer.php'; 
+    include '../includes/footer.php'; 
    
     ?>

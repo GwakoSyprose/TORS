@@ -202,7 +202,7 @@ echo mysqli_error($link);
             <br>
             <h2 class="title">Registration Info</h2>
             
-            <form method="POST" enctype="multipart/form-data">
+            <form class="form-group " method="POST" enctype="multipart/form-data">
                 <div class="input-group ">
                     <label for="Fname">NATIONAL ID</label>
                     <input class="input--style-1" type="number"placeholder="enter national id"  name="driverID">
@@ -291,7 +291,7 @@ echo mysqli_error($link);
                    <p>Already have an account? Log in to review your details</p>
                    <br>
             <h2 class="title">Login</h2>
-            <form method="POST">
+            <form method="POST" class="form-group ">
                 <div class="input-group ">
                     <input class="input--style-1" type="number" placeholder="Enter your National ID" name="driverID">
                 </div>

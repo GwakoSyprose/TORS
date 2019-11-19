@@ -1,11 +1,11 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php'; 
+    include  '../includes/connection.php'; 
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/adminsidenav.php';
+    include  '../includes/adminsidenav.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/head.php'; 
+    include  '../includes/head.php'; 
     require '../checkadmin.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/navbar.php';
+    include  '../includes/navbar.php';
 
 if (isset ($_POST['submit'])) {
 
@@ -121,7 +121,7 @@ if (isset ($_POST['submit'])) {
          <select name="station" class="form-control" required >
            <option disabled selected>Select Station</option>
           <?php 
-        require_once $_SERVER['DOCUMENT_ROOT'].'/tors/includes/connection.php';
+        require_once .'..ncludes/connection.php';
 
         $sql = "SELECT * FROM stations;";
         $result = $link->query($sql);
@@ -171,6 +171,6 @@ if (isset ($_POST['submit'])) {
                     <!-- End Default Light Table -->
                 </div>
                 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/footer.php'; 
+    include  '../includes/footer.php'; 
    
     ?>

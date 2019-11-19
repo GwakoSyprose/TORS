@@ -1,11 +1,11 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php'; 
+    include '../includes/connection.php'; 
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/adminsidenav.php';
+    include '../includes/adminsidenav.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/head.php'; 
+    include '../includes/head.php'; 
     require '../checkadmin.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/navbar.php';
+    include '../includes/navbar.php';
 
 $sql="SELECT * FROM offence_categories;";
 $result= $link->query($sql);
@@ -192,6 +192,6 @@ if (isset ($_POST['submitType'])) {
 
                
                 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/footer.php'; 
+    include '../includes/footer.php'; 
    
     ?>

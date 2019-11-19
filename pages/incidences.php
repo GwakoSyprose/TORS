@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php';
+include '../includes/connection.php';
 include '../includes/head.php'; 
     
     $query=mysqli_query($link, 
