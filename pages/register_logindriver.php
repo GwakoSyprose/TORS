@@ -196,7 +196,7 @@ echo mysqli_error($link);
 
     <div class="card card-1" id="signUp">
         <div class="card-heading"></div>
-<div class="row">
+<div class="row ">
         <div class="col-8 border-right float-left card-body container tab-pane active  card-small mb-4" id="signUp">
             <p>Don't have account? Sign up below</p>
             <br>
