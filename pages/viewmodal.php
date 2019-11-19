@@ -67,10 +67,11 @@ $driver= mysqli_fetch_assoc($result);
 
                                 </tr>
                             </tbody>
-                            <div class="col-md-12" align="right">
+                            <div class="col-md-6" style="float:right;">
                                 <form method="post">
 
-                                    <a type="submit" name="generate_pdf">Print Details</a>
+                                    
+                                    <button class="btn btn-sm  btn-outline-info col text-center" type="submit" name="generate_pdf" >Print Details</button>
                                 </form>
                             </div>
                         </table>
