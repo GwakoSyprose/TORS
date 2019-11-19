@@ -159,7 +159,7 @@ if (isset ($_POST['submit'])) {
                                                     </div>
 
 
-                                                    <button type="submit" name="submit" value="sign up!" class="btn btn-accent">Register</button>
+                                                    <button type="submit" name="submit"  class="btn btn-accent">Register</button>
                                                 </form>
                                             </div>
                                         </div>

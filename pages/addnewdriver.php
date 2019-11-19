@@ -35,7 +35,7 @@ if(array_key_exists("submit" , $_POST)) {
     $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
     
-    $allowed= array('jpg', 'jpeg', 'png');
+    $allowed= array('jpg', 'jpeg', 'png','JPG');
     
     if(in_array($fileActualExt, $allowed)){
         if($fileError === 0){
@@ -195,7 +195,7 @@ if(!mysqli_query($link, $query)) {
 
 
 
-                                                    <button type="submit" name="submit" value=sign up! class="btn btn-accent">Register</button>
+                                                    <button type="submit" name="submit"  class="btn btn-accent">Register</button>
                                                     </div>
                                                 </form>
                                             </div>
