@@ -58,18 +58,32 @@ WHERE d.driverID = '$id' ";
                  VALUES ('$id', '$date', DATE_ADD(suspendedDate, INTERVAL 90 DAY))";
             mysqli_query($link, $sql5);
            }
-                header('location:viewdriver.php?pid='.$id.'&success=1');
+           $sql_update = "UPDATE drivers AS dest,(
+            SELECT offences.`driverID`, SUM(`offence_types`.`penalty`) AS penalty
+            FROM offence_types INNER JOIN `offences` ON offence_types.`otID` = `offences`.`offenceType` GROUP BY offences.`driverID`
+            ) AS src SET dest.`fine` = src.penalty WHERE dest.`driverID` = src.driverID AND dest.`driverID` = '$id' ;";
+        if ($link->query($sql_update) === TRUE) {
+            // echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $link->error;
+        }
+            
+            
+           header('location:viewdriver.php?pid='.$id.'&success=1');
+
+            }
 
             }
           }
 
        
     } else {
-        echo "Error: " . $sql . "<br>" . $link->error;
+        echo "Error: ". $link->error;
     }
+
      
   
-    }?>
+    ?>
 <body class="h-100">
 
 
