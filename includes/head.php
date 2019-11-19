@@ -24,6 +24,7 @@ require 'sessionCheck.php';
     <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
     <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.10.18/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="../pages/styles/table.css">
+    <link rel="stylesheet" type="text/css" href="../pages/styles/update.css">
 
     <!--  scripts -->
     <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
