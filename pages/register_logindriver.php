@@ -133,7 +133,7 @@ if(array_key_exists("submitL" , $_POST)) {
                     $_SESSION['driverID'] = $row['driverID'];
 
            
-                  header('location:../pages/viewdriver.php?pid='.$id.'&success=1');;
+                  header('location:../pages/driverview.php?pid='.$id.'&success=1');;
                   
              
         
@@ -187,7 +187,7 @@ echo mysqli_error($link);
     <link href="../vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="../css/mainh.css" rel="stylesheet" media="all">
+    <link href="styles/mainh.css" rel="stylesheet" media="all">
 
 </head>
 
@@ -197,7 +197,7 @@ echo mysqli_error($link);
     <div class="card card-1" id="signUp">
         <div class="card-heading"></div>
 <div class="row">
-        <div class="col-8 border-right float-left card-body container tab-pane active" id="signUp">
+        <div class="col-8 border-right float-left card-body container tab-pane active  card-small mb-4" id="signUp">
             <p>Don't have account? Sign up below</p>
             <br>
             <h2 class="title">Registration Info</h2>
@@ -287,7 +287,7 @@ echo mysqli_error($link);
 
         </div>
   
-               <div class="card-body container tab-pane col-4" id="login">
+               <div class="card-body container tab-pane col-4  card-small mb-4" id="login">
                    <p>Already have an account? Log in to review your details</p>
                    <br>
             <h2 class="title">Login</h2>
@@ -300,7 +300,7 @@ echo mysqli_error($link);
                 </div>
 
                 <div class="p-t-20">
-                    <button class="btn btn-primary" name=submitL type="submit" href="<?=$POST['driverID']; ?>">Log In</button>
+                    <button class="btn btn-primary" name=submitL type="submit" href="">Log In</button>
                 </div>
             </form>
             <br>
