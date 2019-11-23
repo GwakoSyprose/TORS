@@ -66,15 +66,12 @@ $driver= mysqli_fetch_assoc($result);
 
 
                                 </tr>
+                           
                             </tbody>
-                            <div class="col-md-6" style="float:right;">
-                                <form method="post">
-
-                                    
-                                    <button class="btn btn-sm  btn-outline-info col text-center" type="submit" name="generate_pdf" >Print Details</button>
-                                </form>
-                            </div>
+                            
+                            
                         </table>
+                        <a href="viewdriver.php?pid=<?= $driver['driverID']; ?>">View more details</a>
                     </div>
                 </div>
             </div>
