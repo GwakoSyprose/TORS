@@ -307,7 +307,7 @@ echo mysqli_error($link);
 
                                                     <div class="form-group col-md-12">
                                                         <label for="Password">Password</label>
-                                                        <input class="form-control" type="password" placeholder="Enter your preffered password Password" name="password" autocomplete="off"></div>
+                                                        <input class="form-control" type="password" placeholder="Enter your password" name="password" autocomplete="off"></div>
 
 
 
