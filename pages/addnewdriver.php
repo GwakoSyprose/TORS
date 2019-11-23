@@ -167,7 +167,7 @@ echo mysqli_error($link);
 
 
 
-                <div class="main-content-container container-fluid  px-4">
+                <div class="main-content-container col-8 container-fluid  px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
                         <div class="col-12 col-sm-4 text mb-0">
@@ -284,6 +284,7 @@ echo mysqli_error($link);
                                     </li>
                                 </ul>
                             </div>
+                            
 
 
                             <!-- End Default Light Table -->
