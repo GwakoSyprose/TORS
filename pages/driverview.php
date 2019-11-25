@@ -239,8 +239,9 @@ WHERE d.driverID = '$id' ";
             <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
                 <div class="main-navbar sticky-top bg-white">
                     <!-- Main Navbar -->
-                    <?php include '../includes/navbar.php'; ?>
-                </div>
+                    <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+
                 <!-- / .main-navbar -->
                 
                 <div class="main-content-container container-fluid px-4">
@@ -365,7 +366,7 @@ WHERE d.driverID = '$id' ";
                         <div class="col-lg-8">
                             <div class="card card-small mb-4">
                                 <div class="card-header border-bottom">
-                                    <h6 class="m-0">Account Details<a href="updatedriver.php?pid=<?=$_GET['pid'];?>">Update</a></h6>
+                                    <h6 class="m-0">Account Details</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item p-3">
@@ -443,7 +444,7 @@ WHERE d.driverID = '$id' ";
                             </div>
                         </div>
                     </div>
-                    <!-- End Default Light Table -->
+                   
                 </div>
                 <?php 
     include   '../includes/footer.php'; 

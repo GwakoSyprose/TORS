@@ -32,7 +32,7 @@ $row = mysqli_fetch_assoc($result);
 $firstnamePSV = $row['dfname'];
 $lastnamePSV = $row['dlname'];
 //getting the top offender MOTORCYCLES`
-$resultm= mysqli_query($link, "SELECT *, MAX(offenceCount) AS maximum FROM drivers WHERE typeID=4");
+$resultm= mysqli_query($link, "SELECT *, MAX(offenceCount) FROM drivers WHERE typeID=4");
 
 $rowm = mysqli_fetch_assoc($resultm); 
 
