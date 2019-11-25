@@ -1,22 +1,17 @@
 <?php
- require $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php';
-
 session_start();
+require 'includes/connection.php';
+
 $userID_error = $pass_error = "";
-
 // login form
-
 if(isset($_POST['submit'])) {
-
   $userID = mysqli_real_escape_string($link, $_POST['userID']);
   $password = mysqli_real_escape_string($link, $_POST['password']);
   
-
 //Error Handlers
   //Check if inputs are empty
   if (empty($userID) || empty($password)) {
     echo "empty";
-
   } else {
     $sql = "SELECT * FROM users WHERE userID = '$userID'";
     $result = mysqli_query($link, $sql);
@@ -26,7 +21,6 @@ if(isset($_POST['submit'])) {
       <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
       <h4><i class="icon fa fa-times"></i>That National ID does not exist!</h4>
       </div>';
-
     } else {
       if($row = mysqli_fetch_assoc($result)) {
           //De-hashing the password!
@@ -54,20 +48,15 @@ if(isset($_POST['submit'])) {
 </div>';
 echo mysqli_error($link);
              
-
         }
   
       }
-
-
   }
-
 }
 } 
 // report form
 if(isset($_POST['notSubmit'])){
     
-
     
     $numplate = mysqli_real_escape_string($link,$_POST['numplate']);
     $region  = mysqli_real_escape_string($link,$_POST['region']);
@@ -75,9 +64,7 @@ if(isset($_POST['notSubmit'])){
     $description = mysqli_real_escape_string($link,$_POST['description']);
     $station = mysqli_real_escape_string($link,$_POST['station']);
     
-
     $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`) VALUES ('$numplate', '$description','$region','$station','$phoneno')";
-
  
     mysqli_query($link, $sql);
   echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
@@ -155,7 +142,7 @@ function getStations(val) {
                                         </div>
                                         <div class="modal-body">
                                             <form method="post"
-                                                action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                                action="index.php">
                                                 <div class="form-group">
                                                     <!-- <div class="form-control">
             <?php echo $userID_error; ?>    
@@ -255,18 +242,15 @@ function getStations(val) {
                  <select name="region" class="form-control" onchange="getStations(this.value);">
            <option disabled selected value="">Select Region</option>
           <?php 
-        require_once $_SERVER['DOCUMENT_ROOT'].'/tors/includes/connection.php';
-
+        require_once 'includes/connection.php';
         $sql = "SELECT * FROM regions";
         $result = $link->query($sql);
-
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
                 echo  '<option value="'.$row["regionID"].'" >'.$row["regionName"].'</option>';
             }
         } else {
-
         }
           ?>
         </select>

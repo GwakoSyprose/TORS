@@ -1,6 +1,6 @@
 <?php include   '../includes/head.php';
 
-      include   '../includes/connection.php';
+      include  '../includes/connection.php';
 
       if (isset($_GET['pid'])) {
         $id = $_GET['pid'];
@@ -447,6 +447,6 @@ WHERE d.driverID = '$id' ";
                    
                 </div>
                 <?php 
-    include '../includes/footer.php'; 
+    include   '../includes/footer.php'; 
    
     ?>
