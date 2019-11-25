@@ -1,7 +1,9 @@
 <?php
-include('connection.php');
 session_start();
+include('connection.php');
+
 $region = $_SESSION['regionID'];
+$station = $_SESSION['stationID'];
 $userid = $_SESSION['userID'];
 if(isset($_POST['view'])){
 // $con = mysqli_connect("localhost", "root", "", "notif");
@@ -9,7 +11,7 @@ if($_POST["view"] != '')
 {
   
 }
-$query = "SELECT * FROM notifications WHERE regionID= '$region' ORDER BY notificationID DESC LIMIT 5";
+$query = "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station' ORDER BY notificationID DESC LIMIT 5";
 $result = mysqli_query($link, $query);
 $output = '';
 if(mysqli_num_rows($result) > 0)

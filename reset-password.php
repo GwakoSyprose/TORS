@@ -25,7 +25,7 @@ if (!$email) {
   $key = md5($email);
   $addKey = substr(md5(uniqid(rand(),1)),3,10);
   $key = $key . $addKey;
-  $url = 'http://'.$_SERVER['SERVER_NAME'].':8080/TORS/changepass.php?key='.$key.'&email='.$email.'&action=reset';
+  $url = 'http://TORS/changepass.php?key='.$key.'&email='.$email.'&action=reset';
 // Insert Temp Table
 mysqli_query($link,
 "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
@@ -91,7 +91,7 @@ echo "<div class='alert alert-success'>
   <link rel="stylesheet" type="text/css" href="css/animate.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
 </head>
 
@@ -141,3 +141,4 @@ echo "<div class='alert alert-success'>
 </body>
 
 </html>
+ 
