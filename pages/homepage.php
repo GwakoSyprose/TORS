@@ -112,7 +112,7 @@ $lastnameTruck = $rowt['dlname'];
                                                 <h6 id="labels">PSVs</h6>
                                                 </s #00cc7epan>
                                                 <span> <i class='fas fa-shuttle-van' style='font-size:36px'></i></span>
-                                                <h6 class="stats-small__value count my-3"><?php echo $psvno ?></h6>
+                                                <h6 class="stats-small__value  my-3"><?php echo $psvno ?></h6>
                                                 <span
                                                     style="font-weight:450; overflow: hidden; white-space: nowrap;"><b>Top
                                                         Offender:</b><?= $firstnamePSV; ?> <?= $lastnamePSV; ?> </span>
@@ -134,7 +134,7 @@ $lastnameTruck = $rowt['dlname'];
                                                 <h6 id="labels">PERSONALS</h6>
                                                 </s #00cc7epan>
                                                 <span> <i class='fas fa-car' style='font-size:36px'></i></span>
-                                                <h6 class="stats-small__value count my-3"><?php echo $carno ?></h6>
+                                                <h6 class="stats-small__value my-3"><?php echo $carno ?></h6>
                                                 <span
                                                     style="font-weight:450; overflow: hidden; white-space: nowrap;"><b>Top
                                                         Offender:</b><?= $firstnamePersonal; ?>
@@ -156,7 +156,7 @@ $lastnameTruck = $rowt['dlname'];
                                                 <h6 id="labels">ORGANIZATIONS</h6>
                                                 </s #00cc7epan>
                                                 <span> <i class='fas fa-ambulance' style='font-size:36px'></i></span>
-                                                <h6 class="stats-small__value count my-3"><?php echo $orgno ?></h6>
+                                                <h6 class="stats-small__value my-3"><?php echo $orgno ?></h6>
                                                 <span
                                                     style="font-weight:450; overflow: hidden; white-space: nowrap;"><b>Top
                                                         Offender:</b><?= $firstnameOrg; ?> <?= $lastnameOrg; ?> </span>
@@ -177,7 +177,7 @@ $lastnameTruck = $rowt['dlname'];
                                                 <h6 id="labels">MOTORCYLCLES</h6>
                                                 </s #00cc7epan>
                                                 <span> <i class='fas fa-motorcycle' style='font-size:36px'></i></span>
-                                                <h6 class="stats-small__value count my-3"><?php echo $motorno ?></h6>
+                                                <h6 class="stats-small__value my-3"><?php echo $motorno ?></h6>
                                                 <span
                                                     style="font-weight:450; overflow: hidden; white-space: nowrap;"><b>Top
                                                         Offender:</b><?= $firstnameMotor; ?> <?= $lastnameMotor; ?>
@@ -200,7 +200,7 @@ $lastnameTruck = $rowt['dlname'];
                                                 <h6 id="labels">TRUCKS</h6>
                                                 </s #00cc7epan>
                                                 <span> <i class='fas fa-truck' style='font-size:36px'></i></span>
-                                                <h6 class="stats-small__value count my-3"><?php echo $truckno ?></h6>
+                                                <h6 class="stats-small__value  my-3"><?php echo $truckno ?></h6>
                                                 <span
                                                     style="font-weight:450; overflow: hidden; white-space: nowrap;"><b>Top
                                                         Offender:</b><?= $firstnameTruck; ?> <?= $lastnameTruck; ?>

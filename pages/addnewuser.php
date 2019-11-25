@@ -121,7 +121,7 @@ if (isset ($_POST['submit'])) {
          <select name="station" class="form-control" required >
            <option disabled selected>Select Station</option>
           <?php 
-        require_once .'..ncludes/connection.php';
+        require_once '../includes/connection.php';
 
         $sql = "SELECT * FROM stations;";
         $result = $link->query($sql);
