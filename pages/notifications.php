@@ -27,6 +27,7 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
 
 
 
+
 <body class="h-100">
 
     <div class="container-fluid">

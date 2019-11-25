@@ -309,7 +309,21 @@
                                                             <tr>
 
                                                                 <td class="font-weight-bold">Fine</td>
-                                                                <td><?= 'Required to pay: '.$driver['fine']; ?></td>
+                                                                <td><?= 'Required to pay: '.$driver['fine']; ?>
+                                                                
+                                                                <?php 
+
+                                                              
+                                                                    if($driver['fine'] > 0.00 ){
+                                                                        require_once('../includes/sendsms.php');
+                                                                        $amt = number_format($driver['fine']);
+                                                                        $sms = "Dear ".$driver['dfname'].", You are required to pay a fine of  KES ".$amt.".";
+                                                                       // $no = $driver['phone'];                                                                      
+                                                                        sendSms("254706960287",$sms);
+                                                                    }
+                                                                ?>
+                                                                
+                                                                </td>
 
 
                                                             </tr>
@@ -338,7 +352,11 @@ if ($result->num_rows > 0) {
     $did = $_POST['driver'];
      $sqlu = "UPDATE drivers SET date_to_court = '$dat' WHERE driverID = '$did' ;";
      if ($link->query($sqlu) === TRUE) {
-        // echo "Record updated successfully";
+            require '../includes/sendsms.php';
+            $sms = "Dear Linda Kiogora, You are required to appear in court on ".$dat.".";
+            $no = $driver['phone'];
+          
+            sendSms($ph,$sms);
     } else {
         echo "Error updating record: " . $link->error;
     }

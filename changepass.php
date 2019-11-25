@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TORS</title>
 
@@ -48,7 +48,7 @@ if ($row==""){
 $error .= '<h2>Invalid Link</h2>
 <p>The link is invalid/expired. Either you did not copy the correct link from the email, 
 or you have already used the key in which case it is deactivated.</p>
-<p><a href="http://'.$_SERVER['SERVER_NAME'].':8080/TORS2/reset-password.php">Click here</a> to reset password.</p>';
+<p><a href="http://julisha.co.ke/tors/reset-password.php">Click here</a> to reset password.</p>';
   }else{
   $row = mysqli_fetch_assoc($query);
   $expDate = $row['expDate'];
@@ -115,7 +115,7 @@ mysqli_query($link,
 mysqli_query($link, "DELETE FROM `password_reset_temp` WHERE `email`='".$email."';");   
   
 echo '<div class="alert alert-success"><p>Congratulations! Your password has been updated successfully.</p>
-<p><a href="http://'.$_SERVER['SERVER_NAME'].':8080/TORS2/index.php">Click here</a> to Login.</p></div><br />';
+<p><a href="http://julisha.co.ke/tors/index.php">Click here</a> to Login.</p></div><br />';
 
 $hashedPass1 = password_hash($pass1, PASSWORD_DEFAULT);
 $sql = "UPDATE `users` SET `password`='".$hashedPass1."' WHERE `email`='".$mail."';";
@@ -131,7 +131,7 @@ if ($link->query($sql) === TRUE) {
 mysqli_query($link, "DELETE FROM `password_reset_temp` WHERE `email`='".$mail."';");   
   
 echo '<div class="alert alert-success"><p>Congratulations! Your password has been updated successfully.</p>
-<p><a href="http://'.$_SERVER['SERVER_NAME'].':8080/TORS/index.php">Click here</a> to Login.</p></div><br />';
+<p><a href="http://julisha.co.ke/tors/index.php">Click here</a> to Login.</p></div><br />';
 
 
     }   

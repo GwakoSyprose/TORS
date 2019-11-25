@@ -174,7 +174,7 @@ include  ('../includes/connection.php');
                                 "id": id
                             }; //setting object data and passing id 
                             jQuery.ajax({
-                                url: '/TORS/pages/viewmodal.php',
+                                url: 'viewmodal.php',
                                 method: "post",
                                 data: data,
                                 success: function(data) {
