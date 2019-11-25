@@ -223,7 +223,7 @@ function getStations(val) {
                 <div class="col-md-8 col-md-push-2">
 
                     <div id="sendmessage">
-                        <? php echo $message ?>
+                       
                     </div>
                     <!--          <div id="errormessage"></div>-->
                     <form action="index.php" method="post" role="form" class="contactForm">
