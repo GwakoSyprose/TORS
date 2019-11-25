@@ -87,7 +87,7 @@ if($error!=""){
 
 if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
 $error="";
-<<<<<<< HEAD
+
 $pass1 = mysqli_real_escape_string($link,$_POST["pass1"]);
 $pass2 = mysqli_real_escape_string($link,$_POST["pass2"]);
 $email = $_POST["email"];
@@ -105,7 +105,7 @@ if ($pass1!=$pass2){
   if($error!=""){
     echo "<div class='error'>".$error."</div><br />";
     }else{
-<<<<<<< HEAD
+
 
 $pass1 = md5($pass1);
 $hashedPass1 = password_hash($pass1, PASSWORD_DEFAULT);
@@ -116,7 +116,7 @@ mysqli_query($link, "DELETE FROM `password_reset_temp` WHERE `email`='".$email."
   
 echo '<div class="alert alert-success"><p>Congratulations! Your password has been updated successfully.</p>
 <p><a href="http://'.$_SERVER['SERVER_NAME'].':8080/TORS2/index.php">Click here</a> to Login.</p></div><br />';
-=======
+
 $hashedPass1 = password_hash($pass1, PASSWORD_DEFAULT);
 $sql = "UPDATE `users` SET `password`='".$hashedPass1."' WHERE `email`='".$mail."';";
 
@@ -133,7 +133,7 @@ mysqli_query($link, "DELETE FROM `password_reset_temp` WHERE `email`='".$mail."'
 echo '<div class="alert alert-success"><p>Congratulations! Your password has been updated successfully.</p>
 <p><a href="http://'.$_SERVER['SERVER_NAME'].':8080/TORS/index.php">Click here</a> to Login.</p></div><br />';
 
->>>>>>> origin/master
+
     }   
 }
 ?>

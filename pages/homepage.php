@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/head.php';
+<?php include '../includes/head.php';
 include('../includes/connection.php');
 
 //getting the number of psvs
@@ -78,12 +78,12 @@ $lastnameTruck = $rowt['dlname'];
     <div class="container-fluid">
         <div class="row">
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/sidenav.php'; ?>
+            <?php include '../includes/sidenav.php'; ?>
 
             <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
 
 
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/navbar.php';?>
+                <?php include '../includes/navbar.php';?>
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
@@ -608,6 +608,6 @@ $lastnameTruck = $rowt['dlname'];
                 })(jQuery);
                 </script>
                 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/footer.php'; 
+    include '../includes/footer.php'; 
    
     ?>

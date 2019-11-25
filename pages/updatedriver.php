@@ -3,7 +3,7 @@ include  ('../includes/connection.php');
 include '../includes/head.php';
 
 
-include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php';
+include '../includes/connection.php';
 
 if (isset($_GET['pid'])) {
 $id = $_GET['pid'];

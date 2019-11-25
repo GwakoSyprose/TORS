@@ -1,6 +1,6 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/head.php';
+<?php include '../includes/head.php';
 
-      include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php';
+      include '../includes/connection.php';
 
       if (isset($_GET['pid'])) {
         $id = $_GET['pid'];
@@ -170,6 +170,6 @@ WHERE d.driverID = '$id' ";
                 </div>
 
                 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/footer.php'; 
+    include '../includes/footer.php'; 
    
     ?>

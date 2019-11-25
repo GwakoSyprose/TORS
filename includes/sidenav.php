@@ -10,7 +10,7 @@ $pquery=$link->query($sql);
                 <div class="d-table m-auto">
                     <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;"
                         src="images/shards-dashboards-logo.svg" alt="Shards Dashboard">
-                    <span class="d-none d-md-inline ml-1">Traffic Offenders System</span>
+                    <span class="d-none d-md-inline ml-1">TORS</span>
                 </div>
             </a>
             <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">

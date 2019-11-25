@@ -1,5 +1,5 @@
 <?php 
-include $_SERVER['DOCUMENT_ROOT'] . '/TORS/includes/connection.php';
+include '../includes/connection.php';
 $sql = "SELECT `offence_types`.`otID` AS id,`offence_types`.`offenceName` AS o_name, `offence_categories`.`catName` AS category
 FROM offence_types INNER JOIN offence_categories ON offence_categories.`ocID` = offence_types.`categoryID`
 ORDER BY offence_categories.`ocID`;";

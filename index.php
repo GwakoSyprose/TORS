@@ -139,7 +139,7 @@ function getStations(val) {
                             <ul class="nav navbar-nav navbar-right navbar-border">
                                 <li class="active"><a href="#main-header">Home</a></li>
                                 <li><a href="#contact">Report an Incident</a></li>
-                                <li><a href="pages/register_logindriver.php">Driver Registration</a></li>
+                                <li><a href="pages/addnewdriver.php">Driver Registration</a></li>
                                 <li><a href="" data-toggle="modal" data-target="#myModal">Login</a></li>
                             </ul>
 
@@ -305,7 +305,6 @@ function getStations(val) {
         </div>
     </section>
     
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

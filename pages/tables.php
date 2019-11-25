@@ -26,7 +26,7 @@ include  ('../includes/connection.php');
                         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">Overview</span>
                             <h6 class="page-title">
-                            <?php 
+                                <?php 
                             if($typeid==1){
                                 echo "PSV";
                             }elseif($typeid==2){
@@ -37,7 +37,7 @@ include  ('../includes/connection.php');
                                 echo "MOTORCYCLES";
                             }elseif($typeid==5){
                                 echo "TRUCKS";
-                            }?> 
+                            }?>
                             </h6>
 
                         </div>
@@ -46,12 +46,10 @@ include  ('../includes/connection.php');
 
                     <ul class="nav nav-tabs" id="activeTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="activeTab" data-toggle="tab" href="#active" role="tab"
-                                aria-controls="home" aria-selected="true">Active</a>
+                            <a class="nav-link active" id="activeTab" data-toggle="tab" href="#active" role="tab" aria-controls="home" aria-selected="true">Active</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="suspendedTab" data-toggle="tab" href="#suspended" role="tab"
-                                aria-controls="profile" aria-selected="false">Suspended</a>
+                            <a class="nav-link" id="suspendedTab" data-toggle="tab" href="#suspended" role="tab" aria-controls="profile" aria-selected="false">Suspended</a>
                         </li>
 
                     </ul>
@@ -59,25 +57,22 @@ include  ('../includes/connection.php');
                     <div class="tab-content">
 
                         <!-- active drivers -->
-                        <div id="active" class="container tab-pane active">
+                        <div id="active" class="tab-pane active">
                             <!-- Default Light Table -->
                             <div class="row" id="activeTable">
 
 
 
                                 <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2" id="active_drivers">
+                                    <table id="example" class="mdl-data-table" style="width:100%">
                                         <thead>
                                             <tr>
-
                                                 <th>Driver ID</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Licence No</th>
                                                 <th>Offence Count</th>
                                                 <th>Registration Date</th>
-                                                <th>Actions</th>
-                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,9 +86,8 @@ include  ('../includes/connection.php');
                             $count=$result['offenceCount'];
                             $date=$result['regDate'];
                         ?>
-                                            
-                                             <tr class="tr-shadow" data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)" >
-                                                
+                                            <tr class="tr-shadow" data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)">
+
                                                 <td id="id"><?php echo $id; ?></td>
                                                 <td id="name"><?php echo $dfname; ?></td>
 
@@ -104,31 +98,8 @@ include  ('../includes/connection.php');
 
                                                 <td id="date"><?php echo $date ?> </td>
 
-                                                <td>
-                                                    <span class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
-                                                    </span>
-                                                </td>
                                                 <?php endwhile; ?>
-
                                             </tr>
-
-
 
                                         </tbody>
                                     </table>
@@ -144,17 +115,15 @@ include  ('../includes/connection.php');
                             <div class="row" id="suspendedTable">
 
                                 <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2" id="sus_drivers">
+                                    <table id="example" class="mdl-data-table sus" style="width:100%">
                                         <thead>
                                             <tr>
-
                                                 <th>Driver ID</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Licence No</th>
                                                 <th>Offence Count</th>
-                                              <th>Registration Date</th>
-                                                
+                                                <th>Registration Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -168,8 +137,7 @@ include  ('../includes/connection.php');
                             $count=$result['offenceCount'];
                             $date=$result['regDate'];
                         ?>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow" data-toggle="modal"  data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)" >
+                                            <tr class="tr-shadow" data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)">
 
                                                 <td id="id"><?php echo $id; ?></td>
                                                 <td id="name"><?php echo $dfname; ?></td>
@@ -181,31 +149,8 @@ include  ('../includes/connection.php');
 
                                                 <td id="date"><?php echo $date ?> </td>
 
-                                                <td>
-                                                    <span class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
-                                                    </span>
-                                                </td>
                                                 <?php endwhile; ?>
-
                                             </tr>
-
-
 
                                         </tbody>
                                     </table>
@@ -221,45 +166,66 @@ include  ('../includes/connection.php');
 
 
                     </div>
-                    
+
                     <script>
+                        //ajax call,send JSON file
+                        function detailsmodal(id) {
+                            var data = {
+                                "id": id
+                            }; //setting object data and passing id 
+                            jQuery.ajax({
+                                url: '/TORS/pages/viewmodal.php',
+                                method: "post",
+                                data: data,
+                                success: function(data) {
+                                    jQuery('body').append(data); //add html from detailsmodal page
+                                    jQuery('#centralModalWarning').modal('toggle') //select details modal and open/toggle
+                                },
+                                error: function() {
+                                    alert("something went wrong!")
+                                }
+                            });
+                        }
 
-//ajax call,send JSON file
-function detailsmodal(id){
- var data={"id" : id};//setting object data and passing id 
- jQuery.ajax({
- 	url: '/TORS/pages/viewmodal.php',
- 	method: "post",
- 	data: data,
- 	success: function(data){
- 		jQuery('body').append(data); //add html from detailsmodal page
- 		jQuery ('#centralModalWarning').modal('toggle') //select details modal and open/toggle
-
- 	},
- 	error: function(){
- 		alert("something went wrong!")
- 	}
- });
-
-}
-</script>
-                    <script type="text/javascript">
-                    $(document).ready(function() {
-                        $('#active_drivers').DataTable();
-                        $('#sus_drivers').DataTable();
-
-                    });
                     </script>
+                   
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#example').DataTable({
+                                "lengthChange": false,
+                                columnDefs: [{
+                                    targets: [0, 1, 2],
+                                    className: 'mdl-data-table__cell--non-numeric'
+                                }]
+                            });
+                        });
+
+                      
+                    </script>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('.sus').DataTable({
+                                "lengthChange": false,
+                                columnDefs: [{
+                                    targets: [0, 1, 2],
+                                    className: 'mdl-data-table__cell--non-numeric'
+                                }]
+                            });
+                        });
+
+                      
+                    </script>
+                    
 
 
                     <script>
-                    jQuery(document).ready(function($) {
-                        $('*[data-href]').on('click', function() {
-                            window.location = $(this).data("href");
+                        jQuery(document).ready(function($) {
+                            $('*[data-href]').on('click', function() {
+                                window.location = $(this).data("href");
+                            });
                         });
-                    });
+
                     </script>
                     <?php 
     include '../includes/footer.php'; 
-   
-    ?>
+   ?>
