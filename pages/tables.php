@@ -73,6 +73,7 @@ include  ('../includes/connection.php');
                                                 <th>Licence No</th>
                                                 <th>Offence Count</th>
                                                 <th>Registration Date</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -86,7 +87,7 @@ include  ('../includes/connection.php');
                             $count=$result['offenceCount'];
                             $date=$result['regDate'];
                         ?>
-                                            <tr class="tr-shadow" data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)">
+                                            <tr class="tr-shadow">
 
                                                 <td id="id"><?php echo $id; ?></td>
                                                 <td id="name"><?php echo $dfname; ?></td>
@@ -97,6 +98,7 @@ include  ('../includes/connection.php');
                                                 <td id="count"><?php echo $count ?> </td>
 
                                                 <td id="date"><?php echo $date ?> </td>
+                                                 <td id="date"><a data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>View</button> </a></td>
 
                                                 <?php endwhile; ?>
                                             </tr>
@@ -115,7 +117,7 @@ include  ('../includes/connection.php');
                             <div class="row" id="suspendedTable">
 
                                 <div class="table-responsive table-responsive-data2">
-                                    <table id="example" class="mdl-data-table sus" style="width:100%">
+                                    <table id="example" class="mdl-data-table suspended" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Driver ID</th>
@@ -124,6 +126,9 @@ include  ('../includes/connection.php');
                                                 <th>Licence No</th>
                                                 <th>Offence Count</th>
                                                 <th>Registration Date</th>
+                                                <th>Action</th>
+                                                
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -137,7 +142,7 @@ include  ('../includes/connection.php');
                             $count=$result['offenceCount'];
                             $date=$result['regDate'];
                         ?>
-                                            <tr class="tr-shadow" data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)">
+                                            <tr class="tr-shadow">
 
                                                 <td id="id"><?php echo $id; ?></td>
                                                 <td id="name"><?php echo $dfname; ?></td>
@@ -148,6 +153,7 @@ include  ('../includes/connection.php');
                                                 <td id="count"><?php echo $count ?> </td>
 
                                                 <td id="date"><?php echo $date ?> </td>
+                                                 <td id="date"><a data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>View</button> </a></td>
 
                                                 <?php endwhile; ?>
                                             </tr>
@@ -204,7 +210,7 @@ include  ('../includes/connection.php');
                     </script>
                     <script type="text/javascript">
                         $(document).ready(function() {
-                            $('.sus').DataTable({
+                            $('.suspended').DataTable({
                                 "lengthChange": false,
                                 columnDefs: [{
                                     targets: [0, 1, 2],
