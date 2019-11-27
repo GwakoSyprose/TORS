@@ -29,8 +29,8 @@ $pquery=$link->query($sql);
                 aria-label="Search">
         </div>
     </form>
-    <div class="nav-wrapper" style="background-color:#262626;">
-        <ul class="nav flex-column" style="border: none;">
+    <div class="nav-wrapper" >
+        <ul class="nav flex-column" style="border: none; background-color:#262626;">
             <li class="nav-item text-center " style="background-color: transparent;">
                 <a class="nav-link text-white" href="homepage.php">
 
@@ -50,15 +50,32 @@ $pquery=$link->query($sql);
             </li>
 
             <?php endwhile; ?>
-            <li class="nav-item" style="background-color: transparent;">
-                <a class="nav-link" href="incidences.php">
 
-                    <button class="btn btn-secondary col text-center">INCIDENCES</button>
-                </a>
-            </li>
             
 
 
         </ul>
+        <ul class="nav flex-column" style="background-color:#fff">
+            
+              <li class="nav-item">
+                <a class="nav-link " href="incidences.php">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Incidences</span>
+                </a>
+                   <li class="nav-item">
+                <a class="nav-link " href="components-blog-posts.html">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Blog Posts</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="add-new-post.html">
+                  <i class="material-icons">note_add</i>
+                  <span>Add New Post</span>
+                </a>
+              </li>
+
+            </ul>
     </div>
+    
 </aside>
