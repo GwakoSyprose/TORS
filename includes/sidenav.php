@@ -65,7 +65,7 @@ $pquery=$link->query($sql);
                    <li class="nav-item">
                 <a class="nav-link " href="components-blog-posts.html">
                   <i class="material-icons">vertical_split</i>
-                  <span>Blog Posts</span>
+                  <span>Reports</span>
                 </a>
               </li>
               <li class="nav-item">
