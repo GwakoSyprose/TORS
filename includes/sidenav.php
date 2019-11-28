@@ -57,21 +57,21 @@ $pquery=$link->query($sql);
         </ul>
         <ul class="nav flex-column">
             
-              <li class="nav-item" >
+              <li class="nav-item" style="background-color: transparent;" >
                 <a class="nav-link " href="incidences.php">
                   <i class="material-icons">vertical_split</i>
-                  <span style="color: #fff;" >Incidences</span>
+                  <span style="color: ;" >Incidences</span>
                 </a>
-                   <li class="nav-item">
+                   <li class="nav-item" style="background-color: transparent;">
                 <a class="nav-link " href="components-blog-posts.html">
                   <i class="material-icons">vertical_split</i>
-                  <span style="color: #fff;">Reports</span>
+                  <span style="color:">Reports</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" style="background-color: transparent;">
                 <a class="nav-link " href="add-new-post.html">
                   <i class="material-icons">note_add</i>
-                  <span style="color: #fff;">Add New Post</span>
+                  <span style="color: ">Add New Post</span>
                 </a>
               </li>
 
