@@ -30,7 +30,7 @@ $driver= mysqli_fetch_assoc($result);
             <!--Body-->
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <?php
                                     
                                     echo "<img src='images/".$driver['profileImage']."' width=150 height=150>";
@@ -38,7 +38,7 @@ $driver= mysqli_fetch_assoc($result);
                                      ?>
 
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
 
                         <table class="table  table-borderless">
 
