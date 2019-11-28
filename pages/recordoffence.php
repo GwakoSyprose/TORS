@@ -118,9 +118,8 @@ WHERE d.driverID = '$id' ";
                                     <li class="list-group-item p-3">
                                         <div class="row">
                                             <div class="col">
-                                                                                       <form role="form" method="POST">
-
-                                            <div class="form-group">
+                                          <form role="form" method="POST">
+                                          <div class="form-group">
                                                 <label for="comment"><b>Select an offense</b></label><br>
 
                                                 <select name="offense[]" class="custom-select" multiple="multiple">
@@ -137,19 +136,30 @@ WHERE d.driverID = '$id' ";
                                             </script>
 
                                             <div class="form-group">
-                                                <label for="comment"><b>Number Plate</b></label>
-                                                <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate">
+                                                <label for="comment"><b>Select Vehicle Registration Number</b></label>
+                                                
+                                                <select name="type" class="form-control" id="Type" data-show-subtext="true" data-live-search="true" required>
+                                               
+                                                                <option disabled selected>Select Type</option>
+                                                                <?php 
+                                                            require_once('../includes/connection.php');
+
+                                                                $sql = "SELECT * FROM vehicles";
+                                                                $result = $link->query($sql);
+
+                                                                if ($result->num_rows > 0) {
+                                                                    // output data of each row
+                                                                    while($row = $result->fetch_assoc()) {
+                                                                        echo  '<option value="'.$row["typeID"].'" >'.$row["regNo"].'</option>';
+                                                                    }
+                                                                } else {
+
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                                                                                                       
                                             </div>
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
-
-
-
-                                                    $("#numplate").inputmask("aaa-999a"); //static mask
-
-                                                });
-
-                                            </script>
+                                           
 
                                             <div class="form-group">
                                                 <label for="comment"><b>Offence Description:</b></label>

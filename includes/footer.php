@@ -129,6 +129,7 @@ function getStations(val) {
 <script src="../datatables/DataTables-1.10.18/js/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript" src="../js/inputmask/jquery.inputmask.js"></script>
 <script type="text/javascript" src="../multiselect/js/bootstrap-multiselect.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
 
     
 

@@ -47,7 +47,10 @@ include '../includes/head.php';
                         <!-- / Button Groups -->
                         <!-- Input Groups -->
                         <strong class="text-muted d-block mb-2">Input Groups</strong>
-                        <strong class="text-muted d-block mb-2">I/We understand that your Police Station received a report of an accident involving...of(address)...which occurred on(date)...at(time and place)...involving vehicle(s)Reg.No...make...and...make</strong>
+                        <strong class="text-muted d-block mb-2">I/We understand that your Police Station received a report of 
+                        an accident involving...of(address)...which occurred on(date)
+                        ...at(time and place)...involving vehicle(s)
+                        Reg.No...make...and...make</strong>
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
