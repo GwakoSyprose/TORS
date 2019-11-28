@@ -122,9 +122,7 @@
 
 <body class="h-100">
 
-    <div class="color-switcher-toggle animated pulse infinite">
-        <i class="material-icons">settings</i>
-    </div>
+   
     <div class="container-fluid">
         <div class="row">
             <!-- Main Sidebar -->

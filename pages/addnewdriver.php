@@ -62,6 +62,9 @@ if(array_key_exists("submit" , $_POST)) {
     $fname = mysqli_real_escape_string($link, $_POST['fname']);
       $lname = mysqli_real_escape_string($link, $_POST['lname']);
     $licence = mysqli_real_escape_string($link, $_POST['licence']);
+    $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
+    $email= mysqli_real_escape_string($link, $_POST['email']);
+        
     
     $type = mysqli_real_escape_string($link, $_POST['type']);
     
@@ -74,8 +77,8 @@ if(array_key_exists("submit" , $_POST)) {
 
      
 
-         $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
-            VALUES ('$driverID', '$fname', '$lname','$licence', '$type', '0','$profile',  '$date')";
+         $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
+            VALUES ('$driverID', '$fname', '$lname','$licence','$phone','$email', '$type', '0','$profile',  '$date')";
        
 
        
@@ -167,7 +170,7 @@ echo mysqli_error($link);
 
 
 
-                <div class="main-content-container col-8 container-fluid  px-4">
+                <div class="main-content-container col-10 container-fluid  px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
                         <div class="col-12 col-sm-4 text mb-0">
@@ -215,6 +218,12 @@ echo mysqli_error($link);
                                                             <label for="Lname">Last name</label>
                                                             <input type="text" class="form-control" name="lname" placeholder="Last name" required> </div>
                                                         <div class="form-group col-md-12">
+                                                            <label for="licence">Licence</label>
+                                                            <input type="text" class="form-control" name="licence" placeholder="licence" required> </div>
+                                                         <div class="form-group col-md-12">
+                                                            <label for="Phone">Phone</label>
+                                                            <input type="text" class="form-control" name="phone" placeholder="eg. 2547123456" required> </div>
+                                                         <div class="form-group col-md-12">
                                                             <label for="licence">Licence</label>
                                                             <input type="text" class="form-control" name="licence" placeholder="licence" required> </div>
                                                         <div class="form-group col-md-12">

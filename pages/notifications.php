@@ -1,15 +1,11 @@
 <?php
-include  ('../includes/connection.php');
-include  ('../includes/head.php');
-
-
- 
-
+include '../includes/connection.php';
+include '../includes/head.php'; 
 require 'officer_name.php';
+
 $region = $_SESSION['regionID'];
 $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
-
 
 $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station'");
  if (isset($_GET['respond'])) {
@@ -22,10 +18,8 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
     }
  }
 
-
 ?>
-
-
+  
 
 
 <body class="h-100">
@@ -43,34 +37,22 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                     <div class="page-header row no-gutters py-4">
                         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">Overview</span>
+                            <h3 class="page-title">Reported incidences near Langata station</h3>
+
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="card card-small mb-4">
-                            <div class="card-header border-bottom">
+                <div class="row">
+                    <!-- Discussions Component -->
+              <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Notifications</h6>
+                  </div>
+                  <div class="card-body p-0">
+                  <!-- one item -->
 
-                                <h6 class="m-0">Nots Details</h6>
 
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item p-3">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h6 class="font-weight-bold text-center">Notifications List</h6>
-                                            <ul>
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th scope="col">Number Plates</th>
-                                                            <th scope="col">Description</th>
-                                                            <th scope="col">Phone Number</th>
-                                                            <th scope="col">Action</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
+                  <?php
                    while($result = mysqli_fetch_assoc($query)) :
                              $notfID=$result['notificationID'];
                              $status=$result['status'];
@@ -79,36 +61,116 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                             $phone=$result['phone'];
                                                      
                                                         ?>
-                                                        <tr>
-
-
-                                                            <td><?php echo $numPlate; ?></td>
-                                                            <td><?php echo  $description;?></td>
-                                                            <td><?php echo $phone; ?></td>
-                                                            <td><a href="?respond=<?= $notfID;?>"> 
-                                                            
-                                                             <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
-                                                            </a></td>
-
-
-
-
-                                                        </tr>
-                                                        <?php endwhile; ?>
-
-
-                                                    </tbody>
-                                                </table>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                                                    
+                                                       
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#"><?php echo $numPlate; ?></a> on
+                          <a class="text-secondary" href="#"><?php echo $phone; ?></a>
+                          <span class="text-muted">– 3 days ago</span>
                         </div>
+                        <p class="m-0 my-1 mb-2 text-muted"><?php echo  $description;?> ...</p>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white">
+                               
+                              <a href="?respond=<?= $notfID;?>"> 
+                            <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
+                             </a> 
+                         </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-info">
+                                <i class="material-icons">info</i>
+                              </span> Give Report </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-light">
+                                <i class="material-icons">more_vert</i>
+                              </span> Edit </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <?php endwhile; ?>
+                   
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col text-center view-report">
+                        <button type="submit" class="btn btn-white">View All Comments</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Discussions Component -->
+              <!-- Top Referrals Component -->
+              <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Officers Concerned</h6>
+                  </div>
+                  <div class="card-body p-0">
+                    <ul class="list-group list-group-small list-group-flush">
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Officer</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">Cases</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Syprose Gwako</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">11,201</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Stacy Chebet</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">9,291</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Linda Kiogora</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">8,281</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">John Doe</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">7,128</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Karanja Mugo</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">6,218</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Dela Otieno</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">1,218</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Keno Ndio</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">827</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col">
+                        <select class="custom-select custom-select-sm">
+                          <option selected>Last Week</option>
+                          <option value="1">Today</option>
+                          <option value="2">Last Month</option>
+                          <option value="3">Last Year</option>
+                        </select>
+                      </div>
+                      <div class="col text-right view-report">
+                        <a href="#">Full report &rarr;</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Top Referrals Component -->
+          </div>
+          </div>
 
-
-                        <?php 
+                  
+                <?php 
     include '../includes/footer.php'; 
    
     ?>
