@@ -23,99 +23,191 @@ include '../includes/head.php';
 
                         </div>
                     </div>
-                <div class="row">
-                   <!-- Input & Button Groups -->
-                <div class="card card-small mb-4 col-lg-9">
-                  <div class="card-header border-bottom">
-                    <h6 class="m-0">Fill in the incident details</h6>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item px-3">
-                      <form>
-                        <!-- Button Groups -->
-                        <strong class="text-muted d-block mb-2">Police Info</strong>
-                        <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
-                          <label class="btn btn-white active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Fizz </label>
-                          <label class="btn btn-white">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Buzz </label>
-                          <label class="btn btn-white">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> Foo </label>
-                          <label class="btn btn-white">
-                            <input type="radio" name="options" id="option4" autocomplete="off"> Bar </label>
-                        </div>
-                        <!-- / Button Groups -->
-                        <!-- Input Groups -->
-                        <strong class="text-muted d-block mb-2">Input Groups</strong>
-                        <strong class="text-muted d-block mb-2">I/We understand that your Police Station received a report of an accident involving...of(address)...which occurred on(date)...at(time and place)...involving vehicle(s)Reg.No...make...and...make</strong>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"> </div>
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2" value="contact">
-                          <div class="input-group-append">
-                            <span class="input-group-text">@designrevision.com</span>
-                          </div>
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                          </div>
-                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="1000">
-                          <div class="input-group-append">
-                            <span class="input-group-text">.00</span>
-                          </div>
-                        </div>
-                        <!-- Input Groups -->
-                        <!-- Seamless Input Groups -->
-                        <strong class="text-muted d-block mb-2">Seamless Input Groups</strong>
-                        <div class="input-group mb-3">
-                          <div class="input-group input-group-seamless">
-                            <span class="input-group-prepend">
-                              <span class="input-group-text">
-                                <i class="material-icons">person</i>
-                              </span>
-                            </span>
-                            <input type="text" class="form-control" id="form1-username" placeholder="Username" value="design.revision"> </div>
-                        </div>
-                        <div class="input-group mb-3">
-                          <div class="input-group input-group-seamless">
-                            <input type="password" class="form-control" id="form2-password" placeholder="Password" value="mySuperSecretPa$$word">
-                            <span class="input-group-append">
-                              <span class="input-group-text">
-                                <i class="material-icons">lock</i>
-                              </span>
-                            </span>
-                          </div>
-                        </div>
-                        <!-- / Seamless Input Groups -->
-                        <!-- Input/Button Group -->
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                          <div class="input-group-append">
-                            <button class="btn btn-white" type="button">Button</button>
-                          </div>
-                        </div>
-                        <!-- / Input/Button Group -->
-                        <!-- Input/Button Group -->
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <button class="btn btn-white" type="button">Button</button>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> </div>
-                        <!-- / Input/Button Group -->
-                      </form>
-                    </li>
-                  </ul>
-                </div>
-                <!-- / Input & Button Groups -->  
-              
-          </div>
-          </div>
+                    <div class="row">
+                        <!-- Input & Button Groups -->
+                        <div class="card card-small mb-4 col-lg-12">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">Fill in the incident details</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item px-3">
+                                    <form>
+                                        
+                                        <strong class="text-muted d-block mb-2">Police Info</strong>
+                                     
 
-                  
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Date of the incident</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" value="<?=(date('Y-m-d'))?>">
+                                        </div>
+<div class="col-lg-12">
+                                                <strong class="text-muted d-block mb-2">Vehicle(s) involved in the incident</strong></div>
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Vehicle 1</span>
+                                                </div>
+
+                                                <input type="text" class="form-control" name="v1" placeholder="Reg No" required>
+                                            </div>
+
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Make</span>
+                                                </div>
+
+
+                                                <input type="text" class="form-control" name="regno1" placeholder="Select type" required>
+                                            </div>
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Vehicle 2</span>
+                                                </div>
+
+                                                <input type="text" class="form-control" name="v2" placeholder="Reg No" required>
+                                            </div>
+
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Make</span>
+                                                </div>
+
+
+                                                <input type="text" class="form-control" name="regno1" placeholder="Select Type" required>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Name of police station reported</span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <strong class="text-muted d-block mb-2">Vehicle Owners</strong></div>
+
+
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Owner 1</span>
+                                                </div>
+
+                                                <input type="text" class="form-control" name="owner1" placeholder="Name" required>
+                                            </div>
+
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Reg No</span>
+                                                </div>
+
+
+                                                <input type="text" class="form-control" name="regno1" placeholder="Reg no" required>
+                                            </div>
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Owner 2</span>
+                                                </div>
+
+                                                <input type="text" class="form-control" name="owner1" placeholder="Name" required>
+                                            </div>
+
+                                            <div class="form-group col-md-6 input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Reg No</span>
+                                                </div>
+
+
+                                                <input type="text" class="form-control" name="regno2" placeholder="Reg no" required>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Name of the insurance company</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Has the investigation been completed?</span>
+                                            </div>
+                                            <br>
+                                               <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
+                                                <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option2">
+                                                <label class="form-check-label" for="inlineCheckbox2">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Has anyone been charged?</span>
+                                            </div>
+                                            <br>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
+                                                <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option2">
+                                                <label class="form-check-label" for="inlineCheckbox2">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Traffic rule violated?</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Number of persons injured if any</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Number fatalities if any</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                        </div>
+                                         <div class="col-lg-12">
+                                                <strong class="text-muted d-block mb-2">Names of witness(es)</strong></div>
+                                        
+                                               <div class="form-group input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Witness 1</span>
+                                                </div>
+
+                                                <input type="text" class="form-control" name="owner1" placeholder="Full names of witness" required>
+                                            </div>
+
+                                            <div class="form-group  input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Witness 2</span>
+                                                </div>
+
+
+                                                <input type="text" class="form-control" name="regno2" placeholder="Full names of witness"  required>
+                                            </div>
+
+                                        
+                                        <!-- Input Groups -->
+                                        <!-- Seamless Input Groups -->
+
+                                        <!-- / Input/Button Group -->
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- / Input & Button Groups -->
+
+                    </div>
+                </div>
+
+
                 <?php 
     include '../includes/footer.php'; 
    
