@@ -10,7 +10,7 @@
  $error = "";
 
 
-if(array_key_exists("submit" , $_POST)) {
+if(array_key_exists("submitS" , $_POST)) {
 
   
 
@@ -21,7 +21,7 @@ if(array_key_exists("submit" , $_POST)) {
     die ("Database Connection Error!");
    }
     // Escape user inputs for security
-    if(isset($_POST["submit"])) {
+    if(isset($_POST["submitS"])) {
         
     
             $file = $_FILES['profile'];
@@ -64,6 +64,7 @@ if(array_key_exists("submit" , $_POST)) {
     $licence = mysqli_real_escape_string($link, $_POST['licence']);
     $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
     $email= mysqli_real_escape_string($link, $_POST['email']);
+    $password= mysqli_real_escape_string($link, $_POST['password']);
         
     
     $type = mysqli_real_escape_string($link, $_POST['type']);
@@ -75,10 +76,10 @@ if(array_key_exists("submit" , $_POST)) {
     }
 
 
-     
+      $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-         $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
-            VALUES ('$driverID', '$fname', '$lname','$licence','$phone','$email', '$type', '0','$profile',  '$date')";
+         $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
+            VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno','$email','$hashedPwd', '$type', '0','$profile',  '$date')";
        
 
        
@@ -119,13 +120,13 @@ if(array_key_exists("submitL" , $_POST)) {
       </div>';
 
     } else {
-      if($row = mysqli_fetch_assoc($results)) {
+       if($row = mysqli_fetch_assoc($results)) {
           $id=$_POST['driverID'];
           //De-hashing the password!
         if(password_verify($password, $row['password'])){
     
                     $_SESSION['driverID'] = $row['driverID'];
-
+    
            
                   header('location:../pages/driverview.php?pid='.$id.'&success=1');;
                   
@@ -222,10 +223,10 @@ echo mysqli_error($link);
                                                             <input type="text" class="form-control" name="licence" placeholder="licence" required> </div>
                                                          <div class="form-group col-md-12">
                                                             <label for="Phone">Phone</label>
-                                                            <input type="text" class="form-control" name="phone" placeholder="eg. 2547123456" required> </div>
+                                                            <input type="varchar" class="form-control" name="phone" placeholder="eg. 2547123456" required> </div>
                                                          <div class="form-group col-md-12">
-                                                            <label for="licence">Licence</label>
-                                                            <input type="text" class="form-control" name="licence" placeholder="licence" required> </div>
+                                                            <label for="licence">Email</label>
+                                                            <input type="email" class="form-control" name="email" placeholder="example@abc.com" required> </div>
                                                         <div class="form-group col-md-12">
                                                             <label for="Type">Type</label>
                                                             <select name="type" class="form-control" id="Type" required>
