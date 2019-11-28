@@ -1707,7 +1707,7 @@ i.material-icons {
       border-color: #e7e9ea; }
   .nav-tabs .nav-link.active,
   .nav-tabs .nav-item.show .nav-link {
-    color: #495057;
+    color: #007bff;
     background-color: #fff;
     border-color: #ddd; }
   .nav-tabs .dropdown-menu {
