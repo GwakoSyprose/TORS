@@ -25,7 +25,7 @@ if (!$email) {
   $key = md5($email);
   $addKey = substr(md5(uniqid(rand(),1)),3,10);
   $key = $key . $addKey;
-  $url = 'http://julisha.co.ke/tors/changepass.php?key='.$key.'&email='.$email.'&action=reset';
+  $url = 'localhost/tors/changepass.php?key='.$key.'&email='.$email.'&action=reset';
 // Insert Temp Table
 mysqli_query($link,
 "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)

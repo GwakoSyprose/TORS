@@ -83,8 +83,11 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                          </button>
                             <button type="button" class="btn btn-white">
                               <span class="text-info">
+                              <a href="report.php">
                                 <i class="material-icons">info</i>
-                              </span> Give Report </button>
+                                </span> Give Report </button>
+                                </a>
+                              
                             <button type="button" class="btn btn-white">
                               <span class="text-light">
                                 <i class="material-icons">more_vert</i>
