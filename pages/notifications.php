@@ -114,7 +114,7 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                   </div>
                   <div class="card-body p-0">
                     <ul class="list-group list-group-small list-group-flush">
-                      <li class="list-group-item d-flex px-3">
+                      <li class="list-group-item-dark d-flex px-3">
                         <span class="text-semibold text-fiord-blue">Officer</span>
                         <span class="ml-auto text-right text-semibold text-reagent-gray">Cases</span>
                       </li>
