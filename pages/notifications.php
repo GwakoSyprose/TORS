@@ -75,24 +75,31 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                         <p class="m-0 my-1 mb-2 text-muted"><?php echo  $description;?> ...</p>
                         <div class="blog-comments__actions">
                           <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-white">
-                               
-                              <a href="?respond=<?= $notfID;?>"> 
+                            
+                          <a href="?respond=<?= $notfID;?>">
+                            <button type="button" class="btn btn-white text-success">
+                              
                             <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
-                             </a> 
+                            
                          </button>
-                            <button type="button" class="btn btn-white">
+                         </a> 
+                         <a href="report.php">
+                            <button type="button" class="btn btn-white text-info">
                               <span class="text-info">
-                              <a href="report.php">
+                              
                                 <i class="material-icons">info</i>
                                 </span> Give Report </button>
                                 </a>
                               
-                            <button type="button" class="btn btn-white">
-                              <span class="text-light">
-                                <i class="material-icons">more_vert</i>
-                              </span> Edit </button>
+                                <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
+                            <button type="button" class="btn btn-white text-warning">
+                              <span class="text-warning">
+                              <i class="material-icons ">my_location</i>
+                              </span> View Map </button>
+                              </a>
+                              
                           </div>
+
                         </div>
                       </div>
                     </div>
