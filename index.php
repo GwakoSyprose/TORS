@@ -3,6 +3,7 @@ session_start();
 require 'includes/connection.php';
 
 $userID_error = $pass_error = "";
+
 // login form
 if(isset($_POST['submit'])) {
   $userID = mysqli_real_escape_string($link, $_POST['userID']);
@@ -57,14 +58,16 @@ echo mysqli_error($link);
 // report form
 if(isset($_POST['notSubmit'])){
     
-    
+    $lat=$_SESSION['lat'];
+    $lng=$_SESSION['lng'];
+
     $numplate = mysqli_real_escape_string($link,$_POST['numplate']);
     $region  = mysqli_real_escape_string($link,$_POST['region']);
     $phoneno  = mysqli_real_escape_string($link,$_POST['phoneno']);
     $description = mysqli_real_escape_string($link,$_POST['description']);
     $station = mysqli_real_escape_string($link,$_POST['station']);
     
-    $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`) VALUES ('$numplate', '$description','$region','$station','$phoneno')";
+    $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`, `lat`, `lng`) VALUES ('$numplate', '$description','$region','$station','$phoneno', '$lat', '$lng')";
  
     mysqli_query($link, $sql);
   echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
@@ -226,7 +229,9 @@ function getStations(val) {
                        
                     </div>
                     <!--          <div id="errormessage"></div>-->
+                    <?php require 'geolocation.php'; ?>
                     <form action="index.php" method="post" role="form" class="contactForm">
+
 
                         <div class="form-group">
                             <input type="type" class="form-control" name="numplate" id="numplate"
@@ -257,6 +262,7 @@ function getStations(val) {
       </div>
                             <!-- selecting station end -->
                         <div class="form-group">
+
                             <select class="form-control" name="station" id="stations">
                               <option  value="">Select Station</option>
                               </select>
@@ -278,8 +284,8 @@ function getStations(val) {
                         </div>
 
 
-                        <div class="text-center"><button type="submit" id="notSubmit" name="notSubmit"
-                                class="btn btn-primary btn-lg">Report</button>
+                        <div align="center" class="text-center"><button style="display:none;" type="submit" id="notSubmit" name="notSubmit"
+                                class="btn btn-primary btn-lg showButton">Report</button>
                         </div>
 
                     </form>
