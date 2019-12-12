@@ -6,7 +6,7 @@ require '../checkadmin.php';
 
       include ('../includes/connection.php');
 
-    $queryofficer=mysqli_query($link, "SELECT * FROM users WHERE domain = 1");
+    $queryofficer=mysqli_query($link, "SELECT * FROM users WHERE domain = 0");
     // sql query statement that selects all registered users
 
   //Delete category

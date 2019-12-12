@@ -7,6 +7,10 @@ $region = $_SESSION['regionID'];
 $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
+$generalquery=mysqli_query($link, "SELECT * FROM notifications");
+$result = mysqli_fetch_assoc($generalquery);
+ $getdate = $result['date'];
+
 $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station'");
  if (isset($_GET['respond'])) {
      $notID = $_GET['respond'];
@@ -17,6 +21,19 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
       echo "Error updating record: " . $link->error;
     }
  }
+ //picking station name of current sesssion station
+ $stationquery=mysqli_query($link, "SELECT * FROM stations WHERE stationID='$station'");
+ $result = mysqli_fetch_assoc($stationquery);
+ $stationName = $result['stationName'];
+
+//calculating the number of officers
+ $officers=mysqli_query($link, "SELECT * FROM users WHERE regionID='$region' AND stationID='$station'");
+
+ //getting the number of cases handled by each officer
+ $incidences=mysqli_query($link, "SELECT * FROM notifications WHERE status ='$id'");
+    $incedencesno= mysqli_num_rows($incidences);
+
+    
 
 ?>
   
@@ -35,9 +52,9 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
-                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">Overview</span>
-                            <h3 class="page-title">Reported incidences near Langata station</h3>
+                            <h4 class="page-title" style="text-transform: uppercase;">Reported incidences near <?= $stationName; ?>  station</h4>
 
                         </div>
                     </div>
@@ -68,10 +85,43 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                         <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
                       <div class="blog-comments__content">
                         <div class="blog-comments__meta text-muted">
-                          <a class="text-secondary" href="#"><?php echo $numPlate; ?></a> on
-                          <a class="text-secondary" href="#"><?php echo $phone; ?></a>
-                          <span class="text-muted">– 3 days ago</span>
+                          <a class="text-secondary" href="#">Incident report on</a> vehicle number.
+                          <a class="text-secondary" href="#"><?php echo $numPlate; ?></a>
+
+                          <?php
+                          // setting time last seen
+
+$seconds_ago = (time() - strtotime('2019-12-12 06:27:00'));
+
+if ($seconds_ago >= 31536000) {
+    
+     echo '<span class="text-muted">– ' . intval($seconds_ago / 31536000) .' years ago</span>';
+} elseif ($seconds_ago >= 2419200) {
+    
+    echo '<span class="text-muted">– ' . intval($seconds_ago / 2419200) .' months ago</span>';
+} elseif ($seconds_ago >= 86400) {
+   
+    echo '<span class="text-muted">– ' . intval($seconds_ago / 86400) .' days ago</span>';
+} elseif ($seconds_ago >= 3600) {
+   
+    echo '<span class="text-muted">– ' . intval($seconds_ago / 3600) .' hours ago</span>';
+} elseif ($seconds_ago >= 60) {
+    
+    echo '<span class="text-muted">– ' . intval($seconds_ago / 60) .' minutes ago</span>';
+} else { 
+    
+    echo '<span class="text-muted">– Less than a minute ago </span>';
+}
+
+
+                           ?>
+
+
+
+
+                          
                         </div>
+                        <p class="m-0 my-1 mb-2 text-muted">Contact person <?php echo  $phone;?></p>
                         <p class="m-0 my-1 mb-2 text-muted"><?php echo  $description;?> ...</p>
                         <div class="blog-comments__actions">
                           <div class="btn-group btn-group-sm">
@@ -109,31 +159,45 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                   <div class="card-footer border-top">
                     <div class="row">
                       <div class="col text-center view-report">
-                        <button type="submit" class="btn btn-white">View All Comments</button>
+                        <button type="submit" class="btn btn-white">View All Notifications</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- End Discussions Component -->
+
               <!-- Top Referrals Component -->
               <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
                 <div class="card card-small">
                   <div class="card-header border-bottom">
+                    <h6 class="m-0" style="text-transform: uppercase;"><?= $stationName; ?> Station</h6>
+                  </div> 
+
+                  <div class="card-header border-bottom">
                     <h6 class="m-0">Officers Concerned</h6>
                   </div>
+                  
                   <div class="card-body p-0">
                     <ul class="list-group list-group-small list-group-flush">
+                    
                       <li class="list-group-item-dark d-flex px-3">
                         <span class="text-semibold text-fiord-blue">Officer</span>
                         <span class="ml-auto text-right text-semibold text-reagent-gray">Cases</span>
                       </li>
+                      
+                      <?php
+                   while($result = mysqli_fetch_assoc($officers)) :
+                             $fname=$result['fname'];
+                             $lname=$result['lname'];
+                            ?>
                       <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">Syprose Gwako</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">11,201</span>
+                        <span class="text-semibold text-fiord-blue"><?= $fname; ?> <?= $lname; ?> </span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray"><?= $incedencesno; ?></span>
                       </li>
+                      <?php endwhile; ?>
                       <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">Stacy Chebet</span>
+                        <span class="text-semibold text-fiord-blue">St Chebet</span>
                         <span class="ml-auto text-right text-semibold text-reagent-gray">9,291</span>
                       </li>
                       <li class="list-group-item d-flex px-3">

@@ -35,6 +35,7 @@ require 'sessionCheck.php';
     <script src='../fontawesome/js/all.js'></script>
     <script src="../js/sweetalert.min.js"></script>
     <script async defer src="../js/buttons.js"></script>
+    
     <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.material.min.js"></script>
    
@@ -51,4 +52,5 @@ require 'sessionCheck.php';
         }
 
     </style>
+
 </head>

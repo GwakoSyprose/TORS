@@ -119,28 +119,43 @@ if (isset ($_POST['submit'])) {
                                                             <label for="Region">Region</label>
                                                              
          <select name="station" class="form-control" required >
-           <option disabled selected>Select Station</option>
+           <option disabled selected>Select Region</option>
           <?php 
         require_once '../includes/connection.php';
 
-        $sql = "SELECT * FROM stations;";
+       $sql = "SELECT * FROM regions";
         $result = $link->query($sql);
-
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                echo  '<option value="'.$row["stationID"].'" >'.$row["stationName"].'</option>';
+                echo  '<option value="'.$row["regionID"].'" >'.$row["regionName"].'</option>';
             }
         } else {
-
         }
           ?>
         </select>
       </div>
 
 
-
-
+                                                  <!-- picking stations for a specific region -->
+<?php include "../includes/connection.php"; ?>
+<script>
+function getStations(val) {
+    $.ajax({
+    type: "POST",
+    url: "../includes/getstations.php",
+    data:'regionID='+val,
+    success: function(data){
+        $("#stations").html(data);
+    }
+    });
+}
+</script>
+                                                         <div class="form-group col-md-12">
+                                                            <label for="station">Station</label>
+                                                            <select class="form-control" name="station" id="stations">
+                              <option  value="">Select Station</option>
+                              </select></div>
                                                         <div class="form-group col-md-6">
                                                             <label for="Rank">Rank</label>
 
