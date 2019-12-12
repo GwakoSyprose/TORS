@@ -83,12 +83,19 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                             
                          </button>
                          </a> 
-                         <a href="report.php">
+                         <a href="report.php?not=<?= $notfID; ?>">
                             <button type="button" class="btn btn-white text-info">
                               <span class="text-info">
                               
                                 <i class="material-icons">info</i>
                                 </span> Give Report </button>
+                                </a>
+                              <a href="viewreport.php?notv=<?= $notfID; ?>">
+                            <button type="button" class="btn btn-white text-info">
+                              <span class="text-info">
+                              
+                                <i class="material-icons">info</i>
+                                </span> View Report </button>
                                 </a>
                               
                                 <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
