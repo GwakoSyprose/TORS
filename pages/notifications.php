@@ -7,7 +7,10 @@ $region = $_SESSION['regionID'];
 $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
+
+
 $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station'");
+
  if (isset($_GET['respond'])) {
      $notID = $_GET['respond'];
      $sql= "UPDATE notifications SET `status` = '$id' WHERE notificationID= '$notID'";
