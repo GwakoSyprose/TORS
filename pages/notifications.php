@@ -7,7 +7,10 @@ $region = $_SESSION['regionID'];
 $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
+
+
 $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station'");
+
  if (isset($_GET['respond'])) {
      $notID = $_GET['respond'];
      $sql= "UPDATE notifications SET `status` = '$id' WHERE notificationID= '$notID'";
@@ -81,17 +84,20 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
                             <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
                              </a> 
                          </button>
+                              <a href="report.php?not=<?= $notfID;?>">
                             <button type="button" class="btn btn-white">
                               <span class="text-info">
-                              <a href="report.php">
+                              
+                                  
                                 <i class="material-icons">info</i>
                                 </span> Give Report </button>
                                 </a>
-                              
+                              <a href="viewreport.php?notv=<?= $notfID;?>">
                             <button type="button" class="btn btn-white">
                               <span class="text-light">
                                 <i class="material-icons">more_vert</i>
-                              </span> Edit </button>
+                              </span> View Report </button>
+                                  </a>
                           </div>
                         </div>
                       </div>
