@@ -155,7 +155,7 @@ WHERE d.driverID = '$id' ";
                                                 <label for="comment"><b>Offence Description:</b></label>
                                                 <textarea class="form-control" rows="5" name="description"></textarea>
                                             </div>
-                                               <button type="submit" class="btn btn-outline-info" name="submit">Submit</button>                                            
+                                               <button type="submit" class="btn btn-success" name="submit">Submit</button>                                            
                                             
                                             
 

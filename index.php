@@ -83,8 +83,7 @@ if(isset($_POST['notSubmit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TORS</title>
 
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
@@ -96,16 +95,17 @@ if(isset($_POST['notSubmit'])){
 <!-- picking stations for a specific region -->
 <?php include "includes/connection.php"; ?>
 <script>
-function getStations(val) {
-    $.ajax({
-    type: "POST",
-    url: "includes/getstations.php",
-    data:'regionID='+val,
-    success: function(data){
-        $("#stations").html(data);
+    function getStations(val) {
+        $.ajax({
+            type: "POST",
+            url: "includes/getstations.php",
+            data: 'regionID=' + val,
+            success: function(data) {
+                $("#stations").html(data);
+            }
+        });
     }
-    });
-}
+
 </script>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -137,21 +137,17 @@ function getStations(val) {
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 class="modal-title">Sign In</h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">&times;</button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post"
-                                                action="index.php">
+                                            <form method="post" action="index.php">
                                                 <div class="form-group">
                                                     <!-- <div class="form-control">
             <?php echo $userID_error; ?>    
         </div> -->
                                                     <div class="input-group">
-                                                        <span class="input-group-addon"><i
-                                                                class="fa fa-user"></i></span>
-                                                        <input type="text" class="form-control" name="userID"
-                                                            placeholder="National ID" required="required">
+                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                        <input type="text" class="form-control" name="userID" placeholder="National ID" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -159,16 +155,13 @@ function getStations(val) {
             <?php echo $pass_error; ?>    
         </div> -->
                                                     <div class="input-group">
-                                                        <span class="input-group-addon"><i
-                                                                class="fa fa-lock"></i></span>
-                                                        <input type="password" class="form-control" name="password"
-                                                            placeholder="Password" required="required">
+                                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
 
-                                                    <input type="submit" class="btn btn-primary btn-block btn-md"
-                                                        name="submit" value="Log In">
+                                                    <input type="submit" class="btn btn-primary btn-block btn-md" name="submit" value="Log In">
 
                                                 </div>
                                                 <p class="hint-text"><a href="reset-password.php">Forgot Password?</a>
@@ -223,25 +216,24 @@ function getStations(val) {
                 <div class="col-md-8 col-md-push-2">
 
                     <div id="sendmessage">
-                       
+
                     </div>
                     <!--          <div id="errormessage"></div>-->
                     <form action="index.php" method="post" role="form" class="contactForm">
 
                         <div class="form-group">
-                            <input type="type" class="form-control" name="numplate" id="numplate"
-                                placeholder="Number plate" data-msg="Please enter a number plate" />
+                            <input type="type" class="form-control" name="numplate" id="numplate" placeholder="Number plate" data-msg="Please enter a number plate" />
                             <div class="validation"></div>
                         </div>
-                       
-                        
+
+
                         <!-- selecting station -->
 
 
                         <div class="form-group">
-                 <select name="region" class="form-control" onchange="getStations(this.value);">
-           <option disabled selected value="">Select Region</option>
-          <?php 
+                            <select name="region" class="form-control" onchange="getStations(this.value);">
+                                <option disabled selected value="">Select Region</option>
+                                <?php 
         require_once 'includes/connection.php';
         $sql = "SELECT * FROM regions";
         $result = $link->query($sql);
@@ -253,33 +245,29 @@ function getStations(val) {
         } else {
         }
           ?>
-        </select>
-      </div>
-                            <!-- selecting station end -->
+                            </select>
+                        </div>
+                        <!-- selecting station end -->
                         <div class="form-group">
                             <select class="form-control" name="station" id="stations">
-                              <option  value="">Select Station</option>
-                              </select>
+                                <option value="">Select Station</option>
+                            </select>
                             <div class="validation"></div>
                         </div>
 
-                        
-                        <div class="form-group">
-                            <input type="number" class="form-control" name="phoneno" id="phoneno" placeholder="Phone No"
-                                data-msg="Please enter a number plate" />
-                            <div class="validation"></div>
-                        </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" name="description" id="description" rows="5"
-                                data-rule="required" data-msg="Please give a brief description of the incident"
-                                placeholder="Description of the incident"></textarea>
+                            <input type="number" class="form-control" name="phoneno" id="phoneno" placeholder="Phone No" data-msg="Please enter a number plate" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="description" id="description" rows="5" data-rule="required" data-msg="Please give a brief description of the incident" placeholder="Description of the incident"></textarea>
                             <div class="validation"></div>
                         </div>
 
 
-                        <div class="text-center"><button type="submit" id="notSubmit" name="notSubmit"
-                                class="btn btn-primary btn-lg">Report</button>
+                        <div class="text-center"><button type="submit" id="notSubmit" name="notSubmit" class="btn btn-primary btn-lg">Report</button>
                         </div>
 
                     </form>
@@ -288,17 +276,18 @@ function getStations(val) {
             </div>
         </div>
     </section>
-    
+
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+
     <script src="js/wow.js"></script>
     <script src="js/custom.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $("#flash-msg").delay(2000).fadeOut("slow");
-    });
+        $(document).ready(function() {
+            $("#flash-msg").delay(2000).fadeOut("slow");
+        });
+
     </script>
 
 </body>

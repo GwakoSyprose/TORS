@@ -21,7 +21,7 @@ if(array_key_exists("submitS" , $_POST)) {
     die ("Database Connection Error!");
    }
     // Escape user inputs for security
-    if(isset($_POST["submitS"])) {
+    else{
         
     
             $file = $_FILES['profile'];
@@ -340,6 +340,7 @@ echo mysqli_error($link);
 
 
                     </div>
+                    
                     <script>
                    $("input[type=password]").keyup(function(){
     var ucase = new RegExp("[A-Z]+");
