@@ -12,6 +12,7 @@ $result = mysqli_fetch_assoc($generalquery);
  $getdate = $result['date'];
 
 $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station'");
+
  if (isset($_GET['respond'])) {
      $notID = $_GET['respond'];
      $sql= "UPDATE notifications SET `status` = '$id' WHERE notificationID= '$notID'";
@@ -133,12 +134,19 @@ if ($seconds_ago >= 31536000) {
                             
                          </button>
                          </a> 
-                         <a href="report.php">
+                         <a href="report.php?not=<?= $notfID; ?>">
                             <button type="button" class="btn btn-white text-info">
                               <span class="text-info">
                               
                                 <i class="material-icons">info</i>
                                 </span> Give Report </button>
+                                </a>
+                              <a href="viewreport.php?notv=<?= $notfID; ?>">
+                            <button type="button" class="btn btn-white text-info">
+                              <span class="text-info">
+                              
+                                <i class="material-icons">info</i>
+                                </span> View Report </button>
                                 </a>
                               
                                 <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">

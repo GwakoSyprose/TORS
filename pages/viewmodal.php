@@ -71,7 +71,7 @@ $driver= mysqli_fetch_assoc($result);
                             
                             
                         </table>
-                        <a href="viewdriver.php?pid=<?= $driver['driverID']; ?>">View more details</a>
+                        <a href="viewdriver.php?pid=<?=$driver['driverID']; ?>">View more details</a>
                     </div>
                 </div>
             </div>
