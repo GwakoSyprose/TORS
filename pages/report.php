@@ -36,8 +36,8 @@ if(array_key_exists("submit" , $_POST)) {
     $notID=mysqli_real_escape_string($link, $_POST['custId']);
         
         
-         $query = "INSERT INTO reports(`date`,`notificationID`,`vehicle1`,`vehicle2`, `make`, `make2`, `owner`, `owner2`, `ownerid1`, `ownerid2`,`insurance`,`investigationstatus`,`charged`,`ruleviolated`,`injuredpersons`,`fatalities`,`witness1`,`witness2`)
-            VALUES ('$date','$notID','$vehicle1','$vehicle2','$make1','$make2','$owner1','$owner2','$id1','$id2','$company','$complete','$charge','$rule','$injuries','$fatalities','$witness1','$witness2')";
+         $query = "INSERT INTO reports(`date`,`notificationID`,`vehicle1`,`vehicle2`, `make`, `make2`, `owner`, `owner2`, `ownerid1`, `ownerid2`,`insurance`,`investigationstatus`,`charged`,`ruleviolated`,`injuredpersons`,`fatalities`,`witness1`,`witness2`,`status`)
+            VALUES ('$date','$notID','$vehicle1','$vehicle2','$make1','$make2','$owner1','$owner2','$id1','$id2','$company','$complete','$charge','$rule','$injuries','$fatalities','$witness1','$witness2','1')";
         $sql= mysqli_query($link, $query);
 
         

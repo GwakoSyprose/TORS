@@ -156,24 +156,19 @@
                                     echo "<img src='images/".$driver['profileImage']."' width=200 height=200 >";
                                     
                                      ?> </div>
-                                    <div class="btn-group">
-                                        <a class="nav-link">
-                                            <button class="btn btn-sm btn-pill btn-outline-success col text-center " data-toggle="modal" data-target="#myModal">RECORD OFFENSE</button>
-                                        </a>
-
-
-                                    </div>
+                                  
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item px-4">
                                             <div class="progress-wrapper">
                                                 <strong class="text-muted d-block mb-2">Infringement rate</strong>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: 74%;">
-                                                       <!-- calculating infrigement rate -->
-                                                        <?php 
+                                                   <?php 
                                                         $percentage = round((($driver['offenceCount'] / 12) * 100));
                                                         
                                                         ?>
+                                                <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: <?= $percentage;?>%;">
+                                                       <!-- calculating infrigement rate -->
+                                                     
                                                         
                                                         <span class="progress-value"><?= $percentage;?>%</span>
                                                     </div>
@@ -181,7 +176,7 @@
                                             </div>
                                         </li>
                                         <li class="list-group-item p-4">
-                                            <strong class="text-muted d-block mb-2">Description</strong>
+                                            <strong class="text-muted d-block mb-2">Infringement rate of above 100% leads to suspension of the driver's license</strong>
                                             <span></span>
                                         </li>
                                     </ul>
@@ -192,68 +187,7 @@
 
                             </div>
                         </div>
-                        <!--        modal-->
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4><span class="glyphicon glyphicon-lock"></span> Record Offence</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <form role="form" method="POST">
-
-                                            <div class="form-group">
-                                                <label for="comment"><b>Select an offense</b></label><br>
-
-                                                <select name="offense[]" class="custom-select" multiple="multiple">
-                                                    <?php include 'offence_types.php'; ?>
-                                                </select>
-                                            </div>
-
-                                            <!-- Initialize the plugin: -->
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
-                                                    $('.custom-select').multiselect();
-                                                });
-
-                                            </script>
-
-                                            <div class="form-group">
-                                                <label for="comment"><b>Number Plate</b></label>
-                                                <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate">
-                                            </div>
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
-
-
-
-                                                    $("#numplate").inputmask("aaa-999a"); //static mask
-
-                                                });
-
-                                            </script>
-
-                                            <div class="form-group">
-                                                <label for="comment"><b>Offence Description:</b></label>
-                                                <textarea class="form-control" rows="5" name="description"></textarea>
-                                            </div>
-                                            <input type="submit" class="btn btn-block" name="submit" value="submit">
-
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                                            <span class="glyphicon glyphicon-remove"></span> Cancel
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-lg-8">
                             <div class="card card-small mb-4">
                                 <div class="card-header border-bottom">

@@ -70,10 +70,17 @@ if(isset($_POST['notSubmit'])){
     $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`, `lat`, `lng`) VALUES ('$numplate', '$description','$region','$station','$phoneno', '$lat', '$lng')";
  
     mysqli_query($link, $sql);
-  echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
-<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-<h4><i class="icon fa fa-check"></i>Incident Reported successfully!</h4>
-</div>';
+   echo"<script>"; 
+  echo"Swal.fire({
+  title: 'Thankyou for reporting the incident. Our team has been dispatched',
+  showClass: {
+    popup: 'animated fadeInDown faster'
+  },
+  hideClass: {
+    popup: 'animated fadeOutUp faster'
+  }
+})";
+    echo"</script>";
 }
 
 ?>

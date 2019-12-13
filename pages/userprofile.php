@@ -10,6 +10,16 @@ if(isset($_POST['submit'])){
      $hashedPwd2 = password_hash($password2, PASSWORD_DEFAULT);
    $query= "UPDATE users SET password='$hashedPwd2' WHERE userID = $id";
     mysqli_query($link, $query);
+   
+   echo"<script>"; 
+  echo"Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your password has been changed',
+  showConfirmButton: false,
+  timer: 3000
+})";
+    echo"</script>";
     
 } 
 $sql=mysqli_query($link,"SELECT * FROM users WHERE userID= $id");

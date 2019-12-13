@@ -84,16 +84,17 @@ WHERE d.driverID = '$id' ";
      
   
     ?>
+
 <body class="h-100">
 
 
     <div class="container-fluid">
-        
+
         <div class="row">
-            
- <?php include '../includes/sidenav.php'; ?>
+
+            <?php include '../includes/sidenav.php'; ?>
             <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
-                
+
 
 
                 <div class="main-content-container container-fluid  px-4">
@@ -103,7 +104,7 @@ WHERE d.driverID = '$id' ";
                             <span class="text-uppercase page-subtitle">Overview</span>
                             <h3 class="page-title">Record Offence</h3>
                         </div>
-                       
+
                     </div>
                     <!-- End Page Header -->
                     <!-- Default Light Table -->
@@ -118,48 +119,48 @@ WHERE d.driverID = '$id' ";
                                     <li class="list-group-item p-3">
                                         <div class="row">
                                             <div class="col">
-                                                                                       <form role="form" method="POST">
+                                                <form role="form" method="POST">
 
-                                            <div class="form-group">
-                                                <label for="comment"><b>Select an offense</b></label><br>
+                                                    <div class="form-group">
+                                                        <label for="comment"><b>Select an offense</b></label><br>
 
-                                                <select name="offense[]" class="custom-select" multiple="multiple">
-                                                    <?php include 'offence_types.php'; ?>
-                                                </select>
-                                            </div>
+                                                        <select name="offense[]" class="custom-select" multiple="multiple" required>
+                                                            <?php include 'offence_types.php'; ?>
+                                                        </select>
+                                                    </div>
 
-                                            <!-- Initialize the plugin: -->
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
-                                                    $('.custom-select').multiselect();
-                                                });
+                                                    <!-- Initialize the plugin: -->
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
+                                                            $('.custom-select').multiselect();
+                                                        });
 
-                                            </script>
+                                                    </script>
 
-                                            <div class="form-group">
-                                                <label for="comment"><b>Number Plate</b></label>
-                                                <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate">
-                                            </div>
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
+                                                    <div class="form-group">
+                                                        <label for="comment"><b>Number Plate</b></label>
+                                                        <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate" required>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
 
 
 
-                                                    $("#numplate").inputmask("aaa-999a"); //static mask
+                                                            $("#numplate").inputmask("aaa-999a"); //static mask
 
-                                                });
+                                                        });
 
-                                            </script>
+                                                    </script>
 
-                                            <div class="form-group">
-                                                <label for="comment"><b>Offence Description:</b></label>
-                                                <textarea class="form-control" rows="5" name="description"></textarea>
-                                            </div>
-                                               <button type="submit" class="btn btn-success" name="submit">Submit</button>                                            
-                                            
-                                            
+                                                    <div class="form-group">
+                                                        <label for="comment"><b>Offence Description:</b></label>
+                                                        <textarea class="form-control" rows="5" name="description" required></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success" name="submit">Submit</button>
 
-                                        </form>
+
+
+                                                </form>
                                             </div>
                                         </div>
                                     </li>

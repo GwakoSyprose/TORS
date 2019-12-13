@@ -120,8 +120,8 @@ include  ('../includes/connection.php');
                                     <table id="example" class="mdl-data-table suspended" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Driver ID</th>
-                                                <th>First Name</th>
+                                                <th><b>Driver ID</b></th>
+                                                <th><b>First Name</b></th>
                                                 <th>Last Name</th>
                                                 <th>Licence No</th>
                                                 <th>Offence Count</th>

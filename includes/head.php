@@ -23,17 +23,19 @@ require 'sessionCheck.php';
 
  
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
-    <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
+    <link rel="stylesheet" href="styles/extras.1.1.0.min.css"> 
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.10.18/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="../pages/styles/table.css">
     <link rel="stylesheet" type="text/css" href="../pages/styles/update.css">
+    <link rel="stylesheet" type="text/css" href="../pages/styles/modal.css">
 
     <!--  scripts -->
     <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery.js"></script>
     <script src='../fontawesome/js/all.js'></script>
-    <script src="../js/sweetalert.min.js"></script>
+    <script src="../sweetalert/dist/sweetalert2.min.js"></script>
     <script async defer src="../js/buttons.js"></script>
     <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.material.min.js"></script>
@@ -49,6 +51,6 @@ require 'sessionCheck.php';
             background: transparent !important;
             color: #007bff;
         }
-
     </style>
-</head>
+
+   </head>
