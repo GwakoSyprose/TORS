@@ -33,10 +33,7 @@
                   <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="userprofile.php">
                       <i class="material-icons">&#xE7FD;</i> Profile</a>
-                    <a class="dropdown-item" href="components-blog-posts.html">
-                      <i class="material-icons">vertical_split</i> Blog Posts</a>
-                    <a class="dropdown-item" href="add-new-post.html">
-                      <i class="material-icons">note_add</i> Add New Post</a>
+                    
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="../logout.php">
                       <i class="material-icons text-danger">&#xE879;</i>Logout</a>

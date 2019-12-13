@@ -11,9 +11,11 @@ $generalquery=mysqli_query($link, "SELECT * FROM notifications");
 $result = mysqli_fetch_assoc($generalquery);
  $getdate = $result['date'];
 
-$query=mysqli_query($link, "SELECT notifications.notificationID,notifications.numPlate,notifications.description,
+ $query=mysqli_query($link, "SELECT notifications.notificationID,notifications.numPlate,notifications.description,
 notifications.phone,notifications.status,reports.reportID FROM notifications 
 LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station'");
+
+
 
  if (isset($_GET['respond'])) {
      $notID = $_GET['respond'];
@@ -39,7 +41,7 @@ LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID
     
 
 ?>
-
+  
 
 
 <body class="h-100">
@@ -61,25 +63,25 @@ LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID
 
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- Discussions Component -->
-                        <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
-                            <div class="card card-small blog-comments">
-                                <div class="card-header border-bottom">
-                                    <h6 class="m-0">Notifications</h6>
-                                </div>
-                                <div class="card-body p-0">
-                                    <!-- one item -->
+                <div class="row">
+                    <!-- Discussions Component -->
+              <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Notifications</h6>
+                  </div>
+                  <div class="card-body p-0">
+                  <!-- one item -->
 
 
-                                    <?php
+                  <?php
                    while($result = mysqli_fetch_assoc($query)) :
                              $notfID=$result['notificationID'];
                              $status=$result['status'];
                             $numPlate=$result['numPlate'];
                             $description=$result['description'];
                             $phone=$result['phone'];
-                            $report=$result['reportID'];
+                             $report=$result['reportID'];
                                                      
                                                         ?>
                                                     
@@ -137,53 +139,10 @@ if ($seconds_ago >= 31536000) {
                             
                          </button>
                          </a> 
-                         <a href="report.php?not=<?= $notfID; ?>">
-                            <button type="button" class="btn btn-white text-info">
-                              <span class="text-info">
-                              
-                                <i class="material-icons">info</i>
-                                </span> Give Report </button>
-                                </a>
-                              <a href="viewreport.php?notv=<?= $notfID; ?>">
-                            <button type="button" class="btn btn-white text-info">
-                              <span class="text-info">
-                              
-                                <i class="material-icons">info</i>
-                                </span> View Report </button>
-                                </a>
-                              
-                                <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
-                            <button type="button" class="btn btn-white text-warning">
-                              <span class="text-warning">
-                              <i class="material-icons ">my_location</i>
-                              </span> View Map </button>
-                              </a>
-                              
-                          </div>
+                        
+                             
 
-
-                                    <div class="blog-comments__item d-flex p-3">
-                                        <div class="blog-comments__avatar mr-3">
-                                            <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
-                                        <div class="blog-comments__content">
-                                            <div class="blog-comments__meta text-muted">
-                                                <a class="text-secondary" href="#"><?php echo $numPlate; ?></a> on
-                                                <a class="text-secondary" href="#"><?php echo $phone; ?></a>
-                                                <span class="text-muted">– 3 days ago</span>
-                                            </div>
-                                            <p class="m-0 my-1 mb-2 text-muted"><?php echo  $description;?> ...</p>
-                                            <div class="blog-comments__actions">
-                                                <div class="btn-group btn-group-sm">
-
-                                                    <a href="?respond=<?= $notfID;?>">
-                                                        <button type="button" class="btn btn-white text-success">
-
-                                                            <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
-
-                                                        </button>
-                                                    </a>
-
-                                                    <?php if($report == NULL){
+                                 <?php if($report == NULL){
                                             ?>
                                                     <a href="report.php?not=<?= $notfID; ?>">
                                                         <button type="button" class="btn btn-white text-info">
@@ -207,32 +166,18 @@ if ($seconds_ago >= 31536000) {
                                                     <?php
 
                                                     } ?>
+                              
+                                <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
+                            <button type="button" class="btn btn-white text-warning">
+                              <span class="text-warning">
+                              <i class="material-icons ">my_location</i>
+                              </span> View Map </button>
+                              </a>
 
 
+                              
+                          </div>
 
-                                                    <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
-                                                        <button type="button" class="btn btn-white text-warning">
-                                                            <span class="text-warning">
-                                                                <i class="material-icons ">my_location</i>
-                                                            </span> View Map </button>
-                                                    </a>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endwhile; ?>
-
-                                </div>
-                                <div class="card-footer border-top">
-                                    <div class="row">
-                                        <div class="col text-center view-report">
-                                            <button type="submit" class="btn btn-white">View All Comments</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                       </div>
                     </div>
@@ -319,9 +264,14 @@ if ($seconds_ago >= 31536000) {
                         <a href="#">Full report &rarr;</a>
                       </div>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <!-- End Top Referrals Component -->
+          </div>
+          </div>
 
-
+                  
                 <?php 
     include '../includes/footer.php'; 
    
