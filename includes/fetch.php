@@ -11,7 +11,7 @@ if($_POST["view"] != '')
 {
   
 }
-$query = "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station' ORDER BY notificationID DESC LIMIT 5";
+$query = "SELECT * FROM notifications WHERE regionID='$region' AND stationID='$station' ORDER BY notificationID DESC LIMIT 3";
 $result = mysqli_query($link, $query);
 $output = '';
 if(mysqli_num_rows($result) > 0)
@@ -26,11 +26,12 @@ while($row = mysqli_fetch_array($result))
                         </div>
                       </div>
                       <div class="notification__content">
-                        <span class="notification__category text-danger">'.$row["numPlate"].'</span>
-                        <p>'.$row["description"].'</p>
-                        <p>'.$row["phone"].'</p>
+                        <span class="notification__category text-danger">Vehicle No. '.$row["numPlate"].'</span>
+                         <p>Contact Person '.$row["phone"].'</p><span ><i class="material-icons text-info">&#xE879;</i></span>
+                       
                       </div>
                     </a>
+
                    
   ';
  

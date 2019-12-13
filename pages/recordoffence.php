@@ -69,7 +69,7 @@ WHERE d.driverID = '$id' ";
         }
             
             
-           header('location:viewdriver.php?pid='.$id.'&success=1');
+         
 
             }
 
@@ -124,10 +124,10 @@ WHERE d.driverID = '$id' ";
                                                     <div class="form-group">
                                                         <label for="comment"><b>Select an offense</b></label><br>
 
-                                                        <select name="offense[]" class="custom-select" multiple="multiple" required>
-                                                            <?php include 'offence_types.php'; ?>
-                                                        </select>
-                                                    </div>
+                                                <select name="offense[]" class="custom-select" multiple="multiple" required>
+                                                    <?php include 'offence_types.php'; ?>
+                                                </select>
+                                            </div>
 
                                                     <!-- Initialize the plugin: -->
                                                     <script type="text/javascript">
@@ -137,12 +137,12 @@ WHERE d.driverID = '$id' ";
 
                                                     </script>
 
-                                                    <div class="form-group">
-                                                        <label for="comment"><b>Number Plate</b></label>
-                                                        <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate" required>
-                                                    </div>
-                                                    <script type="text/javascript">
-                                                        $(document).ready(function() {
+                                            <div class="form-group">
+                                                <label for="comment"><b>Number Plate</b></label>
+                                                <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate" required>
+                                            </div>
+                                            <script type="text/javascript">
+                                                $(document).ready(function() {
 
 
 
@@ -152,11 +152,15 @@ WHERE d.driverID = '$id' ";
 
                                                     </script>
 
-                                                    <div class="form-group">
-                                                        <label for="comment"><b>Offence Description:</b></label>
-                                                        <textarea class="form-control" rows="5" name="description" required></textarea>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success" name="submit">Submit</button>
+                                            <div class="form-group">
+                                                <label for="comment"><b>Offence Description:</b></label>
+                                                <textarea class="form-control" rows="5" name="description" required></textarea>
+                                            </div>
+                                               <button type="submit" class="btn btn-outline-info" name="submit"
+                                               href="#" data-toggle="modal" data-target="#logoutModal">Submit</button> 
+                                                                                        
+                                            
+                                            
 
 
 
@@ -170,6 +174,24 @@ WHERE d.driverID = '$id' ";
                     </div>
                     <!-- End Default Light Table -->
                 </div>
+                <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Ok" below if you are sure to record offence for this driver.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="viewdriver.php?pid=<?= $id; ?>&success=1">Ok</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
                 <?php 
     include '../includes/footer.php'; 
