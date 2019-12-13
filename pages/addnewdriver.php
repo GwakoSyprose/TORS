@@ -379,7 +379,4 @@ echo mysqli_error($link);
                     });
 
                 </script>
-                <?php 
-    include '../includes/footer.php'; 
-   
-    ?>
+  

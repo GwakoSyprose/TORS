@@ -32,52 +32,19 @@
               <li class="nav-item" style="background-color: transparent;" >
                 <a class="nav-link" href="#loginModal" class="trigger-btn" data-toggle="modal">
                   <i class="material-icons">vertical_split</i>
-                  <span style="color: ;">Log In</span>
+                  <span style="color: ;">Reports</span>
                 </a>
                    <li class="nav-item" style="background-color: transparent;">
                 <a class="nav-link " href="components-blog-posts.html">
                   <i class="material-icons">vertical_split</i>
-                  <span style="color:">Reports</span>
+                  <span style="color:">Terms and Conditions</span>
                 </a>
               </li>
-              <li class="nav-item" style="background-color: transparent;">
-                <a class="nav-link " href="add-new-post.html">
-                  <i class="material-icons">note_add</i>
-                  <span style="color: ">Add New Post</span>
-                </a>
-              </li>
+             
 
             </ul>
     </div>
-    <div id="loginModal" class="modal fade">
-	<div class="modal-dialog modal-dialog-centered modal-login">
-		<div class="modal-content">
-			<div class="modal-header">				
-				<h4 class="modal-title">Member Login</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
-					<div class="form-group">
-						<i class="fa fa-user"></i>
-						<input type="text" class="form-control" placeholder="Username" required="required">
-					</div>
-					<div class="form-group">
-						<i class="fa fa-lock"></i>
-						<input type="password" class="form-control" placeholder="Password" required="required">					
-					</div>
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
-					</div>
-				</form>				
-				
-			</div>
-			<div class="modal-footer">
-				<a href="#">Forgot Password?</a>
-			</div>
-		</div>
-	</div>
-</div> 
+
 
     
 </aside>
