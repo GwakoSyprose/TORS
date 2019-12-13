@@ -224,30 +224,7 @@ if ($seconds_ago >= 31536000) {
                         <span class="ml-auto text-right text-semibold text-reagent-gray"><?= $incedencesno; ?></span>
                       </li>
                       <?php endwhile; ?>
-                      <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">St Chebet</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">9,291</span>
-                      </li>
-                      <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">Linda Kiogora</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">8,281</span>
-                      </li>
-                      <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">John Doe</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">7,128</span>
-                      </li>
-                      <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">Karanja Mugo</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">6,218</span>
-                      </li>
-                      <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">Dela Otieno</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">1,218</span>
-                      </li>
-                      <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">Keno Ndio</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">827</span>
-                      </li>
+                     
                     </ul>
                   </div>
                   <div class="card-footer border-top">
