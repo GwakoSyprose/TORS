@@ -68,12 +68,7 @@ $pquery=$link->query($sql);
                   <span style="color:">Reports</span>
                 </a>
               </li>
-              <li class="nav-item" style="background-color: transparent;">
-                <a class="nav-link " href="add-new-post.html">
-                  <i class="material-icons">note_add</i>
-                  <span style="color: ">Add New Post</span>
-                </a>
-              </li>
+             
 
             </ul>
     </div>
