@@ -163,7 +163,7 @@ echo mysqli_error($link);
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
-                        Already Registered? View profile <a data-target="#myModal" data-toggle="modal" href="#myModal"> here</a>
+                        Already Registered? View profile <button data-target="#myModal" data-toggle="modal" href="#myModal"> here</button>
                     </div>
                     <div class="row">
                         <!-- Input & Button Groups -->
@@ -298,7 +298,7 @@ echo mysqli_error($link);
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="dummy.php" method="post">
+                                    <form action="addnewdriver.php" method="post">
                                         <div class="form-group">
                                             <i class="fa fa-user"></i>
                                             <input type="text" class="form-control" name='driverID' placeholder="Username" required="required">
@@ -318,9 +318,13 @@ echo mysqli_error($link);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                
 
+                    </div>
+                    
                 </div>
+                
+                
                 <script>
                     $("input[type=password]").keyup(function() {
                         var ucase = new RegExp("[A-Z]+");

@@ -145,7 +145,7 @@
                     </div>
                     <!-- End Page Header -->
                     <!-- Default Light Table -->
-                    <div class="row">
+                    <div class="row" id="divid">
                         <div class="col-lg-4">
                             <div class="card card-small mb-4 pt-3">
                                 <div class="card-header border-bottom text-center">
@@ -202,7 +202,7 @@
                                                     <table class="table table-striped table-borderless">
                                                         <div class="col-md-3" style="float:right;" >
                                                             <form method="post">
-                                                                <input type="submit" name="generate_pdf" class="btn btn-success" value="Generate PDF" />
+                                                                <input type="button" name="generate_pdf" class="btn btn-success"  onclick="PrintMe('divid')" value="Generate PDF" />
                                                             </form>
                                                         </div>
 
