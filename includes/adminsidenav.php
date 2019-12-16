@@ -45,6 +45,11 @@
                       <button class="btn btn-secondary col text-center">ADD NEW OFFENCE</button>
                   </a>
               </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="alldrivers.php">
+                      <button class="btn btn-secondary col text-center">ALL DRIVERS</button>
+                  </a>
+              </li>
           </ul>
       </div>
   </aside>
