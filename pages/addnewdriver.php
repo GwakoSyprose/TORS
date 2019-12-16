@@ -329,7 +329,7 @@ echo mysqli_error($link);
 
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="#">Forgot Password?</a>
+                                        <a href="reset-password.php">Forgot Password?</a>
                                     </div>
                                 </div>
                             </div>

@@ -10,7 +10,7 @@ $id =$_SESSION['userID'];
 
 $generalquery=mysqli_query($link, "SELECT * FROM notifications ORDER BY notificationID");
 $result= mysqli_fetch_assoc($generalquery);
- $getdate = $result['date'];
+ $getdate = $result['not_date'];
 
  $query=mysqli_query($link, "SELECT notifications.notificationID,notifications.numPlate,notifications.description,
 notifications.phone,notifications.status,reports.reportID FROM notifications 
@@ -83,7 +83,7 @@ LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID
                             $description=$result['description'];
                             $phone=$result['phone'];
                              $report=$result['reportID'];
-                             
+
                                                      
                                                         ?>
                                                     

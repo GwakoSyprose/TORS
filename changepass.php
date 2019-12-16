@@ -103,18 +103,9 @@ if ($pass1!=$pass2){
     }
   if($error!=""){
     echo "<div class='error'>".$error."</div><br />";
-    }else{
-
-
-$pass1 = md5($pass1);
-$hashedPass1 = password_hash($pass1, PASSWORD_DEFAULT);
-mysqli_query($link,
-"UPDATE `users` SET `password`='".$hashedPass1."' WHERE `email`='".$email."';"); 
-
-mysqli_query($link, "DELETE FROM `password_reset_temp` WHERE `email`='".$email."';");   
+    }else{  
   
-echo '<div class="alert alert-success"><p>Congratulations! Your password has been updated successfully.</p>
-<p><a href="localhost/tors/index.php">Click here</a> to Login.</p></div><br />';
+
 
 $hashedPass1 = password_hash($pass1, PASSWORD_DEFAULT);
 $sql = "UPDATE `users` SET `password`='".$hashedPass1."' WHERE `email`='".$mail."';";

@@ -148,7 +148,7 @@ if(isset($_POST['notSubmit'])){
                                 <div class="modal-dialog modal-login">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Log In</h4>
+                                            <h4 class="modal-title">Officer Log In</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">

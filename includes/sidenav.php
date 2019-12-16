@@ -9,7 +9,7 @@ $pquery=$link->query($sql);
             <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
                 <div class="d-table m-auto">
                     <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;"
-                        src="images/shards-dashboards-logo.svg" alt="Shards Dashboard">
+                        src="images/logo.png" alt="Shards Dashboard">
                     <span class="d-none d-md-inline ml-1">TORS</span>
                 </div>
             </a>
