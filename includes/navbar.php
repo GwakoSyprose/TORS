@@ -21,7 +21,7 @@
                   <div class="dropdown-menu dropdown-menu-small not-menu" aria-labelledby="dropdownMenuLink">
                    
                   
-                    <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a> 
+                    <a class="dropdown-item notification__all text-center" href="../pages/notifications.php"> View all Notifications </a> 
                   </div>
                 </li>
                 <li class="nav-item dropdown">

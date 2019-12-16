@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
 })";
     echo"</script>";
     
+    
 } 
 $sql=mysqli_query($link,"SELECT * FROM users WHERE userID= $id");
 $result=mysqli_fetch_assoc($sql);

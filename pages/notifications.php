@@ -7,13 +7,13 @@ $region = $_SESSION['regionID'];
 $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
-$generalquery=mysqli_query($link, "SELECT * FROM notifications");
+$generalquery=mysqli_query($link, "SELECT * FROM notifications ORDER BY notificationID");
 $result = mysqli_fetch_assoc($generalquery);
  $getdate = $result['date'];
 
  $query=mysqli_query($link, "SELECT notifications.notificationID,notifications.numPlate,notifications.description,
 notifications.phone,notifications.status,reports.reportID FROM notifications 
-LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station'");
+LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station' ORDER BY notificationID");
 
 
 
@@ -88,7 +88,7 @@ LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID
                                                        
                     <div class="blog-comments__item d-flex p-3">
                       <div class="blog-comments__avatar mr-3">
-                        <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
+                        <img src="images/saga.jpg" alt="User avatar" /> </div>
                       <div class="blog-comments__content">
                         <div class="blog-comments__meta text-muted">
                           <a class="text-secondary" href="#">Incident report on</a> vehicle number.
