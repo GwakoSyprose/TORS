@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include '../includes/connection.php';
 include '../includes/head.php'; 
 require 'officer_name.php';
@@ -8,12 +9,12 @@ $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
 $generalquery=mysqli_query($link, "SELECT * FROM notifications ORDER BY notificationID");
-$result = mysqli_fetch_assoc($generalquery);
+$result= mysqli_fetch_assoc($generalquery);
  $getdate = $result['date'];
 
  $query=mysqli_query($link, "SELECT notifications.notificationID,notifications.numPlate,notifications.description,
 notifications.phone,notifications.status,reports.reportID FROM notifications 
-LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station' ORDER BY notificationID");
+LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station' ORDER BY notificationID DESC");
 
 
 
@@ -82,6 +83,7 @@ LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID
                             $description=$result['description'];
                             $phone=$result['phone'];
                              $report=$result['reportID'];
+                             
                                                      
                                                         ?>
                                                     
@@ -215,9 +217,9 @@ if ($seconds_ago >= 31536000) {
                       </li>
                       
                       <?php
-                   while($result = mysqli_fetch_assoc($officers)) :
-                             $fname=$result['fname'];
-                             $lname=$result['lname'];
+                   while($resultO = mysqli_fetch_assoc($officers)) :
+                             $fname=$resultO['fname'];
+                             $lname=$resultO['lname'];
                             ?>
                       <li class="list-group-item d-flex px-3">
                         <span class="text-semibold text-fiord-blue"><?= $fname; ?> <?= $lname; ?> </span>

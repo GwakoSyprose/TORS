@@ -33,7 +33,7 @@ if (isset ($_POST['submitCat'])) {
 
     if($resultCheck > 0) {
      echo "<script>";
-          echo "swal('Ooops..!', 'Offence category already exists!', 'error')";
+          echo "swal('Couldn't register category!', 'Offence category already exists!', 'error')";
           echo "</script>" . mysqli_error($link);
 
     } else {
@@ -78,7 +78,7 @@ if (isset ($_POST['submitType'])) {
 
     if($resultCheck2 > 0) {
      echo "<script>";
-          echo "swal('Ooops..!', 'Offence category already exists!', 'error')";
+          echo "swal('Couldn't register that type!', 'Offence type already exists!', 'error')";
           echo "</script>" . mysqli_error($link);
 
     } else {

@@ -83,7 +83,7 @@ if(array_key_exists("submitS" , $_POST)) {
 
 if ($num_rows > 0) {
           $error.='<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error!</strong>National ID exists.
+  <strong>Error! </strong>National ID exists.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -131,7 +131,7 @@ if(array_key_exists("submitL" , $_POST)) {
                     $_SESSION['driverID'] = $row['driverID'];
     
            
-                  header('location:../pages/driverview.php?pid='.$id.'&success=1');;
+                  header("Location: ../pages/driverview.php?success=1");
                   
              
         
@@ -309,21 +309,21 @@ echo mysqli_error($link);
                             <div class="modal-dialog modal-login">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Member Login</h4>
+                                        <h4 class="modal-title">Driver Login</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="dummy.php" method="post">
+                                        <form action="addnewdriver.php" method="post">
                                             <div class="form-group">
                                                 <i class="fa fa-user"></i>
-                                                <input type="text" class="form-control" name='username' placeholder="Username" required="required">
+                                                <input type="text" class="form-control" name='driverID' placeholder="National ID" required="required">
                                             </div>
                                             <div class="form-group">
                                                 <i class="fa fa-lock"></i>
                                                 <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                                             </div>
                                             <div class="form-group">
-                                                <input type="submit" name="login" class="btn btn-primary btn-block btn-lg" value="Login">
+                                                <input type="submit" name="submitL" class="btn btn-primary btn-block btn-lg" value="Login">
                                             </div>
                                         </form>
 
