@@ -59,11 +59,12 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                                         <thead class="bg-light">
                                             <tr>
 
-                                                <th scope="col" class="border-0">National ID</th>
+                                                <th scope="col" class="border-0">Service Number</th>
                                                 <th scope="col" class="border-0">First Name</th>
                                                 <th scope="col" class="border-0">Second Name</th>
                                                 <th scope="col" class="border-0">Rank</th>
                                                 <th scope="col" class="border-0">Joined</th>
+                                                <th scope="col" class="border-0">Action</th>
                                                 
 
 
@@ -106,6 +107,8 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                         </div>
                     </div>
                     <!-- End Default Light Table -->
+
+                      
 
                     <!-- End Default Dark Table -->
                 </div>
