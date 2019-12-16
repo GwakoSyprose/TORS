@@ -20,7 +20,7 @@ if(isset($_POST['submit'])) {
     if ($resultCheck == 0) {
      echo '<div class="alert alert-danger alert-dismissable" id="flash-msg">
       <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-      <h4><i class="icon fa fa-times"></i>That National ID does not exist!</h4>
+      <h4><i class="icon fa fa-times"></i>The service number you have entered does not exist!</h4>
       </div>';
     } else {
       if($row = mysqli_fetch_assoc($result)) {
@@ -146,7 +146,7 @@ if(isset($_POST['notSubmit'])){
                                 <div class="modal-dialog modal-login">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Sign In</h4>
+                                            <h4 class="modal-title">Log In</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
@@ -157,7 +157,7 @@ if(isset($_POST['notSubmit'])){
         </div> -->
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                        <input type="text" class="form-control" name="userID" placeholder="National ID" required="required">
+                                                        <input type="text" class="form-control" name="userID" placeholder="Service Number" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
