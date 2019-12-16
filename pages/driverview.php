@@ -70,106 +70,7 @@ WHERE d.driverID = '$id' ";
      
   
     }
- function fetch_data()  {
-        
-        include('../includes/connection.php');
-        $output="";
-     $id = $_GET['pid'];
-        
-     
-        $query= "SELECT * FROM drivers WHERE driverID=$id";
-        
-        $result= mysqli_query($link, $query);
 
-	while($row=mysqli_fetch_array($result))
-      {       
-      $output .= '<tr>
-
-                        <td class="font-weight-bold">First Name</td>
-                        
-                        
-                        <td>'.$row['dfname'].' '.$row['dlname'].'</td>
-
-
-
-</tr>
-
-<tr >
-
-    <td class="font-weight-bold">National ID</td>
-    <td>'.$row["driverID"].'</td>
-
-</tr>
-<tr>
-
-    <td class="font-weight-bold">License No</td>
-    <td>'.$row["licence"].'</td>
-
-
-</tr>
-<tr>
-
-    <td class="font-weight-bold">Status</td>
-    <td>'.$row["status"].'</td>
-
-
-</tr>
-<tr>
-
-    <td class="font-weight-bold">Type</td>
-    <td>'.$row["typeID"].'</td>
-
-
-</tr>
-<tr>
-
-    <td class="font-weight-bold">Offence Count</td>
-    <td>'.$row["offenceCount"].'</td>
-
-
-</tr>
-<tr>
-
-    <td class="font-weight-bold">Registration Date</td>
-    <td>'.$row["regDate"].'</td>
-
-
-</tr>  
-                          ';  
-      }  
-      return $output;  
- }  
- if(isset($_POST["generate_pdf"]))  
- {  
-      require_once('../TCPDF/tcpdf.php');  
-      $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
-      $obj_pdf->SetCreator(PDF_CREATOR);  
-      $obj_pdf->SetTitle("Generate HTML Table Data To PDF From MySQL Database Using TCPDF In PHP");  
-      $obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
-      $obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
-      $obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
-      $obj_pdf->SetDefaultMonospacedFont('helvetica');  
-      $obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
-      $obj_pdf->SetMargins(PDF_MARGIN_LEFT, '10', PDF_MARGIN_RIGHT);  
-      $obj_pdf->setPrintHeader(false);  
-      $obj_pdf->setPrintFooter(false);  
-      $obj_pdf->SetAutoPageBreak(TRUE, 10);  
-      $obj_pdf->SetFont('helvetica', '', 11);  
-      $obj_pdf->AddPage();  
-      $content = '';  
-      $content .= '
-      
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example" style="font-size: 11px;left:40%; border-spacing: 5px;" align="left">
-      
-      ';  
-      $content .= fetch_data();
-     
-      $content .= '</table>'; 
-     
-      $obj_pdf->writeHTML($content); 
-     ob_end_clean();
-      $obj_pdf->Output('file.pdf', 'I');  
- }  
 
 
 
@@ -177,66 +78,13 @@ WHERE d.driverID = '$id' ";
 
 <body class="h-100">
 
-    <div class="color-switcher-toggle animated pulse infinite">
-        <i class="material-icons">settings</i>
-    </div>
+    
     <div class="container-fluid">
-        <div class="row">
+        <div class="row  d-flex justify-content-center">
             <!-- Main Sidebar -->
-           <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
-    <div class="main-navbar">
-        <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-            <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
-                <div class="d-table m-auto">
-                    <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;"
-                        src="images/shards-dashboards-logo.svg" alt="Shards Dashboard">
-                    <span class="d-none d-md-inline ml-1">Traffic Offenders System</span>
-                </div>
-            </a>
-            <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
-                <i class="material-icons">&#xE5C4;</i>
-            </a>
-        </nav>
-    </div>
-    <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
-        <div class="input-group input-group-seamless ml-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <i class="fas fa-search"></i>
-                </div>
-            </div>
-            <input class="navbar-search form-control" type="text" placeholder="Search for something..."
-                aria-label="Search">
-        </div>
-    </form>
-    <div class="nav-wrapper" style="background-color:#262626;">
-        <ul class="nav flex-column" style="border: none;">
-            <li class="nav-item text-center " style="background-color: transparent;">
-                <a class="nav-link text-white" href="">
 
-                    <h6 style="color:#ffff;">DASHBOARD</h6>
-
-                </a>
-            </li>
-      
-
-            <li class="nav-item" style="background-color: transparent;">
-                <a class="nav-link " style="border-bottom: 0px;" href="updatedriver.php?pid=<?=$_GET['pid'];?>">
-
-                    <button class="btn btn-light col text-center">Update Details</button>
-                </a>
-            </li>
-
-           
-        
-            
-
-
-        </ul>
-    </div>
-</aside>
             <!-- End Main Sidebar -->
-            <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+            <main class="main-content col-lg-12">
                 <div class="main-navbar sticky-top bg-white">
                     <!-- Main Navbar -->
                     <div class="main-navbar sticky-top bg-white">
@@ -254,7 +102,7 @@ WHERE d.driverID = '$id' ";
                     </div>
                     <!-- End Page Header -->
                     <!-- Default Light Table -->
-                    <div class="row">
+                    <div class="row" id="divid">
                         <div class="col-lg-4">
                             <div class="card card-small mb-4 pt-3">
                                 <div class="card-header border-bottom text-center">
@@ -265,13 +113,7 @@ WHERE d.driverID = '$id' ";
                                     echo "<img src='images/".$driver['profileImage']."' width=200 height=200 >";
                                     
                                      ?> </div>
-                                    <div class="btn-group">
-                                        <a class="nav-link">
-                                            <button class="btn btn-sm btn-pill btn-outline-success col text-center " data-toggle="modal" data-target="#myModal">RECORD OFFENSE</button>
-                                        </a>
-
-
-                                    </div>
+                                  
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item px-4">
                                             <div class="progress-wrapper">
@@ -290,7 +132,7 @@ WHERE d.driverID = '$id' ";
                                             </div>
                                         </li>
                                         <li class="list-group-item p-4">
-                                            <strong class="text-muted d-block mb-2">Description</strong>
+                                            <a href="">Change Password</a>
                                             <span></span>
                                         </li>
                                     </ul>
@@ -299,68 +141,6 @@ WHERE d.driverID = '$id' ";
 
                                 </div>
 
-                            </div>
-                        </div>
-                        <!--        modal-->
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4><span class="glyphicon glyphicon-lock"></span> Record Offence</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <form role="form" method="POST">
-
-                                            <div class="form-group">
-                                                <label for="comment"><b>Select an offense</b></label><br>
-
-                                                <select name="offense[]" class="custom-select" multiple="multiple">
-                                                    <?php include 'offence_types.php'; ?>
-                                                </select>
-                                            </div>
-
-                                            <!-- Initialize the plugin: -->
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
-                                                    $('.custom-select').multiselect();
-                                                });
-
-                                            </script>
-
-                                            <div class="form-group">
-                                                <label for="comment"><b>Number Plate</b></label>
-                                                <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate">
-                                            </div>
-                                            <script type="text/javascript">
-                                                $(document).ready(function() {
-
-
-
-                                                    $("#numplate").inputmask("aaa-999a"); //static mask
-
-                                                });
-
-                                            </script>
-
-                                            <div class="form-group">
-                                                <label for="comment"><b>Offence Description:</b></label>
-                                                <textarea class="form-control" rows="5" name="description"></textarea>
-                                            </div>
-                                            <input type="submit" class="btn btn-block" name="submit" value="submit">
-
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                                            <span class="glyphicon glyphicon-remove"></span> Cancel
-                                        </button>
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-8">
@@ -375,11 +155,7 @@ WHERE d.driverID = '$id' ";
                                                 <h6 class="font-weight-bold text-center">Personal Details</h6>
                                                 <ul>
                                                     <table class="table table-striped table-borderless">
-                                                        <div class="col-md-12" align="right">
-                                                            <form method="post">
-                                                                <input type="submit" name="generate_pdf" class="btn btn-success" value="Generate PDF" />
-                                                            </form>
-                                                        </div>
+                                                       <div><a href="" id="print" onclick="printContent('divid');" name="submit">Download </a></div>
 
                                                         <tbody>
                                                             <tr>

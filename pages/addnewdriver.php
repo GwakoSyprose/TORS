@@ -60,7 +60,7 @@ if(array_key_exists("submitS" , $_POST)) {
       $driverID = mysqli_real_escape_string($link, $_POST['driverID']);
     
     $fname = mysqli_real_escape_string($link, $_POST['fname']);
-      $lname = mysqli_real_escape_string($link, $_POST['lname']);
+    $lname = mysqli_real_escape_string($link, $_POST['lname']);
     $licence = mysqli_real_escape_string($link, $_POST['licence']);
     $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
     $email= mysqli_real_escape_string($link, $_POST['email']);
@@ -76,12 +76,27 @@ if(array_key_exists("submitS" , $_POST)) {
     }
 
 
+
+    
+    $resulti = mysqli_query($link, "SELECT * FROM drivers WHERE driverID='$driverID'");
+    $num_rows = mysqli_num_rows($resulti);
+
+if ($num_rows > 0) {
+          $error.='<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong>National ID exists.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    
+}
+else {
       $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
          $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
             VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno','$email','$hashedPwd', '$type', '0','$profile',  '$date')";
-    
-    mysqli_query($link, $query);
+      mysqli_query($link, $query);
+}
      
     
        
@@ -162,14 +177,17 @@ echo mysqli_error($link);
                 <!-- / .main-navbar -->
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
+                     
                     <div class="page-header row no-gutters py-4">
-                        Already Registered? View profile <button data-target="#myModal" data-toggle="modal" href="#myModal"> here</button>
+                       
+                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">&nbsp;login here</a>
                     </div>
+                    <div><?php echo $error; ?></div>
                     <div class="row">
                         <!-- Input & Button Groups -->
                         <div class="card card-small mb-4 col-lg-12">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Fill in the details</h6>
+                                <h6 class="m-0">Fill in your details below</h6>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item px-3">
@@ -287,44 +305,43 @@ echo mysqli_error($link);
                                 </li>
                             </ul>
                         </div>
-                        <!-- / Input & Button Groups -->
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog modal-login">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Member Login</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="dummy.php" method="post">
+                                            <div class="form-group">
+                                                <i class="fa fa-user"></i>
+                                                <input type="text" class="form-control" name='username' placeholder="Username" required="required">
+                                            </div>
+                                            <div class="form-group">
+                                                <i class="fa fa-lock"></i>
+                                                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" name="login" class="btn btn-primary btn-block btn-lg" value="Login">
+                                            </div>
+                                        </form>
 
-                    </div>
-                    <div id="myModal" class="modal fade">
-                        <div class="modal-dialog modal-login">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Driver Login</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="addnewdriver.php" method="post">
-                                        <div class="form-group">
-                                            <i class="fa fa-user"></i>
-                                            <input type="text" class="form-control" name='driverID' placeholder="Username" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <i class="fa fa-lock"></i>
-                                            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" name="submitL" class="btn btn-primary btn-block btn-lg" value="Login">
-                                        </div>
-                                    </form>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#">Forgot Password?</a>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#">Forgot Password?</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                
-
                     </div>
-                    
+                    <!-- / Input & Button Groups -->
+
                 </div>
-                
-                
+
+
+
+
                 <script>
                     $("input[type=password]").keyup(function() {
                         var ucase = new RegExp("[A-Z]+");
@@ -383,4 +400,4 @@ echo mysqli_error($link);
                     });
 
                 </script>
-  
+                <?php include '../includes/footer.php'; ?>

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js h-100" lang="en">
 
@@ -19,15 +18,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.material.min.css">
 
- 
+
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
     <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
     <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.10.18/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="../pages/styles/table.css">
     <link rel="stylesheet" type="text/css" href="../pages/styles/update.css">
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert2.min.css">
 
     <!--  scripts -->
     <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+     <script src="../sweetalert/dist/sweetalert2.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery.js"></script>
     <script src='../fontawesome/js/all.js'></script>
@@ -35,7 +36,92 @@
     <script async defer src="../js/buttons.js"></script>
     <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.material.min.js"></script>
-   
+    <style type="text/css">
+        .modal-login {
+            color: #636363;
+            width: 350px;
+        }
+
+        .modal-login .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .modal-login .modal-header {
+            border-bottom: none;
+            position: relative;
+            justify-content: center;
+        }
+
+        .modal-login h4 {
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .modal-login .form-group {
+            position: relative;
+        }
+
+        .modal-login i {
+            position: absolute;
+            left: 13px;
+            top: 11px;
+            font-size: 18px;
+        }
+
+        .modal-login .form-control {
+            padding-left: 40px;
+        }
+
+        .modal-login .form-control:focus {
+            border-color: #00ce81;
+        }
+
+        .modal-login .form-control,
+        .modal-login .btn {
+            min-height: 40px;
+            border-radius: 3px;
+        }
+
+        .modal-login .hint-text {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .modal-login .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .modal-login .btn {
+            background: #00ce81;
+            border: none;
+            line-height: normal;
+        }
+
+        .modal-login .btn:hover,
+        .modal-login .btn:focus {
+            background: #00bf78;
+        }
+
+        .modal-login .modal-footer {
+            background: #ecf0f1;
+            border-color: #dee4e7;
+            text-align: center;
+            margin: 0 -20px -20px;
+            border-radius: 5px;
+            font-size: 13px;
+            justify-content: center;
+        }
+
+        .modal-login .modal-footer a {
+            color: #999;
+        }
+
+    </style>
+
 
     <style>
         .main-sidebar .nav .nav-item .nav-link {
@@ -49,4 +135,17 @@
         }
 
     </style>
+    <script type="text/javascript">
+        function printContent(el) {
+            var restorepage = $('body').html();
+            var printcontent = $('#' + el).clone();
+             var printContent = document.querySelectorAll('a').forEach(a => img.remove());
+            var enteredtext = $('#text').val();
+            $('body').empty().html(printcontent);
+            window.print();
+            $('body').html(restorepage);
+            $('#text').html(enteredtext);
+        }
+
+    </script>
 </head>

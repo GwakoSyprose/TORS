@@ -61,11 +61,13 @@ $query=mysqli_query($link, "SELECT * FROM reports where notificationID=$id");
                     <div class="page-header row no-gutters py-4">
                         <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">The Kenyan Police</span>
-                            <h3 class="page-title">Abstract from police on a road accident</h3>
+                            <h3 class="page-title">Abstract from police on a road accident<br></h3>
 
                         </div>
+                        <div><a href="" id="print" onclick="printContent('divid');" name="submit">Download the report</a></div>
+                       
                     </div>
-                    <div class="row">
+                    <div class="row" id="divid">
                         <!-- Input & Button Groups -->
                         <div class="card card-small mb-4 col-lg-12">
                             <div class="card-header border-bottom">
@@ -219,6 +221,7 @@ $query=mysqli_query($link, "SELECT * FROM reports where notificationID=$id");
 
                                             <input type="text" class="form-control" value="<?=$witness2;?>" name="witness2" placeholder="Full names of witness" readonly>
                                         </div>
+                                        
                                       
 
                                         <!-- Input Groups -->
@@ -229,6 +232,7 @@ $query=mysqli_query($link, "SELECT * FROM reports where notificationID=$id");
                                 </li>
                             </ul>
                         </div>
+                        
                         <!-- / Input & Button Groups -->
 
                     </div>

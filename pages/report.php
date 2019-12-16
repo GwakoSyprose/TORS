@@ -65,6 +65,7 @@ if(array_key_exists("submit" , $_POST)) {
                             <h3 class="page-title">Abstract from police on a road accident</h3>
 
                         </div>
+                        
                     </div>
                     <div class="row">
                         <!-- Input & Button Groups -->

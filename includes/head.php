@@ -77,5 +77,16 @@ disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
    docprint.focus();
 }
 </script>
+    <script>
+function printContent(el){
+var restorepage = $('body').html();
+var printcontent = $('#' + el).clone();
+var enteredtext = $('#text').val();
+$('body').empty().html(printcontent);
+window.print();
+$('body').html(restorepage);
+$('#text').html(enteredtext);
+}
+</script>
 
 </head>
