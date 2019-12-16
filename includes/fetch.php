@@ -54,7 +54,7 @@ else{
                    
   ';
 }
-$status_query = "SELECT * FROM notifications WHERE status=0";
+$status_query = "SELECT * FROM notifications WHERE status=0 ORDER BY notificationID";
 $result_query = mysqli_query($link, $status_query);
 $count = mysqli_num_rows($result_query);
 $data = array(

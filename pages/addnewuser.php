@@ -14,9 +14,9 @@ if (isset ($_POST['submit'])) {
    $lname = mysqli_real_escape_string($link, $_POST['lname']);
    $password = mysqli_real_escape_string($link, $_POST['password']);
    $rank = mysqli_real_escape_string($link, $_POST['rank']);
-    $station = mysqli_real_escape_string($link, $_POST['station']);
+   $station = mysqli_real_escape_string($link, $_POST['station']);
    $date = mysqli_real_escape_string($link, $_POST['regDate']);
-    $email = mysqli_real_escape_string($link, $_POST['email']);
+   $email = mysqli_real_escape_string($link, $_POST['email']);
   
 
   
@@ -80,7 +80,7 @@ if (isset ($_POST['submit'])) {
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
-                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
                             <span class="text-uppercase page-subtitle">Overview</span>
                             <h3 class="page-title">Traffic Officers Registration Form</h3>
                         </div>
@@ -101,7 +101,7 @@ if (isset ($_POST['submit'])) {
                                                 <form action="addnewuser.php" method="post">
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
-                                                            <label for="ID">National ID</label>
+                                                            <label for="ID">Service Number</label>
                                                             <input type="number" class="form-control" name="userID" placeholder="National ID" required> </div>
                                                         <div class="form-group col-md-12">
                                                             <label for="Name">First Name</label>

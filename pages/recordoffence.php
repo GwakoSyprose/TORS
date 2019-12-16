@@ -18,6 +18,17 @@
       $numplate = mysqli_real_escape_string($link, $_POST['numplate']);
       $description = mysqli_real_escape_string($link, $_POST['description']);
 
+   //Error Handlers
+   //Check for empty fields
+
+//    if(empty($offense) || empty($numplate) || empty($description)
+//  ){
+
+//     header("Location: recordoffence.php?recordoffence=empty");
+//     exit();
+
+//    }
+
       $cou = count($_POST['offense']);
       $sql = "INSERT INTO offences(offenceType,description,driverID) VALUES ";
       $comma = "";
@@ -29,6 +40,7 @@
       }
       if ($link->multi_query($sql) === TRUE) {
 
+        
         // record incident
         $date  = date('Y-m-d');
         $days = 90;
@@ -54,6 +66,7 @@ WHERE d.driverID = '$id' ";
             //updates the status to suspended if condition is met
             $sql4 = "UPDATE drivers SET status = '1' WHERE offenceCount > '12'";
            if(mysqli_query($link, $sql4)){
+               //inserts into the suspended_licences
             $sql5 = "INSERT INTO suspended_licences(driverID, suspendedDate, activatedDate)
                  VALUES ('$id', '$date', DATE_ADD(suspendedDate, INTERVAL 90 DAY))";
             mysqli_query($link, $sql5);
@@ -67,8 +80,16 @@ WHERE d.driverID = '$id' ";
         } else {
             echo "Error updating record: " . $link->error;
         }
-            
-            
+            echo"<script>"; 
+  echo"Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your password has been changed',
+  showConfirmButton: false,
+  timer: 3000
+})";
+    echo"</script>";
+            header("Location: viewdriver.php?pid=$id; &success=1");
          
 
             }
@@ -76,10 +97,13 @@ WHERE d.driverID = '$id' ";
             }
           }
 
+
+
        
     } else {
         echo "Error: ". $link->error;
     }
+
 
      
   
@@ -139,7 +163,31 @@ WHERE d.driverID = '$id' ";
 
                                             <div class="form-group">
                                                 <label for="comment"><b>Number Plate</b></label>
-                                                <input type="text" class="form-control" placeholder="KAP-506Z" name="numplate" required>
+                                                 <select name="type" class="form-control"  id="select-state" placeholder="Pick a state..." required>
+                                                    <option disabled selected>Select Vehicle Number</option>
+                                                    <?php 
+                                                            require_once('../includes/connection.php');
+
+                                                                $sql = "SELECT * FROM vehicles;";
+                                                                $result = $link->query($sql);
+
+                                                                if ($result->num_rows > 0) {
+                                                                    // output data of each row
+                                                                    while($row = $result->fetch_assoc()) {
+                                                                        echo  '<option value="'.$row["vehicleID"].'" >'.$row["regNo"].'</option>';
+                                                                    }
+                                                                } else {
+
+                                                                }
+                                                                ?>
+                                                </select>
+                                                <!-- <script type="text/javascript">
+                                                    $(document).ready(function () {
+      $('#select-state').selectize({
+          sortField: 'text'
+      });
+  });
+                                                </script> -->
                                             </div>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
@@ -157,7 +205,7 @@ WHERE d.driverID = '$id' ";
                                                 <textarea class="form-control" rows="5" name="description" required></textarea>
                                             </div>
                                                <button type="submit" class="btn btn-outline-info" name="submit"
-                                               href="#" data-toggle="modal" data-target="#logoutModal">Submit</button> 
+                                              >Submit</button> 
                                                                                         
                                             
                                             

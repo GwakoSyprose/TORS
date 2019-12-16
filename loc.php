@@ -9,3 +9,9 @@ $lng=(isset($_GET['lng']))?$_GET['lng']:'';
 $_SESSION['lat']=$lat;
 $_SESSION['lng']=$lng;
 ?>
+
+
+
+
+
+                      

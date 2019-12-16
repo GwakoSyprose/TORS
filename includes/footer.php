@@ -7,12 +7,12 @@
               <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="background-color: #333;">
-            <h4><span class="glyphicon glyphicon-lock"></span> Terms of Use & Policies</h4>
+            <h4 style="color: #fff;"><span class="glyphicon glyphicon-lock"></span> Terms of Use & Policies</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           
         </div>
         <div class="modal-body">
-          <img  class="d-inline-block align-top mr-1" style="max-width:100%;" src="../pages/images/terms.jpeg" alt="Policies">
+         
           <h4>How the demerit system works:</h4>
 <p>Every driver starts off with a clean slate of zero points, however, if you get 12 points, your licence will be suspended for a period of three months. If you exceed three suspensions you could lose your licence permanently and if a licence has been suspended for the third time, it can be cancelled.</p>
 

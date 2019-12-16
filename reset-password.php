@@ -119,7 +119,7 @@ echo "<div class='alert alert-success'>
               <div class="validation"></div>
             </div>
              
-            <div class="text-center"><button type="submit" id="notSubmit" name="reset-request-submit" class="btn btn-primary btn-lg">Receive new password by email</button>
+            <div class="text-center"><button type="submit" id="notSubmit" name="reset-request-submit" class="btn btn-primary btn-lg">Receive password reset link by email</button>
               </div>
               
           </form>
