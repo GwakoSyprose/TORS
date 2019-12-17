@@ -1,24 +1,39 @@
 <?php 
+
+ob_start();
     include '../includes/connection.php'; 
+
+ 
     include '../includes/driverhead.php'; 
     
-$error = "";
+ $error = "";
+ $success = "";
+
 if(array_key_exists("submitS" , $_POST)) {
-  $link = mysqli_connect('localhost','root','','tobs');
+
+  
+
+   $link = mysqli_connect('localhost','root','','tobs');
+
    if(mysqli_connect_error()) {
+
     die ("Database Connection Error!");
    }
     // Escape user inputs for security
     else{
-         
+        
+    
     $file = $_FILES['profile'];
+    
     $fileName = $_FILES['profile']['name'];
     $fileTmpName = $_FILES['profile']['tmp_name'];
     $fileSize = $_FILES['profile']['size'];
     $fileError = $_FILES['profile']['error'];
     $fileType = $_FILES['profile']['type'];
+    
     $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
+    
     $allowed= array('jpg', 'jpeg', 'png','JPG');
     
     if(in_array($fileActualExt, $allowed)){
@@ -34,23 +49,27 @@ if(array_key_exists("submitS" , $_POST)) {
             
         }else{
             echo "There was an error in uploading your file";
-        }      
+        }
+        
+        
     }else{
         echo "You cannot upload files of this type";
     }
         
       $driverID = mysqli_real_escape_string($link, $_POST['driverID']);
-      $fname = mysqli_real_escape_string($link, $_POST['fname']);
-      $lname = mysqli_real_escape_string($link, $_POST['lname']);
-      $licence = mysqli_real_escape_string($link, $_POST['licence']);
-      $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
-      $email= mysqli_real_escape_string($link, $_POST['email']);
-      $password= mysqli_real_escape_string($link, $_POST['password1']);
-      $type = mysqli_real_escape_string($link, $_POST['type']);
-      $profile = $_FILES['profile']['name'];
-      $date = mysqli_real_escape_string($link, $_POST['date']);
+    
+    $fname = mysqli_real_escape_string($link, $_POST['fname']);
+    $lname = mysqli_real_escape_string($link, $_POST['lname']);
+    $licence = mysqli_real_escape_string($link, $_POST['licence']);
+    $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
+    $email= mysqli_real_escape_string($link, $_POST['email']);
+    $password= mysqli_real_escape_string($link, $_POST['password1']);
+    $type = mysqli_real_escape_string($link, $_POST['type']);
+    $profile = $_FILES['profile']['name'];
+    $date = mysqli_real_escape_string($link, $_POST['date']);
+    
     }
-
+ 
     $resulti = mysqli_query($link, "SELECT * FROM drivers WHERE driverID='$driverID'");
     $num_rows = mysqli_num_rows($resulti);
 
@@ -69,12 +88,18 @@ else {
          $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
             VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno','$email','$hashedPwd', '$type', '0','$profile',  '$date')";
       mysqli_query($link, $query);
-      echo "<script>";
-          echo "swal('Good job!', 'Driver registered successfully', 'success')";
-          echo "</script>";
+   $success.='<div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Success!</strong>You may now proceed to log in
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>';
 
 }
+     
     
+       
+
   }
 if(array_key_exists("submitL" , $_POST)) {
      $dID = mysqli_real_escape_string($link, $_POST['driverID']);
@@ -115,16 +140,18 @@ if(array_key_exists("submitL" , $_POST)) {
                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                 <h4><i class="icon fa fa-times"></i>wrong password!</h4>
                 </div>';
-        echo mysqli_error($link);
-              }
+echo mysqli_error($link);
+             
+
+        }
+  
       }
   }
 
 }
 
 }
-  
-    ?>
+       ?>
 
 
 <body class="h-100">
@@ -139,12 +166,14 @@ if(array_key_exists("submitL" , $_POST)) {
                 <!-- / .main-navbar -->
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
-                     
+
                     <div class="page-header row no-gutters py-4">
-                       
-                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">&nbsp;login here</a>
+
+                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#ModalExample">&nbsp;login here</a>
                     </div>
                     <div><?php echo $error; ?></div>
+                    <div><?php echo $success; ?></div>
+                    
                     <div class="row">
                         <!-- Input & Button Groups -->
                         <div class="card card-small mb-4 col-lg-12">
@@ -267,8 +296,9 @@ if(array_key_exists("submitL" , $_POST)) {
                                 </li>
                             </ul>
                         </div>
-                        <div id="myModal" class="modal fade">
-                            <div class="modal-dialog modal-login">
+                        <!-- Modal HTML Markup -->
+                        <div id="ModalExample" class="modal fade">
+                            <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title text-xs-center">Login</h4>
@@ -283,9 +313,12 @@ if(array_key_exists("submitL" , $_POST)) {
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <i class="fa fa-lock"></i>
-                                                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                                <label class="control-label">Password</label>
+                                                <div>
+                                                    <input type="password" class="form-control input-lg" name="password">
+                                                </div>
                                             </div>
+
                                             <div class="form-group">
                                                 <div>
 
@@ -293,16 +326,14 @@ if(array_key_exists("submitL" , $_POST)) {
                                                 </div>
                                             </div>
                                         </form>
-
                                     </div>
                                     <div class="modal-footer text-xs-center">
                                         Don't have an account? <a href="/auth/register">Sign up »</a>
                                     </div>
-                                </div>
-                            </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
                         </div>
-                    </div>
-                    <!-- / Input & Button Groups -->
+                    </div> <!-- / Input & Button Groups -->
 
                 </div>
 
