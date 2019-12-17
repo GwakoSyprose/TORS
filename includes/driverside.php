@@ -26,11 +26,7 @@
 
         <ul class="nav flex-column">
 
-            <li class="nav-item" style="background-color: transparent;">
-                <a class="nav-link" href="#loginModal" class="trigger-btn" data-toggle="modal">
-                    <i class="material-icons">vertical_split</i>
-                    <span style="color: ;">Reports</span>
-                </a>
+          
             <li class="nav-item" style="background-color: transparent;">
                 <a class="nav-link " href="../pages/Ts&Cs.php">
                     <i class="material-icons">vertical_split</i>

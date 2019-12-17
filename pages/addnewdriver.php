@@ -64,29 +64,22 @@ if(array_key_exists("submitS" , $_POST)) {
     $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
     $email= mysqli_real_escape_string($link, $_POST['email']);
     $password= mysqli_real_escape_string($link, $_POST['password1']);
-        
-    
     $type = mysqli_real_escape_string($link, $_POST['type']);
-    
     $profile = $_FILES['profile']['name'];
     $date = mysqli_real_escape_string($link, $_POST['date']);
     
-
     }
-
-
-
-    
+ 
     $resulti = mysqli_query($link, "SELECT * FROM drivers WHERE driverID='$driverID'");
     $num_rows = mysqli_num_rows($resulti);
 
 if ($num_rows > 0) {
           $error.='<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error!</strong>National ID exists.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
+                  <strong>Error!</strong>National ID exists.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>';
     
 }
 else {
