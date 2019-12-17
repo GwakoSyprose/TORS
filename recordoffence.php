@@ -30,7 +30,7 @@
                                     <li class="list-group-item p-3">
                                         <div class="row">
                                             <div class="col">
-                                                                                       <form role="form" method="POST">
+                                     <form role="form" method="POST">
 
                                             <div class="form-group">
                                                 <label for="comment"><b>Select an offense</b></label><br>
@@ -54,9 +54,6 @@
                                             </div>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
-
-
-
                                                     $("#numplate").inputmask("aaa-999a"); //static mask
 
                                                 });

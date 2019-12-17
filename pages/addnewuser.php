@@ -14,8 +14,7 @@ if (isset ($_POST['submit'])) {
    $rank = mysqli_real_escape_string($link, $_POST['rank']);
    $station = mysqli_real_escape_string($link, $_POST['station']);
    $date = mysqli_real_escape_string($link, $_POST['regDate']);
-   $email = mysqli_real_escape_string($link, $_POST['email']);
-  
+   $email = mysqli_real_escape_string($link, $_POST['email']); 
 
   //Error Handlers
    //Check for empty fields
@@ -48,12 +47,10 @@ if (isset ($_POST['submit'])) {
           echo "swal('Good job!', 'Officer registered successfully', 'success')";
           echo "</script>";
 
-     
     }
 
 }
 } 
-
 
 ?>
 

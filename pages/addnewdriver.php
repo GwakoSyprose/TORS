@@ -1,39 +1,24 @@
 <?php 
-
-ob_start();
     include '../includes/connection.php'; 
-
- 
     include '../includes/driverhead.php'; 
     
- $error = "";
-
-
+$error = "";
 if(array_key_exists("submitS" , $_POST)) {
-
-  
-
-   $link = mysqli_connect('localhost','root','','tobs');
-
+  $link = mysqli_connect('localhost','root','','tobs');
    if(mysqli_connect_error()) {
-
     die ("Database Connection Error!");
    }
     // Escape user inputs for security
     else{
-        
-    
+         
     $file = $_FILES['profile'];
-    
     $fileName = $_FILES['profile']['name'];
     $fileTmpName = $_FILES['profile']['tmp_name'];
     $fileSize = $_FILES['profile']['size'];
     $fileError = $_FILES['profile']['error'];
     $fileType = $_FILES['profile']['type'];
-    
     $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
-    
     $allowed= array('jpg', 'jpeg', 'png','JPG');
     
     if(in_array($fileActualExt, $allowed)){
@@ -49,27 +34,23 @@ if(array_key_exists("submitS" , $_POST)) {
             
         }else{
             echo "There was an error in uploading your file";
-        }
-        
-        
+        }      
     }else{
         echo "You cannot upload files of this type";
     }
         
       $driverID = mysqli_real_escape_string($link, $_POST['driverID']);
-    
-    $fname = mysqli_real_escape_string($link, $_POST['fname']);
-    $lname = mysqli_real_escape_string($link, $_POST['lname']);
-    $licence = mysqli_real_escape_string($link, $_POST['licence']);
-    $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
-    $email= mysqli_real_escape_string($link, $_POST['email']);
-    $password= mysqli_real_escape_string($link, $_POST['password1']);
-    $type = mysqli_real_escape_string($link, $_POST['type']);
-    $profile = $_FILES['profile']['name'];
-    $date = mysqli_real_escape_string($link, $_POST['date']);
-    
+      $fname = mysqli_real_escape_string($link, $_POST['fname']);
+      $lname = mysqli_real_escape_string($link, $_POST['lname']);
+      $licence = mysqli_real_escape_string($link, $_POST['licence']);
+      $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
+      $email= mysqli_real_escape_string($link, $_POST['email']);
+      $password= mysqli_real_escape_string($link, $_POST['password1']);
+      $type = mysqli_real_escape_string($link, $_POST['type']);
+      $profile = $_FILES['profile']['name'];
+      $date = mysqli_real_escape_string($link, $_POST['date']);
     }
- 
+
     $resulti = mysqli_query($link, "SELECT * FROM drivers WHERE driverID='$driverID'");
     $num_rows = mysqli_num_rows($resulti);
 
@@ -93,10 +74,7 @@ else {
           echo "</script>";
 
 }
-     
     
-       
-
   }
 if(array_key_exists("submitL" , $_POST)) {
      $dID = mysqli_real_escape_string($link, $_POST['driverID']);
@@ -137,18 +115,16 @@ if(array_key_exists("submitL" , $_POST)) {
                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                 <h4><i class="icon fa fa-times"></i>wrong password!</h4>
                 </div>';
-echo mysqli_error($link);
-             
-
-        }
-  
+        echo mysqli_error($link);
+              }
       }
   }
 
 }
 
 }
-       ?>
+  
+    ?>
 
 
 <body class="h-100">
@@ -163,10 +139,10 @@ echo mysqli_error($link);
                 <!-- / .main-navbar -->
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
-
+                     
                     <div class="page-header row no-gutters py-4">
-
-                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#ModalExample">&nbsp;login here</a>
+                       
+                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">&nbsp;login here</a>
                     </div>
                     <div><?php echo $error; ?></div>
                     <div class="row">
@@ -291,9 +267,8 @@ echo mysqli_error($link);
                                 </li>
                             </ul>
                         </div>
-                        <!-- Modal HTML Markup -->
-                        <div id="ModalExample" class="modal fade">
-                            <div class="modal-dialog">
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog modal-login">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title text-xs-center">Login</h4>
@@ -308,12 +283,9 @@ echo mysqli_error($link);
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Password</label>
-                                                <div>
-                                                    <input type="password" class="form-control input-lg" name="password">
-                                                </div>
+                                                <i class="fa fa-lock"></i>
+                                                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                                             </div>
-
                                             <div class="form-group">
                                                 <div>
 
@@ -321,14 +293,16 @@ echo mysqli_error($link);
                                                 </div>
                                             </div>
                                         </form>
+
                                     </div>
                                     <div class="modal-footer text-xs-center">
                                         Don't have an account? <a href="/auth/register">Sign up »</a>
                                     </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
+                                </div>
+                            </div>
                         </div>
-                    </div> <!-- / Input & Button Groups -->
+                    </div>
+                    <!-- / Input & Button Groups -->
 
                 </div>
 

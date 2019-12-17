@@ -174,7 +174,7 @@ if ($result->num_rows > 0) {
 }
 ?>
                                                                 <td><?php if($count > 0){
- echo $driver['date_to_court'];
+//  echo $driver['date_to_court'];
  echo "\t" ;
  if(isset($_POST['date_to_see'])){
      $dat = $_POST['date_to_see'];

@@ -18,7 +18,11 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" >
   
   
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> f230c1f10dae74d581c336182590c7ef27a82316
   
   <section id="contact" class="section-padding wow fadeIn delay-05s">
     <div class="container">

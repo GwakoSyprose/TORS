@@ -39,6 +39,7 @@ require 'sessionCheck.php';
     <script src="../js/Chart.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
     <script src='../fontawesome/js/all.js'></script>
     <script src="../js/sweetalert.min.js"></script>
     <script async defer src="../js/buttons.js"></script>

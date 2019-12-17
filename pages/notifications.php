@@ -36,7 +36,7 @@ $getdate = $result['not_date'];
 
     //getting the number of cases handled by each officer
         $incidences=mysqli_query($link, "SELECT * FROM notifications WHERE status ='$id'");
-        $incedencesno= mysqli_num_rows($incidences);
+        $incidencesno= mysqli_num_rows($incidences);
 ?>
   
 
@@ -197,7 +197,7 @@ while($result = mysqli_fetch_assoc($query)) :
                         <span class="text-semibold text-fiord-blue">
                         <?= $fname; ?> <?= $lname; ?> </span>
                         <span class="ml-auto text-right text-semibold text-reagent-gray">
-                        <?= $incedencesno; ?></span>
+                        <?= $incidencesno; ?></span>
                       </li>
                       <?php endwhile; ?>
                      
