@@ -1,7 +1,7 @@
 <?php include '../includes/head.php';
 
       include '../includes/connection.php';
-
+     ob_start();
       if (isset($_GET['pid'])) {
         $id = $_GET['pid'];
         $query = "SELECT * FROM drivers WHERE driverID = $id";
@@ -148,7 +148,7 @@
                                                                         $amt = number_format($driver['fine']);
                                                                         $sms = "Dear ".$driver['dfname'].", You are required to pay a fine of  KES ".$amt.".";
                                                                        // $no = $driver['phone'];                                                                      
-                                                                        sendSms("254706960287",$sms);
+                                                                        sendSms("254718525285",$sms);
                                                                     }
                                                                 ?>
 
@@ -182,10 +182,13 @@ if ($result->num_rows > 0) {
      $sqlu = "UPDATE drivers SET date_to_court = '$dat' WHERE driverID = '$did' ;";
      if ($link->query($sqlu) === TRUE) {
             require '../includes/sendsms.php';
-            $sms = "Dear Linda Kiogora, You are required to appear in court on ".$dat.".";
+            $sms = "Dear".$driver['dfname'].", You are required to appear in court on ".$dat.".";
             $no = $driver['phone'];
           
-            sendSms($ph,$sms);
+            sendSms("254718525285",$sms);
+            echo "<script>";
+          echo "swal('Text message sent!', 'Court date is set successfully', 'success')";
+          echo "</script>";
     } else {
         echo "Error updating record: " . $link->error;
     }

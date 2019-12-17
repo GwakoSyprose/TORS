@@ -80,7 +80,10 @@ $result=mysqli_fetch_assoc($sql);
                                     </li>
                                     <li class="list-group-item p-4">
                                         <strong class="text-muted d-block mb-2">Description</strong>
-                                        <span>Description goes here</span>
+                                        <span>Rank: </span>
+                                        <span><?= $result['rank']; ?></span> <br />
+                                        <span>Email: </span>
+                                        <span><?= $result['email']; ?></span>
                                     </li>
                                 </ul>
                             </div>

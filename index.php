@@ -70,7 +70,7 @@ if(isset($_POST['notSubmit'])){
     $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`, `lat`, `lng`) VALUES ('$numplate', '$description','$region','$station','$phoneno', '$lat', '$lng')";
  
     mysqli_query($link, $sql);
-   echo"<script>"; 
+   echo "<script>"; 
   echo"Swal.fire({
   title: 'Thankyou for reporting the incident. Our team has been dispatched',
   showClass: {
@@ -102,6 +102,7 @@ if(isset($_POST['notSubmit'])){
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="js/sweetalert.min.js">
 </head>
 <!-- picking stations for a specific region -->
 <?php include "includes/connection.php"; ?>
@@ -147,7 +148,7 @@ if(isset($_POST['notSubmit'])){
                                 <div class="modal-dialog modal-login">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Log In</h4>
+                                            <h4 class="modal-title">Officer Log In</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
@@ -271,7 +272,7 @@ if(isset($_POST['notSubmit'])){
 
 
                         <div class="form-group">
-                            <input type="number" class="form-control" name="phoneno" id="phoneno" placeholder="Phone No" data-msg="Please enter a number plate" />
+                            <input type="number" class="form-control" name="phoneno" id="phoneno" placeholder="Phone No" data-msg="Please enter a phone number" />
                             <div class="validation"></div>
                         </div>
 

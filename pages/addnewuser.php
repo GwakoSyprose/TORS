@@ -34,7 +34,7 @@ if (isset ($_POST['submit'])) {
 
     if($resultCheck > 0) {
      echo "<script>";
-          echo "swal('Ooops..!', 'Could not register officer! National ID already exists!', 'error')";
+          echo "swal('Could not register officer! ', ' The service number you have entered already exists!', 'error')";
           echo "</script>" . mysqli_error($link);
 
     } else {
@@ -93,7 +93,7 @@ if (isset ($_POST['submit'])) {
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                             <label for="ID">Service Number</label>
-                                                            <input type="number" class="form-control" name="userID" placeholder="National ID" required> </div>
+                                                            <input type="number" class="form-control" name="userID" placeholder="Service Number" required> </div>
                                                         <div class="form-group col-md-12">
                                                             <label for="Name">First Name</label>
                                                             <input type="text" class="form-control" name="fname" placeholder="Name" required> </div>
@@ -124,30 +124,30 @@ if (isset ($_POST['submit'])) {
         } else {
         }
           ?>
-                                                            </select>
-                                                        </div>
+        </select>
+      </div>
 
+</script>
+                                                                 <div class="form-group col-md-12">
+                                                            <label for="Region">Stations</label>
+                                                             
+         <select name="station" class="form-control" required >
+           <option disabled selected>Select Station</option>
+          <?php 
+        require_once '../includes/connection.php';
 
-                                                        <!-- picking stations for a specific region -->
-                                                        <?php include "../includes/connection.php"; ?>
-                                                        <script>
-                                                            function getStations(val) {
-                                                                $.ajax({
-                                                                    type: "POST",
-                                                                    url: "../includes/getstations.php",
-                                                                    data: 'regionID=' + val,
-                                                                    success: function(data) {
-                                                                        $("#stations").html(data);
-                                                                    }
-                                                                });
-                                                            }
-
-                                                        </script>
-                                                        <div class="form-group col-md-12">
-                                                            <label for="station">Station</label>
-                                                            <select class="form-control" name="station" id="stations">
-                                                                <option value="">Select Station</option>
-                                                            </select></div>
+       $sql = "SELECT * FROM stations";
+        $result = $link->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo  '<option value="'.$row["stationID"].'" >'.$row["stationName"].'</option>';
+            }
+        } else {
+        }
+          ?>
+        </select>
+      </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="Rank">Rank</label>
 

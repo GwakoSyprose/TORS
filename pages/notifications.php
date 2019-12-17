@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include '../includes/connection.php';
 include '../includes/head.php'; 
 require 'officer_name.php';
@@ -8,12 +9,12 @@ $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
 
 $generalquery=mysqli_query($link, "SELECT * FROM notifications ORDER BY notificationID");
-$result = mysqli_fetch_assoc($generalquery);
- $getdate = $result['date'];
+$result= mysqli_fetch_assoc($generalquery);
+ $getdate = $result['not_date'];
 
  $query=mysqli_query($link, "SELECT notifications.notificationID,notifications.numPlate,notifications.description,
 notifications.phone,notifications.status,reports.reportID FROM notifications 
-LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station' ORDER BY notificationID");
+LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID WHERE notifications.regionID='$region' AND notifications.stationID='$station' ORDER BY notificationID DESC");
 
 
 
@@ -82,6 +83,7 @@ LEFT OUTER JOIN reports ON notifications.notificationID = reports.notificationID
                             $description=$result['description'];
                             $phone=$result['phone'];
                              $report=$result['reportID'];
+
                                                      
                                                         ?>
 
@@ -193,31 +195,45 @@ if ($seconds_ago >= 31536000) {
                                 </div>
                             </div>
                         </div>
-                        <!-- End Discussions Component -->
+                      </div>
+                    </div>
+                    <?php endwhile; ?>
+                   
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col text-center view-report">
+                        <button type="submit" class="btn btn-white">View All Notifications</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Discussions Component -->
 
-                        <!-- Top Referrals Component -->
-                        <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
-                            <div class="card card-small">
-                                <div class="card-header border-bottom">
-                                    <h6 class="m-0" style="text-transform: uppercase;"><?= $stationName; ?> Station</h6>
-                                </div>
+              <!-- Top Referrals Component -->
+              <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0" style="text-transform: uppercase;"><?= $stationName; ?> Station</h6>
+                  </div> 
 
-                                <div class="card-header border-bottom">
-                                    <h6 class="m-0">Officers Concerned</h6>
-                                </div>
-
-                                <div class="card-body p-0">
-                                    <ul class="list-group list-group-small list-group-flush">
-
-                                        <li class="list-group-item-dark d-flex px-3">
-                                            <span class="text-semibold text-fiord-blue">Officer</span>
-                                            <span class="ml-auto text-right text-semibold text-reagent-gray">Cases</span>
-                                        </li>
-
-                                        <?php
-                   while($result = mysqli_fetch_assoc($officers)) :
-                             $fname=$result['fname'];
-                             $lname=$result['lname'];
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Officers Concerned</h6>
+                  </div>
+                  
+                  <div class="card-body p-0">
+                    <ul class="list-group list-group-small list-group-flush">
+                    
+                      <li class="list-group-item-dark d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Officer</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">Cases</span>
+                      </li>
+                      
+                      <?php
+                   while($resultO = mysqli_fetch_assoc($officers)) :
+                             $fname=$resultO['fname'];
+                             $lname=$resultO['lname'];
                             ?>
                                         <li class="list-group-item d-flex px-3">
                                             <span class="text-semibold text-fiord-blue"><?= $fname; ?> <?= $lname; ?> </span>
