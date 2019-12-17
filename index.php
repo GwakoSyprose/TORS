@@ -3,6 +3,7 @@ session_start();
 require 'includes/connection.php';
 
 $userID_error = $pass_error = "";
+
 // login form
 if(isset($_POST['submit'])) {
   $userID = mysqli_real_escape_string($link, $_POST['userID']);
@@ -38,15 +39,15 @@ if(isset($_POST['submit'])) {
              {
                   header("Location: pages/homepage.php?success=1");
                   
-         }
+             }
         
         } else {
             
             echo '<div class="alert alert-danger alert-dismissable" id="flash-msg">
-                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                <h4><i class="icon fa fa-times"></i>wrong password!</h4>
-                </div>';
-                echo mysqli_error($link);
+<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+<h4><i class="icon fa fa-times"></i>wrong password!</h4>
+</div>';
+echo mysqli_error($link);
              
         }
   
@@ -59,21 +60,27 @@ if(isset($_POST['notSubmit'])){
     
     $lat=$_SESSION['lat'];
     $lng=$_SESSION['lng'];
+
     $numplate = mysqli_real_escape_string($link,$_POST['numplate']);
     $region  = mysqli_real_escape_string($link,$_POST['region']);
     $phoneno  = mysqli_real_escape_string($link,$_POST['phoneno']);
     $description = mysqli_real_escape_string($link,$_POST['description']);
     $station = mysqli_real_escape_string($link,$_POST['station']);
     
-    $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`, `lat`, `lng`)
-     VALUES ('$numplate', '$description','$region','$station','$phoneno', '$lat', '$lng')";
+    $sql = "INSERT INTO `notifications`( `numPlate`, `description`, `regionID`,`stationID`, `phone`, `lat`, `lng`) VALUES ('$numplate', '$description','$region','$station','$phoneno', '$lat', '$lng')";
  
     mysqli_query($link, $sql);
-        echo "<script>"; 
-        echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
-        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-        <h4><i class="icon fa fa-check"></i>Incident Reported successfully!</h4>
-        </div>';
+   echo "<script>"; 
+  echo"Swal.fire({
+  title: 'Thankyou for reporting the incident. Our team has been dispatched',
+  showClass: {
+    popup: 'animated fadeInDown faster'
+  },
+  hideClass: {
+    popup: 'animated fadeOutUp faster'
+  }
+})";
+    echo"</script>";
 }
 
 ?>
@@ -275,7 +282,7 @@ if(isset($_POST['notSubmit'])){
                         </div>
 
 
-                        <div  class="text-center"><button style="display:none;" type="submit" id="notSubmit" name="notSubmit"
+                        <div align="center" class="text-center"><button style="display:none;" type="submit" id="notSubmit" name="notSubmit"
                                 class="btn btn-primary btn-lg showButton">Report</button>
                         </div>
 
@@ -302,3 +309,4 @@ if(isset($_POST['notSubmit'])){
 </body>
 
 </html>
+

@@ -3,9 +3,11 @@ ob_start();
 include '../includes/connection.php';
 include '../includes/head.php'; 
 require 'officer_name.php';
+
 $region = $_SESSION['regionID'];
 $station = $_SESSION['stationID'];
 $id =$_SESSION['userID'];
+
 $generalquery=mysqli_query($link, "SELECT * FROM notifications ORDER BY notificationID");
 $result= mysqli_fetch_assoc($generalquery);
 $getdate = $result['not_date'];
@@ -36,7 +38,7 @@ $getdate = $result['not_date'];
 
     //getting the number of cases handled by each officer
         $incidences=mysqli_query($link, "SELECT * FROM notifications WHERE status ='$id'");
-        $incidencesno= mysqli_num_rows($incidences);
+        $incedencesno= mysqli_num_rows($incidences);
 ?>
   
 
@@ -52,109 +54,116 @@ $getdate = $result['not_date'];
 <?php include '../includes/navbar.php'; ?>
 <!-- / .main-navbar -->
 <div class="main-content-container container-fluid px-4">
-<!-- Page Header -->
-<div class="page-header row no-gutters py-4">
-    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">Overview</span>
-        <h4 class="page-title" style="text-transform: uppercase;">
-        Reported incidences near <?= $stationName; ?>  station</h4>
+  <!-- Page Header -->
+  <div class="page-header row no-gutters py-4">
+      <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+          <span class="text-uppercase page-subtitle">Overview</span>
+          <h4 class="page-title" style="text-transform: uppercase;">
+          Reported incidences near <?= $stationName; ?>  station</h4>
 
-    </div>
-</div>
+      </div>
+  </div>
 <div class="row">
-<!-- Discussions Component -->
+  <!-- Discussions Component -->
 <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
 <div class="card card-small blog-comments">
 <div class="card-header border-bottom">
-<h6 class="m-0">Notifications</h6>
+  <h6 class="m-0">Notifications</h6>
 </div>
 <div class="card-body p-0">
 <!-- one item -->
+
+
 <?php
-while($result = mysqli_fetch_assoc($query)) :
-          $notfID=$result['notificationID'];
-          $status=$result['status'];
-        $numPlate=$result['numPlate'];
-        $description=$result['description'];
-        $phone=$result['phone'];
-          $report=$result['reportID'];
-?>                                    
-<div class="blog-comments__item d-flex p-3">
-  <div class="blog-comments__avatar mr-3">
-    <img src="images/saga.jpg" alt="User avatar" /> </div>
-  <div class="blog-comments__content">
-      <div class="blog-comments__meta text-muted">
-      <a class="text-secondary" href="#">Incident report on</a> vehicle number.
-      <a class="text-secondary" href="#"><?php echo $numPlate; ?></a>
-   <?php
-      // setting time last seen
-    $seconds_ago = (time() - strtotime('2019-12-12 06:27:00'));
+  while($result = mysqli_fetch_assoc($query)) :
+            $notfID=$result['notificationID'];
+            $status=$result['status'];
+          $numPlate=$result['numPlate'];
+          $description=$result['description'];
+          $phone=$result['phone'];
+            $report=$result['reportID'];
+  ?>
+                                  
+                                      
+  <div class="blog-comments__item d-flex p-3">
+    <div class="blog-comments__avatar mr-3">
+      <img src="images/saga.jpg" alt="User avatar" /> </div>
+    <div class="blog-comments__content">
+        <div class="blog-comments__meta text-muted">
+        <a class="text-secondary" href="#">Incident report on</a> vehicle number.
+        <a class="text-secondary" href="#"><?php echo $numPlate; ?></a>
 
-    if ($seconds_ago >= 31536000) {
-        
-    echo '<span class="text-muted">– ' . intval($seconds_ago / 31536000) .' years ago</span>';
-    } elseif ($seconds_ago >= 2419200) {
-        
-        echo '<span class="text-muted">– ' . intval($seconds_ago / 2419200) .' months ago</span>';
-    } elseif ($seconds_ago >= 86400) {
-      
-        echo '<span class="text-muted">– ' . intval($seconds_ago / 86400) .' days ago</span>';
-    } elseif ($seconds_ago >= 3600) {
-      
-        echo '<span class="text-muted">– ' . intval($seconds_ago / 3600) .' hours ago</span>';
-    } elseif ($seconds_ago >= 60) {
-        
-        echo '<span class="text-muted">– ' . intval($seconds_ago / 60) .' minutes ago</span>';
-    } else { 
-        
-        echo '<span class="text-muted">– Less than a minute ago </span>';
-    }
-        ?>  
-    </div>
-    <p class="m-0 my-1 mb-2 text-muted">Contact person <?php echo  $phone;?></p>
-    <p class="m-0 my-1 mb-2 text-muted"><?php echo  $description;?> ...</p>
-    <div class="blog-comments__actions">
-      <div class="btn-group btn-group-sm">
-        
-      <a href="?respond=<?= $notfID;?>">
-        <button type="button" class="btn btn-white text-success">
+        <?php
+        // setting time last seen
+      $seconds_ago = (time() - strtotime('2019-12-12 06:27:00'));
+
+      if ($seconds_ago >= 31536000) {
           
-        <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. 
-        '<a class="text-danger">Respond</a>':''.getName($status));?>
-        </button>
-      </a> 
-    <?php if($report == NULL){ ?>
-      <a href="report.php?not=<?= $notfID; ?>">
-          <button type="button" class="btn btn-white text-info">
-              <span class="text-info">
-                <i class="material-icons">info</i>
-              </span> Give Report </button>
-      </a>
-      <?php   
-
-      }else{
-      ?>
-    <a href="viewreport.php?notv=<?= $notfID; ?>">
-              <button type="button" class="btn btn-white text-info">
-                  <span class="text-info">
-                    <i class="material-icons">info</i>
-                  </span> View Report </button>
-              </a>
-              <?php
-  } ?>
-      
-      <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
-  <button type="button" class="btn btn-white text-warning">
-    <span class="text-warning">
-    <i class="material-icons ">my_location</i>
-    </span> View Map </button>
-    </a>  
-</div>
- </div>
-        </div>
+      echo '<span class="text-muted">– ' . intval($seconds_ago / 31536000) .' years ago</span>';
+      } elseif ($seconds_ago >= 2419200) {
+          
+          echo '<span class="text-muted">– ' . intval($seconds_ago / 2419200) .' months ago</span>';
+      } elseif ($seconds_ago >= 86400) {
+        
+          echo '<span class="text-muted">– ' . intval($seconds_ago / 86400) .' days ago</span>';
+      } elseif ($seconds_ago >= 3600) {
+        
+          echo '<span class="text-muted">– ' . intval($seconds_ago / 3600) .' hours ago</span>';
+      } elseif ($seconds_ago >= 60) {
+          
+          echo '<span class="text-muted">– ' . intval($seconds_ago / 60) .' minutes ago</span>';
+      } else { 
+          
+          echo '<span class="text-muted">– Less than a minute ago </span>';
+      }
+          ?>  
       </div>
-      <?php endwhile; ?>
+      <p class="m-0 my-1 mb-2 text-muted">Contact person <?php echo  $phone;?></p>
+      <p class="m-0 my-1 mb-2 text-muted"><?php echo  $description;?> ...</p>
+      <div class="blog-comments__actions">
+        <div class="btn-group btn-group-sm">
+          
+        <a href="?respond=<?= $notfID;?>">
+          <button type="button" class="btn btn-white text-success">
+            
+          <?=(($status == 0)?"<i class='material-icons text-danger'>alarm</i>" .' '. '<a class="text-danger">Respond</a>':''.getName($status));?>
+          
+            </button>
+        </a> 
+          <?php if($report == NULL){ ?>
+                  <a href="report.php?not=<?= $notfID; ?>">
+                      <button type="button" class="btn btn-white text-info">
+                          <span class="text-info">
+                            <i class="material-icons">info</i>
+                          </span> Give Report </button>
+                  </a>
+                                  <?php   
 
+                          }else{
+                          ?>
+                        <a href="viewreport.php?notv=<?= $notfID; ?>">
+                                  <button type="button" class="btn btn-white text-info">
+                                      <span class="text-info">
+                      <i class="material-icons">info</i>
+                                      </span> View Report </button>
+                                  </a>
+                                  <?php
+
+                                  } ?>
+            
+                          <a href="viewmap.php?id=<?= $notfID; ?>" target="_blank">
+                      <button type="button" class="btn btn-white text-warning">
+                        <span class="text-warning">
+                        <i class="material-icons ">my_location</i>
+                        </span> View Map </button>
+                        </a>  
+        </div>
+
+            </div>
+          </div>
+        </div>
+        <?php endwhile; ?>
+  
                   </div>
                   <div class="card-footer border-top">
                     <div class="row">
@@ -171,8 +180,7 @@ while($result = mysqli_fetch_assoc($query)) :
               <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
                 <div class="card card-small">
                   <div class="card-header border-bottom">
-                    <h6 class="m-0" style="text-transform: uppercase;">
-                    <?= $stationName; ?> Station</h6>
+                    <h6 class="m-0" style="text-transform: uppercase;"><?= $stationName; ?> Station</h6>
                   </div> 
 
                   <div class="card-header border-bottom">
@@ -184,8 +192,7 @@ while($result = mysqli_fetch_assoc($query)) :
                     
                       <li class="list-group-item-dark d-flex px-3">
                         <span class="text-semibold text-fiord-blue">Officer</span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">
-                        Cases</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">Cases</span>
                       </li>
                       
                       <?php
@@ -194,10 +201,8 @@ while($result = mysqli_fetch_assoc($query)) :
                              $lname=$resultO['lname'];
                             ?>
                       <li class="list-group-item d-flex px-3">
-                        <span class="text-semibold text-fiord-blue">
-                        <?= $fname; ?> <?= $lname; ?> </span>
-                        <span class="ml-auto text-right text-semibold text-reagent-gray">
-                        <?= $incidencesno; ?></span>
+                        <span class="text-semibold text-fiord-blue"><?= $fname; ?> <?= $lname; ?> </span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray"><?= $incedencesno; ?></span>
                       </li>
                       <?php endwhile; ?>
                      

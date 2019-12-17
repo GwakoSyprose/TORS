@@ -112,17 +112,6 @@
 
 </script>
 
-<<<<<<< HEAD
-    
-    
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/Chart.min.js"></script>
-    <script src="../js/shards.min.js"></script>
-    <script src="../js/jquery.sharrre.min.js"></script>
-    <script src="scripts/extras.1.1.0.min.js"></script>
-    <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
-    <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
-=======
 
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/Chart.min.js"></script>
@@ -134,7 +123,6 @@
 
 
 <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
->>>>>>> f230c1f10dae74d581c336182590c7ef27a82316
 <script src="../datatables/DataTables-1.10.18/js/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript" src="../js/inputmask/jquery.inputmask.js"></script>
 <script type="text/javascript" src="../multiselect/js/bootstrap-multiselect.js"></script>

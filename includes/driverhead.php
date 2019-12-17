@@ -30,6 +30,7 @@
     <!--  scripts -->
     <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
     <script src="../sweetalert/dist/sweetalert2.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery.js"></script>
     <script src='../fontawesome/js/all.js'></script>

@@ -52,7 +52,7 @@ INNER JOIN drivers d ON d.driverID =offences.driverID");
                                               <th scope="col" class="border-0">IncidentID</th>
                                                         <th scope="col" class="border-0">Offense</th>
                                                         <th scope="col" class="border-0">O-Type</th>
-                                                        <th scope="col" class="border-0">No.Plate</th>
+                                                        
                                                         <th scope="col" class="border-0">Driver</th>
                                                         
                                                         <th scope="col" class="border-0">BookedBy</th>
@@ -85,7 +85,7 @@ INNER JOIN drivers d ON d.driverID =offences.driverID");
                                                  <td id="id"><?= $id; ?></td>
                                                         <td id="id"><?= $offType; ?></td>
                                                         <td id="id"><?= $offName; ?></td>
-                                                        <td id="name"><?= $plate; ?></td>
+                                                       
                                                         <td id="name"><?= $driverfname; ?> <?= $driverlname; ?></td>
                                                        
                                                         <td id="type"><?= $officerfname; ?> <?= $officerlname; ?></td>
