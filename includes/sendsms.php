@@ -35,11 +35,6 @@
         $sql = "INSERT INTO sms (`phone`, `message`, `timeSent`)
                 VALUES ('$phoneno', '$message', '$timeSent');";
 
-        if ($link->query($sql) === TRUE) {
-        // echo "New record created successfully";
-        } else {
-        // echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
+       
     }
 ?>

@@ -103,12 +103,12 @@ if (isset ($_POST['submit'])) {
                                                         <div class="form-group col-md-12">
                                                             <label for="Password">Password</label>
                                                             <input type="password" class="form-control" name="password" placeholder="password" required> </div>
-                                                         <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-12">
                                                             <label for="Region">Region</label>
-                                                             
-         <select name="station" class="form-control" required >
-           <option disabled selected>Select Region</option>
-          <?php 
+
+                                                            <select name="station" class="form-control" required>
+                                                                <option disabled selected>Select Region</option>
+                                                                <?php 
         require_once '../includes/connection.php';
 
        $sql = "SELECT * FROM regions";
@@ -163,7 +163,7 @@ if (isset ($_POST['submit'])) {
                                                     </div>
 
 
-                                                    <button type="submit" name="submit"  class="btn btn-accent">Register</button>
+                                                    <button type="submit" name="submit" class="btn btn-accent">Register</button>
                                                 </form>
                                             </div>
                                         </div>

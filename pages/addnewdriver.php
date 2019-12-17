@@ -136,8 +136,7 @@ if(array_key_exists("submitL" , $_POST)) {
                      
                     <div class="page-header row no-gutters py-4">
                        
-                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">
-                        &nbsp;login here</a>
+                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">&nbsp;login here</a>
                     </div>
                     <div><?php echo $error; ?></div>
                     <div class="row">

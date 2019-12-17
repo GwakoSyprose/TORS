@@ -63,7 +63,7 @@ $pquery=$link->query($sql);
                   <span style="color: ;" >Incidences</span>
                 </a>
                    <li class="nav-item" style="background-color: transparent;">
-                <a class="nav-link " href="components-blog-posts.html">
+                <a class="nav-link " href="../pages/allreports.php">
                   <i class="material-icons">vertical_split</i>
                   <span style="color:">Reports</span>
                 </a>

@@ -71,7 +71,7 @@ $query=mysqli_query($link, "SELECT * FROM reports where notificationID=$id");
                         <!-- Input & Button Groups -->
                         <div class="card card-small mb-4 col-lg-12">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Report</h6>
+                                <h6 class="m-0">Report No.<?=$row['reportID'];?></h6>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item px-3">

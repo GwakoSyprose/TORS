@@ -105,8 +105,7 @@ include '../includes/head.php';
                         </div>
 
                     </div>
-                    <!-- End Page Header -->
-                    <!-- Default Light Table -->
+                    
                     <div class="row">
 
                         <div class="col-lg-12">
