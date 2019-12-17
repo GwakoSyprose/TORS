@@ -114,6 +114,7 @@ function getStations(val) {
     });
 }
 </script>
+
     
     
     <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -122,10 +123,7 @@ function getStations(val) {
     <script src="../js/jquery.sharrre.min.js"></script>
     <script src="scripts/extras.1.1.0.min.js"></script>
     <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
-
-    
-
-<script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
+    <script src="../datatables/jQuery-3.3.1/jquery-3.3.1.js" type="text/javascript"></script>
 <script src="../datatables/DataTables-1.10.18/js/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript" src="../js/inputmask/jquery.inputmask.js"></script>
 <script type="text/javascript" src="../multiselect/js/bootstrap-multiselect.js"></script>

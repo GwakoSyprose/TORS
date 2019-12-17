@@ -12,7 +12,7 @@ require '../checkadmin.php';
   //Delete category
 if (isset($_GET['delete']) && !empty($_GET['delete'])) {
   $delete_id=(int)$_GET['delete'];
-  $sql="DELETE FROM users WHERE userID='$delete_id'";
+  $sql="DELETE FROM users WHERE userID ='$delete_id'";
   $link->query($sql);
   header('Location: adminhome.php');
 
@@ -90,7 +90,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                                                 <td id="license"><?php echo $rank ?></td>
                                                 <td id="type"><?php echo $joined?></td>
                                                
-                                                <td><a  id="<?= $result['userID']; ?>" class="btn btn-xs btn-danger delete"><span class="glyphicon glyphicon-trash "> Delete </span></a></td>
+                                                <td><a  id="<?= $nid; ?>" class="btn btn-xs btn-danger delete"><span class="glyphicon glyphicon-trash "> Delete </span></a></td>
 
                                             </tr>
 

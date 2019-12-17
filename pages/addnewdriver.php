@@ -1,40 +1,24 @@
 <?php 
     include '../includes/connection.php'; 
-
-    
-
     include '../includes/driverhead.php'; 
     
-
-
- $error = "";
-
-
+$error = "";
 if(array_key_exists("submitS" , $_POST)) {
-
-  
-
-   $link = mysqli_connect('localhost','root','','tobs');
-
+  $link = mysqli_connect('localhost','root','','tobs');
    if(mysqli_connect_error()) {
-
     die ("Database Connection Error!");
    }
     // Escape user inputs for security
     else{
-        
-    
+         
     $file = $_FILES['profile'];
-    
     $fileName = $_FILES['profile']['name'];
     $fileTmpName = $_FILES['profile']['tmp_name'];
     $fileSize = $_FILES['profile']['size'];
     $fileError = $_FILES['profile']['error'];
     $fileType = $_FILES['profile']['type'];
-    
     $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
-    
     $allowed= array('jpg', 'jpeg', 'png','JPG');
     
     if(in_array($fileActualExt, $allowed)){
@@ -50,57 +34,45 @@ if(array_key_exists("submitS" , $_POST)) {
             
         }else{
             echo "There was an error in uploading your file";
-        }
-        
-        
+        }      
     }else{
         echo "You cannot upload files of this type";
     }
         
       $driverID = mysqli_real_escape_string($link, $_POST['driverID']);
-    
-    $fname = mysqli_real_escape_string($link, $_POST['fname']);
-    $lname = mysqli_real_escape_string($link, $_POST['lname']);
-    $licence = mysqli_real_escape_string($link, $_POST['licence']);
-    $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
-    $email= mysqli_real_escape_string($link, $_POST['email']);
-    $password= mysqli_real_escape_string($link, $_POST['password1']);
-        
-    
-    $type = mysqli_real_escape_string($link, $_POST['type']);
-    
-    $profile = $_FILES['profile']['name'];
-    $date = mysqli_real_escape_string($link, $_POST['date']);
-    
-
+      $fname = mysqli_real_escape_string($link, $_POST['fname']);
+      $lname = mysqli_real_escape_string($link, $_POST['lname']);
+      $licence = mysqli_real_escape_string($link, $_POST['licence']);
+      $phoneno = mysqli_real_escape_string($link, $_POST['phone']);
+      $email= mysqli_real_escape_string($link, $_POST['email']);
+      $password= mysqli_real_escape_string($link, $_POST['password1']);
+      $type = mysqli_real_escape_string($link, $_POST['type']);
+      $profile = $_FILES['profile']['name'];
+      $date = mysqli_real_escape_string($link, $_POST['date']);
     }
 
-
-
-    
     $resulti = mysqli_query($link, "SELECT * FROM drivers WHERE driverID='$driverID'");
     $num_rows = mysqli_num_rows($resulti);
 
 if ($num_rows > 0) {
           $error.='<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Error! </strong>National ID exists.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
+                <strong>Error! </strong>National ID exists.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>';
     
 }
 else {
       $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-         $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
-            VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno','$email','$hashedPwd', '$type', '0','$profile',  '$date')";
-      mysqli_query($link, $query);
+         $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, 
+         `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
+            VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno',
+            '$email','$hashedPwd', '$type', '0','$profile',  '$date')";
+            mysqli_query($link, $query);
 }
-     
     
-       
-
   }
 if(array_key_exists("submitL" , $_POST)) {
      $dID = mysqli_real_escape_string($link, $_POST['driverID']);
@@ -128,40 +100,24 @@ if(array_key_exists("submitL" , $_POST)) {
           //De-hashing the password!
         if(password_verify($password, $row['password'])){
     
-                    $_SESSION['driverID'] = $row['driverID'];
-    
-           
-                  header("Location: ../pages/driverview.php?success=1");
-                  
-             
+                    $_SESSION['driverID'] = $row['driverID'];         
+                  header("Location: ../pages/driverview.php?success=1");        
         
         } else {
             
             echo '<div class="alert alert-danger alert-dismissable" id="flash-msg">
-<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-<h4><i class="icon fa fa-times"></i>wrong password!</h4>
-</div>';
-echo mysqli_error($link);
-             
-
-        }
-  
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <h4><i class="icon fa fa-times"></i>wrong password!</h4>
+                </div>';
+        echo mysqli_error($link);
+              }
       }
-
-
   }
 
 }
 
-  
-
- 
 }
-       
-    
-   
-
-
+  
     ?>
 
 
@@ -180,7 +136,8 @@ echo mysqli_error($link);
                      
                     <div class="page-header row no-gutters py-4">
                        
-                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">&nbsp;login here</a>
+                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">
+                        &nbsp;login here</a>
                     </div>
                     <div><?php echo $error; ?></div>
                     <div class="row">
