@@ -47,8 +47,6 @@ if (isset ($_POST['submitCat'])) {
           echo "</script>";
 
 
-     
-
     }
 
 }
@@ -109,14 +107,14 @@ if (isset ($_POST['submitType'])) {
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
                         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                           
+
                             <h3 class="page-title">New Offence Category</h3>
                         </div>
                     </div>
                     <!-- End Page Header -->
-                   
+
                     <div class="row">
-                    	 <!-- new category -->
+                        <!-- new category -->
                         <div class="col-lg-10 offset-md-1 ">
                             <div class="card card-small mb-4">
                                 <div class="card-header border-bottom">
@@ -128,11 +126,11 @@ if (isset ($_POST['submitType'])) {
                                             <div class="col">
                                                 <form action="addoffence.php" method="post">
                                                     <div class="form-row">
-                                                        
+
                                                         <div class="form-group col-md-12">
                                                             <label for="Name">Offence Category</label>
                                                             <input type="text" class="form-control" name="oCategory" placeholder="Offence Category" required> </div>
-                                                       
+
                                                     </div>
                                                     <button type="submit" name="submitCat" value="sign up!" class="btn btn-success">Add</button>
                                                 </form>
@@ -144,7 +142,7 @@ if (isset ($_POST['submitType'])) {
                         </div>
                         <!-- end new category -->
                         <!-- new offence -->
-                         <div class="col-lg-10 offset-md-1 ">
+                        <div class="col-lg-10 offset-md-1 ">
                             <div class="card card-small mb-4">
                                 <div class="card-header border-bottom">
                                     <h6 class="m-0">New Offence Type</h6>
@@ -155,16 +153,16 @@ if (isset ($_POST['submitType'])) {
                                             <div class="col">
                                                 <form action="addoffence.php" method="post">
                                                     <div class="form-row">
-                                                        
-                                                      
+
+
                                                         <div class="form-group col-md-6">
                                                             <label for="Rank">Offence Category</label>
 
                                                             <select id="Type" class="form-control" name="category" required>
                                                                 <option value="" disabled selected>Select Category</option>
-                                                               <?php while($category=mysqli_fetch_assoc($result)): ?>
-																<option value="<?=$category['ocID'];?>"> <?=$category['catName'];?></option>
-																<?php endwhile; ?>
+                                                                <?php while($category=mysqli_fetch_assoc($result)): ?>
+                                                                <option value="<?=$category['ocID'];?>"> <?=$category['catName'];?></option>
+                                                                <?php endwhile; ?>
 
                                                             </select>
 
@@ -172,10 +170,10 @@ if (isset ($_POST['submitType'])) {
                                                         <div class="form-group col-md-12">
                                                             <label for="otype">Offence Type</label>
                                                             <input type="text" class="form-control" name="oType" placeholder="offence name" required> </div>
-                                                          <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-12">
                                                             <label for="ovalue">Offence Value</label>
                                                             <input type="number" class="form-control" name="oValue" placeholder="offence value" required> </div>
-                                                       
+
                                                     </div>
                                                     <button type="submit" name="submitType" value="sign up!" class="btn btn-success">Add</button>
                                                 </form>
@@ -185,12 +183,12 @@ if (isset ($_POST['submitType'])) {
                                 </ul>
                             </div>
                         </div>
-                         <!-- end new offence -->
+                        <!-- end new offence -->
                     </div>
                     <!-- End Default Light Table -->
                 </div>
 
-               
+
                 <?php 
     include '../includes/footer.php'; 
    

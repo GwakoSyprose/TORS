@@ -1,8 +1,6 @@
 <?php 
     include  '../includes/connection.php'; 
-
     include  '../includes/adminsidenav.php';
-
     include  '../includes/head.php'; 
     require '../checkadmin.php';
     include  '../includes/navbar.php';
@@ -17,8 +15,6 @@ if (isset ($_POST['submit'])) {
    $station = mysqli_real_escape_string($link, $_POST['station']);
    $date = mysqli_real_escape_string($link, $_POST['regDate']);
    $email = mysqli_real_escape_string($link, $_POST['email']);
-  
-
   
 
   //Error Handlers
@@ -53,15 +49,10 @@ if (isset ($_POST['submit'])) {
           echo "</script>";
 
      
-
     }
 
 }
 } 
-
-
-
-
 
 
 ?>
@@ -115,12 +106,12 @@ if (isset ($_POST['submit'])) {
                                                         <div class="form-group col-md-12">
                                                             <label for="Password">Password</label>
                                                             <input type="password" class="form-control" name="password" placeholder="password" required> </div>
-                                                         <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-12">
                                                             <label for="Region">Region</label>
-                                                             
-         <select name="station" class="form-control" required >
-           <option disabled selected>Select Region</option>
-          <?php 
+
+                                                            <select name="station" class="form-control" required>
+                                                                <option disabled selected>Select Region</option>
+                                                                <?php 
         require_once '../includes/connection.php';
 
        $sql = "SELECT * FROM regions";
@@ -133,29 +124,30 @@ if (isset ($_POST['submit'])) {
         } else {
         }
           ?>
-        </select>
-      </div>
+                                                            </select>
+                                                        </div>
 
 
-                                                  <!-- picking stations for a specific region -->
-<?php include "../includes/connection.php"; ?>
-<script>
-function getStations(val) {
-    $.ajax({
-    type: "POST",
-    url: "../includes/getstations.php",
-    data:'regionID='+val,
-    success: function(data){
-        $("#stations").html(data);
-    }
-    });
-}
-</script>
-                                                         <div class="form-group col-md-12">
+                                                        <!-- picking stations for a specific region -->
+                                                        <?php include "../includes/connection.php"; ?>
+                                                        <script>
+                                                            function getStations(val) {
+                                                                $.ajax({
+                                                                    type: "POST",
+                                                                    url: "../includes/getstations.php",
+                                                                    data: 'regionID=' + val,
+                                                                    success: function(data) {
+                                                                        $("#stations").html(data);
+                                                                    }
+                                                                });
+                                                            }
+
+                                                        </script>
+                                                        <div class="form-group col-md-12">
                                                             <label for="station">Station</label>
                                                             <select class="form-control" name="station" id="stations">
-                              <option  value="">Select Station</option>
-                              </select></div>
+                                                                <option value="">Select Station</option>
+                                                            </select></div>
                                                         <div class="form-group col-md-6">
                                                             <label for="Rank">Rank</label>
 
@@ -174,7 +166,7 @@ function getStations(val) {
                                                     </div>
 
 
-                                                    <button type="submit" name="submit"  class="btn btn-accent">Register</button>
+                                                    <button type="submit" name="submit" class="btn btn-accent">Register</button>
                                                 </form>
                                             </div>
                                         </div>

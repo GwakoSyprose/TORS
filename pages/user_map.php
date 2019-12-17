@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Google maps</title>
-<style>
-
-    /* Optional: Makes the sample page fill the window. */
- /* Always set the map height explicitly to define the size of the div
+    <style>
+        /* Optional: Makes the sample page fill the window. */
+        /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
-    #map {
-        height: 100%;
-    }
-    #map { position:relative;left: 0px; top:0px; margin-bottom:0px;min-height:500px ;width:100%; }
+        #map {
+            height: 100%;
+        }
+
+        #map {
+            position: relative;
+            left: 0px;
+            top: 0px;
+            margin-bottom: 0px;
+            min-height: 500px;
+            width: 100%;
+        }
+
     </style>
 </head>
+
 <body>
-<?php
+    <?php
 include 'locations_model.php';
 ?>
 
-<script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyDrwYw0xknAPHulr7jO43_9WsE-ME46do0">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyDrwYw0xknAPHulr7jO43_9WsE-ME46do0">
     </script>
 
     <div id="map"></div>
@@ -40,8 +49,8 @@ include 'locations_model.php';
          */
         var infowindow;
         var map;
-        var red_icon =  'http://maps.google.com/mapfiles/ms/icons/red-dot.png' ;
-        var purple_icon =  'images/pin.png' ;
+        var red_icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+        var purple_icon = 'images/pin.png';
         var locations = <?php get_confirmed_locations() ?>;
         var myOptions = {
             zoom: 17,
@@ -64,7 +73,7 @@ include 'locations_model.php';
          * @param {!number} lng Longitude.
          * @return {string} Concatenated marker id.
          */
-        var getMarkerUniqueId= function(lat, lng) {
+        var getMarkerUniqueId = function(lat, lng) {
             return lat + '_' + lng;
         };
 
@@ -91,14 +100,14 @@ include 'locations_model.php';
                 map: map,
                 animation: google.maps.Animation.DROP,
                 id: 'marker_' + markerId,
-                html: "    <div id='info_"+markerId+"'>\n" +
-                "        <table class=\"map1\">\n" +
-                "            <tr>\n" +
-                "                <td><a>Description:</a></td>\n" +
-                "                <td><textarea  id='manual_description' placeholder='Description'></textarea></td></tr>\n" +
-                "            <tr><td></td><td><input type='button' value='Save' onclick='saveData("+lat+","+lng+")'/></td></tr>\n" +
-                "        </table>\n" +
-                "    </div>"
+                html: "    <div id='info_" + markerId + "'>\n" +
+                    "        <table class=\"map1\">\n" +
+                    "            <tr>\n" +
+                    "                <td><a>Description:</a></td>\n" +
+                    "                <td><textarea  id='manual_description' placeholder='Description'></textarea></td></tr>\n" +
+                    "            <tr><td></td><td><input type='button' value='Save' onclick='saveData(" + lat + "," + lng + ")'/></td></tr>\n" +
+                    "        </table>\n" +
+                    "    </div>"
             });
             markers[markerId] = marker; // cache marker in markers object
             bindMarkerEvents(marker); // bind right click event to marker
@@ -110,7 +119,7 @@ include 'locations_model.php';
          * @param {!google.maps.Marker} marker A google.maps.Marker instance that the handler will binded.
          */
         var bindMarkerinfo = function(marker) {
-            google.maps.event.addListener(marker, "click", function (point) {
+            google.maps.event.addListener(marker, "click", function(point) {
                 var markerId = getMarkerUniqueId(point.latLng.lat(), point.latLng.lng()); // get marker id by using clicked point's coordinate
                 var marker = markers[markerId]; // find marker
                 infowindow = new google.maps.InfoWindow();
@@ -125,7 +134,7 @@ include 'locations_model.php';
          * @param {!google.maps.Marker} marker A google.maps.Marker instance that the handler will binded.
          */
         var bindMarkerEvents = function(marker) {
-            google.maps.event.addListener(marker, "rightclick", function (point) {
+            google.maps.event.addListener(marker, "rightclick", function(point) {
                 var markerId = getMarkerUniqueId(point.latLng.lat(), point.latLng.lng()); // get marker id by using clicked point's coordinate
                 var marker = markers[markerId]; // find marker
                 removeMarker(marker, markerId); // remove it
@@ -146,28 +155,29 @@ include 'locations_model.php';
         /**
          * loop through (Mysql) dynamic locations to add markers to map.
          */
-        var i ; var confirmed = 0;
+        var i;
+        var confirmed = 0;
         for (i = 0; i < locations.length; i++) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map,
-                icon :   locations[i][4] === '1' ?  red_icon  : purple_icon,
+                icon: locations[i][4] === '1' ? red_icon : purple_icon,
                 html: "<div>\n" +
-                "<table class=\"map1\">\n" +
-                "<tr>\n" +
-                "<td><a>Description:</a></td>\n" +
-                "</tr>\n" +
-                "</table>\n" +
-                "</div>"
+                    "<table class=\"map1\">\n" +
+                    "<tr>\n" +
+                    "<td><a>Description:</a></td>\n" +
+                    "</tr>\n" +
+                    "</table>\n" +
+                    "</div>"
             });
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                     infowindow = new google.maps.InfoWindow();
-                    confirmed =  locations[i][3] === '1' ?  'checked'  :  0;
-                    $("#confirmed").prop(confirmed,locations[i][3]);
+                    confirmed = locations[i][3] === '1' ? 'checked' : 0;
+                    $("#confirmed").prop(confirmed, locations[i][3]);
                     $("#id").val(locations[i][0]);
-                   
+
                     $("#form").show();
                     infowindow.setContent(marker.html);
                     infowindow.open(map, marker);
@@ -180,19 +190,19 @@ include 'locations_model.php';
          * @param lat  A latitude of marker.
          * @param lng A longitude of marker.
          */
-        function saveData(lat,lng) {
+        function saveData(lat, lng) {
             var description = document.getElementById('manual_description').value;
             var url = 'locations_model.php?add_location&description=' + description + '&lat=' + lat + '&lng=' + lng;
             downloadUrl(url, function(data, responseCode) {
-                if (responseCode === 200  && data.length > 1) {
-                    var markerId = getMarkerUniqueId(lat,lng); // get marker id by using clicked point's coordinate
+                if (responseCode === 200 && data.length > 1) {
+                    var markerId = getMarkerUniqueId(lat, lng); // get marker id by using clicked point's coordinate
                     var manual_marker = markers[markerId]; // find marker
                     manual_marker.setIcon(purple_icon);
                     infowindow.close();
                     infowindow.setContent("<div style=' color: purple; font-size: 25px;'> Location set!</div>");
                     infowindow.open(map, manual_marker);
 
-                }else{
+                } else {
                     console.log(responseCode);
                     console.log(data);
                     infowindow.setContent("<div style='color: red; font-size: 25px;'>Inserting Errors</div>");
@@ -215,14 +225,11 @@ include 'locations_model.php';
             request.send(null);
         }
 
-
     </script>
 
 
 
 
 </body>
+
 </html>
-
-    
-

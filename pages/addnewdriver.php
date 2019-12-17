@@ -1,12 +1,11 @@
 <?php 
+
+ob_start();
     include '../includes/connection.php'; 
 
-    
-
+ 
     include '../includes/driverhead.php'; 
     
-
-
  $error = "";
 
 
@@ -128,41 +127,31 @@ if(array_key_exists("submitL" , $_POST)) {
           //De-hashing the password!
         if(password_verify($password, $row['password'])){
     
-                    $_SESSION['driverID'] = $row['driverID'];
+        $_SESSION['driverID'] = $row['driverID'];
     
            
-                  header('location:../pages/driverview.php?pid='.$id.'&success=1');;
+        exit(header('location:../pages/driverview.php?pid='.$id.'&success=1'));
                   
              
         
         } else {
             
             echo '<div class="alert alert-danger alert-dismissable" id="flash-msg">
-<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-<h4><i class="icon fa fa-times"></i>wrong password!</h4>
-</div>';
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <h4><i class="icon fa fa-times"></i>wrong password!</h4>
+                </div>';
 echo mysqli_error($link);
              
 
         }
   
       }
-
-
   }
 
 }
 
-  
-
- 
 }
-       
-    
-   
-
-
-    ?>
+       ?>
 
 
 <body class="h-100">
@@ -177,10 +166,10 @@ echo mysqli_error($link);
                 <!-- / .main-navbar -->
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
-                     
+
                     <div class="page-header row no-gutters py-4">
-                       
-                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#myModal">&nbsp;login here</a>
+
+                        Already registered? View your profile<a href="" data-toggle="modal" data-target="#ModalExample">&nbsp;login here</a>
                     </div>
                     <div><?php echo $error; ?></div>
                     <div class="row">
@@ -305,37 +294,44 @@ echo mysqli_error($link);
                                 </li>
                             </ul>
                         </div>
-                        <div id="myModal" class="modal fade">
-                            <div class="modal-dialog modal-login">
+                        <!-- Modal HTML Markup -->
+                        <div id="ModalExample" class="modal fade">
+                            <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Member Login</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-xs-center">Login</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="dummy.php" method="post">
+                                        <form role="form" method="POST" action="addnewdriver.php">
+                                            <input type="hidden" name="_token" value="">
                                             <div class="form-group">
-                                                <i class="fa fa-user"></i>
-                                                <input type="text" class="form-control" name='username' placeholder="Username" required="required">
+                                                <label class="control-label">National ID</label>
+                                                <div>
+                                                    <input type="text" class="form-control input-lg" name="driverID">
+                                                </div>
                                             </div>
                                             <div class="form-group">
-                                                <i class="fa fa-lock"></i>
-                                                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                                <label class="control-label">Password</label>
+                                                <div>
+                                                    <input type="password" class="form-control input-lg" name="password">
+                                                </div>
                                             </div>
+
                                             <div class="form-group">
-                                                <input type="submit" name="login" class="btn btn-primary btn-block btn-lg" value="Login">
+                                                <div>
+
+                                                    <button type="submit" name="submitL" class="btn btn-info btn-block">Login</button>
+                                                </div>
                                             </div>
                                         </form>
-
                                     </div>
-                                    <div class="modal-footer">
-                                        <a href="#">Forgot Password?</a>
+                                    <div class="modal-footer text-xs-center">
+                                        Don't have an account? <a href="/auth/register">Sign up »</a>
                                     </div>
-                                </div>
-                            </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
                         </div>
-                    </div>
-                    <!-- / Input & Button Groups -->
+                    </div> <!-- / Input & Button Groups -->
 
                 </div>
 

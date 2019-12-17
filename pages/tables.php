@@ -98,7 +98,7 @@ include  ('../includes/connection.php');
                                                 <td id="count"><?php echo $count ?> </td>
 
                                                 <td id="date"><?php echo $date ?> </td>
-                                                 <td id="date"><a data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>View</button> </a></td>
+                                                <td id="date"><a data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>View</button> </a></td>
 
                                                 <?php endwhile; ?>
                                             </tr>
@@ -127,8 +127,8 @@ include  ('../includes/connection.php');
                                                 <th>Offence Count</th>
                                                 <th>Registration Date</th>
                                                 <th>Action</th>
-                                                
-                                                
+
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -153,7 +153,7 @@ include  ('../includes/connection.php');
                                                 <td id="count"><?php echo $count ?> </td>
 
                                                 <td id="date"><?php echo $date ?> </td>
-                                                 <td id="date"><a data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>View</button> </a></td>
+                                                <td id="date"><a data-toggle="modal" data-target="#centralModalWarning" onclick="detailsmodal(<?=$result['driverID']; ?>)"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>View</button> </a></td>
 
                                                 <?php endwhile; ?>
                                             </tr>
@@ -192,9 +192,8 @@ include  ('../includes/connection.php');
                                 }
                             });
                         }
-
                     </script>
-                   
+
                     <script type="text/javascript">
                         $(document).ready(function() {
                             $('#example').DataTable({
@@ -205,8 +204,6 @@ include  ('../includes/connection.php');
                                 }]
                             });
                         });
-
-                      
                     </script>
                     <script type="text/javascript">
                         $(document).ready(function() {
@@ -218,10 +215,8 @@ include  ('../includes/connection.php');
                                 }]
                             });
                         });
-
-                      
                     </script>
-                    
+
 
 
                     <script>
@@ -230,7 +225,6 @@ include  ('../includes/connection.php');
                                 window.location = $(this).data("href");
                             });
                         });
-
                     </script>
                     <?php 
     include '../includes/footer.php'; 

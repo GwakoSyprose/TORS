@@ -80,15 +80,15 @@ WHERE d.driverID = '$id' ";
         } else {
             echo "Error updating record: " . $link->error;
         }
-            echo"<script>"; 
-  echo"Swal.fire({
-  position: 'top-end',
-  icon: 'success',
-  title: 'Your password has been changed',
-  showConfirmButton: false,
-  timer: 3000
-})";
-    echo"</script>";
+          echo"<script>"; 
+          echo"Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your password has been changed',
+          showConfirmButton: false,
+          timer: 3000
+        })";
+            echo"</script>";
             header("Location: viewdriver.php?pid=$id; &success=1");
          
 
@@ -97,16 +97,10 @@ WHERE d.driverID = '$id' ";
             }
           }
 
-
-
-       
     } else {
         echo "Error: ". $link->error;
     }
 
-
-     
-  
     ?>
 
 <body class="h-100">
@@ -130,8 +124,7 @@ WHERE d.driverID = '$id' ";
                         </div>
 
                     </div>
-                    <!-- End Page Header -->
-                    <!-- Default Light Table -->
+                    
                     <div class="row">
 
                         <div class="col-lg-12">
@@ -181,18 +174,10 @@ WHERE d.driverID = '$id' ";
                                                                 }
                                                                 ?>
                                                 </select>
-                                                <!-- <script type="text/javascript">
-                                                    $(document).ready(function () {
-      $('#select-state').selectize({
-          sortField: 'text'
-      });
-  });
-                                                </script> -->
+                               
                                             </div>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
-
-
 
                                                             $("#numplate").inputmask("aaa-999a"); //static mask
 
@@ -206,12 +191,7 @@ WHERE d.driverID = '$id' ";
                                             </div>
                                                <button type="submit" class="btn btn-outline-info" name="submit"
                                               >Submit</button> 
-                                                                                        
-                                            
-                                            
-
-
-
+                                                 
                                                 </form>
                                             </div>
                                         </div>

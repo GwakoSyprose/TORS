@@ -19,7 +19,7 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
  }
 
 ?>
-  
+
 
 
 <body class="h-100">
@@ -41,34 +41,34 @@ $query=mysqli_query($link, "SELECT * FROM notifications WHERE regionID='$region'
 
                         </div>
                     </div>
-                <div class="row">
-                    <!-- Discussions Component -->
-              <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <div class="card card-small blog-comments">
-                  <div class="card-header border-bottom">
-                    <h6 class="m-0"></h6>
-                  </div>
-                  <div class="card-body p-0">
-                  <!-- one item -->
+                    <div class="row">
+                        <!-- Discussions Component -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                            <div class="card card-small blog-comments">
+                                <div class="card-header border-bottom">
+                                    <h6 class="m-0"></h6>
+                                </div>
+                                <div class="card-body p-0">
+                                    <!-- one item -->
 
-                 
 
-<?php
+
+                                    <?php
 
 require 'user_map.php';
 
-?>	
-              
-                   
-                  </div>
-                  
-                </div>
-              </div>
-         
-          </div>
-          </div>
+?>
 
-                  
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
                 <?php 
     include '../includes/footer.php'; 
    

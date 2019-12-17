@@ -24,6 +24,7 @@ if(array_key_exists("submit" , $_POST)) {
     $owner1 = mysqli_real_escape_string($link, $_POST['owner1']);
     $id1= mysqli_real_escape_string($link, $_POST['idno1']);
     $owner2= mysqli_real_escape_string($link, $_POST['owner2']);
+    $station= mysqli_real_escape_string($link, $_POST['station']);
     $id2= mysqli_real_escape_string($link, $_POST['idno2']);   
     $company= mysqli_real_escape_string($link, $_POST['company']);   
     $complete = mysqli_real_escape_string($link, $_POST['ans']);
@@ -36,8 +37,8 @@ if(array_key_exists("submit" , $_POST)) {
     $notID=mysqli_real_escape_string($link, $_POST['custId']);
         
         
-         $query = "INSERT INTO reports(`date`,`notificationID`,`vehicle1`,`vehicle2`, `make`, `make2`, `owner`, `owner2`, `ownerid1`, `ownerid2`,`insurance`,`investigationstatus`,`charged`,`ruleviolated`,`injuredpersons`,`fatalities`,`witness1`,`witness2`,`status`)
-            VALUES ('$date','$notID','$vehicle1','$vehicle2','$make1','$make2','$owner1','$owner2','$id1','$id2','$company','$complete','$charge','$rule','$injuries','$fatalities','$witness1','$witness2','1')";
+         $query = "INSERT INTO reports(`date`,`notificationID`,`vehicle1`,`vehicle2`, `make`, `make2`, `owner`, `owner2`, `ownerid1`, `ownerid2`,`station`,`insurance`,`investigationstatus`,`charged`,`ruleviolated`,`injuredpersons`,`fatalities`,`witness1`,`witness2`,`status`)
+            VALUES ('$date','$notID','$vehicle1','$vehicle2','$make1','$make2','$owner1','$owner2','$id1','$id2','$station','$company','$complete','$charge','$rule','$injuries','$fatalities','$witness1','$witness2','1')";
         $sql= mysqli_query($link, $query);
 
         
@@ -47,7 +48,7 @@ if(array_key_exists("submit" , $_POST)) {
 ?>
 
 
-<body class="h-100">  
+<body class="h-100">
 
     <div class="container-fluid">
         <div class="row">
@@ -65,7 +66,7 @@ if(array_key_exists("submit" , $_POST)) {
                             <h3 class="page-title">Abstract from police on a road accident</h3>
 
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <!-- Input & Button Groups -->
@@ -125,7 +126,7 @@ if(array_key_exists("submit" , $_POST)) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Name of police station reported</span>
                                                 </div>
-                                                <input type="text" class="form-control" name="station" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" name="station" placeholder="">
                                             </div>
                                             <div class="col-lg-12">
                                                 <strong class="text-muted d-block mb-2">Vehicle Owners</strong></div>
@@ -176,11 +177,11 @@ if(array_key_exists("submit" , $_POST)) {
                                             </div>
                                             <br>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" Value="yes" id="inlineCheckbox1" name="ans" >
+                                                <input class="form-check-input" type="radio" Value="yes" id="inlineCheckbox1" name="ans">
                                                 <label class="form-check-label" for="inlineCheckbox1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" Value="no" name="ans" id="inlineCheckbox2" >
+                                                <input class="form-check-input" type="radio" Value="no" name="ans" id="inlineCheckbox2">
                                                 <label class="form-check-label" for="inlineCheckbox2">No</label>
                                             </div>
                                         </div>
@@ -190,7 +191,7 @@ if(array_key_exists("submit" , $_POST)) {
                                             </div>
                                             <br>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="ans2"  Value="yes" id="inlineCheckbox1" >
+                                                <input class="form-check-input" type="radio" name="ans2" Value="yes" id="inlineCheckbox1">
                                                 <label class="form-check-label" for="inlineCheckbox1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
@@ -208,7 +209,7 @@ if(array_key_exists("submit" , $_POST)) {
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Number of persons injured if any</span>
                                             </div>
-                                            <input type="number" class="form-control" name="injuries"  placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
+                                            <input type="number" class="form-control" name="injuries" placeholder="" aria-label="Name of insurance company" aria-describedby="basic-addon1">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">

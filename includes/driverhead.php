@@ -28,7 +28,7 @@
 
     <!--  scripts -->
     <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
-     <script src="../sweetalert/dist/sweetalert2.min.js"></script>
+    <script src="../sweetalert/dist/sweetalert2.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery.js"></script>
     <script src='../fontawesome/js/all.js'></script>
@@ -139,7 +139,7 @@
         function printContent(el) {
             var restorepage = $('body').html();
             var printcontent = $('#' + el).clone();
-             var printContent = document.querySelectorAll('a').forEach(a => img.remove());
+            var printContent = document.querySelectorAll('a').forEach(a => img.remove());
             var enteredtext = $('#text').val();
             $('body').empty().html(printcontent);
             window.print();

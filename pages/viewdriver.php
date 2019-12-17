@@ -20,7 +20,7 @@
 
 <body class="h-100">
 
-   
+
     <div class="container-fluid">
         <div class="row">
             <!-- Main Sidebar -->
@@ -32,7 +32,7 @@
                     <?php include '../includes/navbar.php'; ?>
                 </div>
                 <!-- / .main-navbar -->
-                
+
                 <div class="main-content-container container-fluid px-4">
                     <!-- Page Header -->
                     <div class="page-header row no-gutters py-4">
@@ -40,6 +40,9 @@
                             <span class="text-uppercase page-subtitle">Overview</span>
                             <h3 class="page-title">Driver Details</h3>
                         </div>
+
+
+
                     </div>
                     <!-- End Page Header -->
                     <!-- Default Light Table -->
@@ -54,20 +57,20 @@
                                     echo "<img src='images/".$driver['profileImage']."' width=200 height=200 >";
                                     
                                      ?> </div>
-                                  
+
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item px-4">
                                             <div class="progress-wrapper">
                                                 <strong class="text-muted d-block mb-2">Infringement rate</strong>
-                                                   <?php 
+                                                <?php 
                                                         $percentage = round((($driver['offenceCount'] / 12) * 100));
                                                         
                                                         ?>
                                                 <div class="progress progress-sm">
                                                     <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: <?= $percentage;?>%;">
-                                                       <!-- calculating infrigement rate -->
-                                                     
-                                                        
+                                                        <!-- calculating infrigement rate -->
+
+
                                                         <span class="progress-value"><?= $percentage;?>%</span>
                                                     </div>
                                                 </div>
@@ -98,11 +101,7 @@
                                                 <h6 class="font-weight-bold text-center">Personal Details</h6>
                                                 <ul>
                                                     <table class="table table-striped table-borderless">
-                                                        <div class="col-md-3" style="float:right;" >
-                                                            <form method="post">
-                                                                <input type="button" name="generate_pdf" class="btn btn-success"  onclick="PrintMe('divid')" value="Generate PDF" />
-                                                            </form>
-                                                        </div>
+
 
                                                         <tbody>
                                                             <tr>
@@ -123,11 +122,11 @@
                                                             </tr>
                                                             <tr>
 
-            <td class="font-weight-bold">Offence Count</td>
-            <td><?= $driver['offenceCount']; ?></td>
+                                                                <td class="font-weight-bold">Offence Count</td>
+                                                                <td><?= $driver['offenceCount']; ?></td>
 
 
-            </tr>
+                                                            </tr>
                                                             <tr>
 
                                                                 <td class="font-weight-bold">Status</td>
@@ -135,13 +134,13 @@
 
 
                                                             </tr>
-                                                      
+
                                                             <tr>
 
                                                                 <td class="font-weight-bold">Fine</td>
                                                                 <td><?= 'Required to pay: '.$driver['fine']; ?>
-                                                                
-                                                                <?php 
+
+                                                                    <?php 
 
                                                               
                                                                     if($driver['fine'] > 0.00 ){
@@ -152,15 +151,15 @@
                                                                         sendSms("254706960287",$sms);
                                                                     }
                                                                 ?>
-                                                                
+
                                                                 </td>
 
 
                                                             </tr>
                                                             <tr>
 
-<td class="font-weight-bold">Court</td>
-<?php
+                                                                <td class="font-weight-bold">Court</td>
+                                                                <?php
 $date_to = "";
 $count = 0;
 $ssql = "SELECT drivers.`driverID`, drivers.`dfname`,offences.`offenceID`,offence_types.`otID`,offence_types.`status` FROM
@@ -174,7 +173,7 @@ if ($result->num_rows > 0) {
      
 }
 ?>
-<td><?php if($count > 0){
+                                                                <td><?php if($count > 0){
  echo $driver['date_to_court'];
  echo "\t" ;
  if(isset($_POST['date_to_see'])){
@@ -193,16 +192,16 @@ if ($result->num_rows > 0) {
  }
 ?>
 
-<form method="post" class="form-inline">
-<div class="form-group col-md-6">
-    <input type="date" name="date_to_see" value="<?=(date('Y-m-d'))?>" class="form-control" required>
-</div>
-    <input type="hidden" name="driver" value="<?php echo $id; ?>" required>
-<div class="form-group col-md-6">
-    <input type="submit" class="btn btn-danger" value="Set Court Date">
-    </div>
-</form>
-<?php
+                                                                    <form method="post" class="form-inline">
+                                                                        <div class="form-group col-md-6">
+                                                                            <input type="date" name="date_to_see" value="<?=(date('Y-m-d'))?>" class="form-control" required>
+                                                                        </div>
+                                                                        <input type="hidden" name="driver" value="<?php echo $id; ?>" required>
+                                                                        <div class="form-group col-md-6">
+                                                                            <input type="submit" class="btn btn-danger" value="Set Court Date">
+                                                                        </div>
+                                                                    </form>
+                                                                    <?php
 
 }
  echo 'N/A';
@@ -211,9 +210,9 @@ if ($result->num_rows > 0) {
 ?></td>
 
 
-</tr>
-                                                    
-                                                            
+                                                            </tr>
+
+
 
                                                         </tbody>
                                                     </table>
@@ -225,7 +224,10 @@ if ($result->num_rows > 0) {
                                 </ul>
                             </div>
                         </div>
+
                     </div>
+                    <a href="" onclick="PrintMe('divid')">Download PDF</a>
+
                     <!-- End Default Light Table -->
                 </div>
                 <?php 
