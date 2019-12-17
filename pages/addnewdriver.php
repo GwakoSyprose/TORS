@@ -7,6 +7,7 @@ ob_start();
     include '../includes/driverhead.php'; 
     
  $error = "";
+ $success = "";
 
 
 if(array_key_exists("submitS" , $_POST)) {
@@ -88,9 +89,12 @@ else {
          $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
             VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno','$email','$hashedPwd', '$type', '0','$profile',  '$date')";
       mysqli_query($link, $query);
-      echo "<script>";
-          echo "swal('Good job!', 'Officer registered successfully', 'success')";
-          echo "</script>";
+      $success.='<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong>You may now proceed to log in
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>';
 
 }
      
@@ -169,6 +173,7 @@ echo mysqli_error($link);
                         Already registered? View your profile<a href="" data-toggle="modal" data-target="#ModalExample">&nbsp;login here</a>
                     </div>
                     <div><?php echo $error; ?></div>
+                    <div><?php echo $success; ?></div>
                     <div class="row">
                         <!-- Input & Button Groups -->
                         <div class="card card-small mb-4 col-lg-12">
