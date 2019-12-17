@@ -282,7 +282,7 @@ if(isset($_POST['notSubmit'])){
                         </div>
 
 
-                        <div align="center" class="text-center"><button style="display:none;" type="submit" id="notSubmit" name="notSubmit"
+                        <div  class="text-center"><button style="display:none;" type="submit" id="notSubmit" name="notSubmit"
                                 class="btn btn-primary btn-lg showButton">Report</button>
                         </div>
 

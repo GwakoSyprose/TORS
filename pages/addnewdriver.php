@@ -75,19 +75,11 @@ if(array_key_exists("submitS" , $_POST)) {
 
 if ($num_rows > 0) {
           $error.='<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<<<<<<< HEAD
                   <strong>Error!</strong>National ID exists.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>';
-=======
-  <strong>Error! </strong>National ID exists.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
->>>>>>> 3e92d023b187b2a71dc8c07a01c5591c5b104e50
     
 }
 else {
@@ -96,6 +88,10 @@ else {
          $query = "INSERT INTO drivers(`driverID`, `dfname`,`dlname`, `licence`, `phone`, `email`, `password`, `typeID`, `offenceCount`, `profileImage`,`regDate`)
             VALUES ('$driverID', '$fname', '$lname','$licence','$phoneno','$email','$hashedPwd', '$type', '0','$profile',  '$date')";
       mysqli_query($link, $query);
+      echo "<script>";
+          echo "swal('Good job!', 'Driver registered successfully', 'success')";
+          echo "</script>";
+
 }
      
     
@@ -131,11 +127,7 @@ if(array_key_exists("submitL" , $_POST)) {
         $_SESSION['driverID'] = $row['driverID'];
     
            
-<<<<<<< HEAD
         exit(header('location:../pages/driverview.php?pid='.$id.'&success=1'));
-=======
-                  header("Location: ../pages/driverview.php?success=1");
->>>>>>> 3e92d023b187b2a71dc8c07a01c5591c5b104e50
                   
              
         
@@ -304,7 +296,6 @@ echo mysqli_error($link);
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-<<<<<<< HEAD
                                         <h4 class="modal-title text-xs-center">Login</h4>
                                     </div>
                                     <div class="modal-body">
@@ -315,16 +306,6 @@ echo mysqli_error($link);
                                                 <div>
                                                     <input type="text" class="form-control input-lg" name="driverID">
                                                 </div>
-=======
-                                        <h4 class="modal-title">Driver Login</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="addnewdriver.php" method="post">
-                                            <div class="form-group">
-                                                <i class="fa fa-user"></i>
-                                                <input type="text" class="form-control" name='driverID' placeholder="National ID" required="required">
->>>>>>> 3e92d023b187b2a71dc8c07a01c5591c5b104e50
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">Password</label>
@@ -334,24 +315,15 @@ echo mysqli_error($link);
                                             </div>
 
                                             <div class="form-group">
-<<<<<<< HEAD
                                                 <div>
 
                                                     <button type="submit" name="submitL" class="btn btn-info btn-block">Login</button>
                                                 </div>
-=======
-                                                <input type="submit" name="submitL" class="btn btn-primary btn-block btn-lg" value="Login">
->>>>>>> 3e92d023b187b2a71dc8c07a01c5591c5b104e50
                                             </div>
                                         </form>
                                     </div>
-<<<<<<< HEAD
                                     <div class="modal-footer text-xs-center">
                                         Don't have an account? <a href="/auth/register">Sign up »</a>
-=======
-                                    <div class="modal-footer">
-                                        <a href="reset-password.php">Forgot Password?</a>
->>>>>>> 3e92d023b187b2a71dc8c07a01c5591c5b104e50
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->

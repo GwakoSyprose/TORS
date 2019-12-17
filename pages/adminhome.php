@@ -112,49 +112,53 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
 
                     <!-- End Default Dark Table -->
                 </div>
-                <script type="text/javascript">
- $(document).ready(function(){  
+                <script src="jquery.js"></script>
+                
 
-   $('.delete').click(function(){
-    var el = this;
-    var id = this.id;
-    var opt = "delete";
-    $.confirm({
-      title: 'Confirm Action',
-      content: 'Are You Sure You want To Delete ?',
-      type: 'red',
-      typeAnimated: true,
-      buttons: {
+ <script type="text/javascript">
+$(document).ready(function(){
+  
+ // Delete  button click event listener
+ $('.delete').click(function(){
+  var el = this;
+  var id = this.id;
+   document.body.style.color="black";
+ $.confirm({
+    title: 'Confirm Action',
+    content: 'Are You Sure You Want to Delete This File?',
+    type: 'red',
+    typeAnimated: true,
+    buttons: {
         Yes: {
-          text: 'Yes',
-          btnClass: 'btn-red',
-          action: function(){
+            text: 'Yes',
+            btnClass: 'btn-red',
+            action: function(){
                 // AJAX Request
-                $.ajax({
-                 url: 'adminhome.php',
-                 type: 'GET',
-                 data: {delete:id,dc:opt },
-                 success: function(response){
-                  console.log(response);
+            $.ajax({
+             url: 'php/delete.php',
+             type: 'GET',
+             data: { userID: id},
+             success: function(response){
+                
               // Removing row from HTML Table
               $(el).closest('tr').css('background','tomato');
               $(el).closest('tr').fadeOut(800, function(){ 
                $(this).remove();
-             });
+              });
 
+             }
+            });
             }
-          });
-              }
-            },
-            No: function () {
-            }
-          }
-        });
+        },
+        No: function () {
+        }
+    }
+});
 
-
-  });
 
  });
+
+});
 </script>
 
                 <?php 
